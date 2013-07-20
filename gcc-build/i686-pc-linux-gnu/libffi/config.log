@@ -1,0 +1,232 @@
+This file contains any messages produced by compilers while
+running configure, to aid debugging if configure makes a mistake.
+
+configure:550: checking for Cygwin environment
+configure:583: checking for mingw32 environment
+configure:672: checking host system type
+configure:763: checking build system type
+configure:783: checking for gcc
+configure:896: checking whether the C compiler (/home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -O2 -g -O2 ) works
+configure:912: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  1>&5
+configure:938: checking whether the C compiler (/home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -O2 -g -O2 ) is a cross-compiler
+configure:943: checking whether we are using GNU C
+configure:971: checking whether /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include accepts -g
+configure:1014: checking for ld used by GCC
+configure:1082: checking if the linker (ld) is GNU ld
+configure:1099: checking for ld option to reload object files
+configure:1111: checking for BSD-compatible nm
+configure:1149: checking whether ln -s works
+configure:1170: checking how to recognise dependant libraries
+configure:1343: checking for object suffix
+configure:1369: checking for executable suffix
+configure:1379: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  1>&5
+configure:1545: checking for ranlib
+configure:1612: checking for strip
+ltconfig:678:checking for /home/yanxin/git/jrate/gcc-build/gcc/xgcc option to produce PIC
+ltconfig:687:checking that /home/yanxin/git/jrate/gcc-build/gcc/xgcc PIC flag  -fPIC -DPIC works.
+ltconfig:749: checking if /home/yanxin/git/jrate/gcc-build/gcc/xgcc static flag -static works
+ltconfig:780: finding the maximum length of command line arguments
+ltconfig:@lineno@: result: 49153
+ltconfig:887: checking if /home/yanxin/git/jrate/gcc-build/gcc/xgcc supports -fno-rtti -fno-exceptions
+ltconfig:888: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -O2 -g -O2 -fno-rtti -fno-exceptions -c conftest.c  conftest.c 1>&5
+ltconfig:1431: checking if global_symbol_pipe works
+ltconfig:1432: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -O2 -g -O2  conftest.c 1>&5
+ltconfig:1435: eval "nm conftest.o | sed -n -e 's/^.*[ 	]\([ABCDGISTW][ABCDGISTW]*\)[ 	][ 	]*\(\)\([_A-Za-z][_A-Za-z0-9]*\)$/  /p' > conftest.nm"
+ltconfig:1487: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2 -fno-builtin   conftest.c conftstm.o 1>&5
+configure:1953: checking for a BSD compatible install
+configure:2006: checking whether build environment is sane
+configure:2063: checking whether make sets ${MAKE}
+configure:2102: checking for working aclocal
+configure:2115: checking for working autoconf
+configure:2128: checking for working automake
+configure:2141: checking for working autoheader
+configure:2154: checking for working makeinfo
+configure:2171: checking for executable suffix
+configure:2202: checking whether to enable maintainer-specific portions of Makefiles
+configure:2228: checking for gcc
+configure:2341: checking whether the C compiler (/home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -O2 -g -O2 ) works
+configure:2357: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  1>&5
+configure:2383: checking whether the C compiler (/home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -O2 -g -O2 ) is a cross-compiler
+configure:2388: checking whether we are using GNU C
+configure:2416: checking whether /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include accepts -g
+configure:2640: checking how to run the C preprocessor
+configure:2720: checking for ANSI C header files
+configure:2826: checking for memcpy
+configure:2881: checking for working alloca.h
+configure:2914: checking for alloca
+configure:2947: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  1>&5
+configure:3114: checking size of short
+configure:3130: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -O2 -g -O2  conftest.c 1>&5
+configure: In function `main':
+configure:3126: error: duplicate case value
+configure:3126: error: previously used here
+configure: failed program was:
+#line 3120 "configure"
+#include "confdefs.h"
+#include "confdefs.h"
+#include <sys/types.h>
+
+
+int main() {
+switch (0) case 0: case (sizeof (short) == 4):;
+; return 0; }
+configure:3130: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -O2 -g -O2  conftest.c 1>&5
+configure: In function `main':
+configure:3126: error: duplicate case value
+configure:3126: error: previously used here
+configure: failed program was:
+#line 3120 "configure"
+#include "confdefs.h"
+#include "confdefs.h"
+#include <sys/types.h>
+
+
+int main() {
+switch (0) case 0: case (sizeof (short) == 8):;
+; return 0; }
+configure:3130: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -O2 -g -O2  conftest.c 1>&5
+configure: In function `main':
+configure:3126: error: duplicate case value
+configure:3126: error: previously used here
+configure: failed program was:
+#line 3120 "configure"
+#include "confdefs.h"
+#include "confdefs.h"
+#include <sys/types.h>
+
+
+int main() {
+switch (0) case 0: case (sizeof (short) == 1):;
+; return 0; }
+configure:3130: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -O2 -g -O2  conftest.c 1>&5
+configure:3153: checking size of int
+configure:3169: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -O2 -g -O2  conftest.c 1>&5
+configure:3192: checking size of long
+configure:3208: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -O2 -g -O2  conftest.c 1>&5
+configure:3231: checking size of long long
+configure:3247: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -O2 -g -O2  conftest.c 1>&5
+configure: In function `main':
+configure:3243: error: duplicate case value
+configure:3243: error: previously used here
+configure: failed program was:
+#line 3237 "configure"
+#include "confdefs.h"
+#include "confdefs.h"
+#include <sys/types.h>
+
+
+int main() {
+switch (0) case 0: case (sizeof (long long) == 4):;
+; return 0; }
+configure:3247: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -O2 -g -O2  conftest.c 1>&5
+configure:3270: checking size of float
+configure:3286: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -O2 -g -O2  conftest.c 1>&5
+configure:3309: checking size of double
+configure:3325: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -O2 -g -O2  conftest.c 1>&5
+configure: In function `main':
+configure:3321: error: duplicate case value
+configure:3321: error: previously used here
+configure: failed program was:
+#line 3315 "configure"
+#include "confdefs.h"
+#include "confdefs.h"
+#include <sys/types.h>
+
+
+int main() {
+switch (0) case 0: case (sizeof (double) == 4):;
+; return 0; }
+configure:3325: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -O2 -g -O2  conftest.c 1>&5
+configure:3348: checking size of long double
+configure:3364: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -O2 -g -O2  conftest.c 1>&5
+configure: In function `main':
+configure:3360: error: duplicate case value
+configure:3360: error: previously used here
+configure: failed program was:
+#line 3354 "configure"
+#include "confdefs.h"
+#include "confdefs.h"
+#include <sys/types.h>
+
+
+int main() {
+switch (0) case 0: case (sizeof (long double) == 4):;
+; return 0; }
+configure:3364: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -O2 -g -O2  conftest.c 1>&5
+configure: In function `main':
+configure:3360: error: duplicate case value
+configure:3360: error: previously used here
+configure: failed program was:
+#line 3354 "configure"
+#include "confdefs.h"
+#include "confdefs.h"
+#include <sys/types.h>
+
+
+int main() {
+switch (0) case 0: case (sizeof (long double) == 8):;
+; return 0; }
+configure:3364: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -O2 -g -O2  conftest.c 1>&5
+configure: In function `main':
+configure:3360: error: duplicate case value
+configure:3360: error: previously used here
+configure: failed program was:
+#line 3354 "configure"
+#include "confdefs.h"
+#include "confdefs.h"
+#include <sys/types.h>
+
+
+int main() {
+switch (0) case 0: case (sizeof (long double) == 1):;
+; return 0; }
+configure:3364: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -O2 -g -O2  conftest.c 1>&5
+configure: In function `main':
+configure:3360: error: duplicate case value
+configure:3360: error: previously used here
+configure: failed program was:
+#line 3354 "configure"
+#include "confdefs.h"
+#include "confdefs.h"
+#include <sys/types.h>
+
+
+int main() {
+switch (0) case 0: case (sizeof (long double) == 2):;
+; return 0; }
+configure:3364: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -O2 -g -O2  conftest.c 1>&5
+configure: In function `main':
+configure:3360: error: duplicate case value
+configure:3360: error: previously used here
+configure: failed program was:
+#line 3354 "configure"
+#include "confdefs.h"
+#include "confdefs.h"
+#include <sys/types.h>
+
+
+int main() {
+switch (0) case 0: case (sizeof (long double) == 16):;
+; return 0; }
+configure:3364: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -O2 -g -O2  conftest.c 1>&5
+configure:3388: checking size of void *
+configure:3404: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -O2 -g -O2  conftest.c 1>&5
+configure:3427: checking whether byte ordering is bigendian
+configure:3445: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -O2 -g -O2  conftest.c 1>&5
+configure:3460: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -O2 -g -O2  conftest.c 1>&5
+configure: In function `main':
+configure:3455: error: `not' undeclared (first use in this function)
+configure:3455: error: (Each undeclared identifier is reported only once
+configure:3455: error: for each function it appears in.)
+configure:3455: error: syntax error before "big"
+configure: failed program was:
+#line 3449 "configure"
+#include "confdefs.h"
+#include <sys/types.h>
+#include <sys/param.h>
+int main() {
+
+#if BYTE_ORDER != BIG_ENDIAN
+ not big endian
+#endif
+; return 0; }

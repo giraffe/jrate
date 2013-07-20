@@ -1,0 +1,395 @@
+This file contains any messages produced by compilers while
+running configure, to aid debugging if configure makes a mistake.
+
+configure:587: checking whether ln -s works
+configure:640: checking for a BSD compatible install
+configure:693: checking whether build environment is sane
+configure:750: checking whether make sets ${MAKE}
+configure:783: checking for Cygwin environment
+configure:816: checking for mingw32 environment
+configure:955: checking host system type
+configure:976: checking target system type
+configure:994: checking build system type
+configure:1023: checking for gcc
+configure:1137: checking whether we are using GNU C
+configure:1165: checking whether /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include accepts -g
+configure:1214: checking for c++
+configure:1249: checking whether we are using GNU C++
+configure:1273: checking whether /home/yanxin/git/jrate/gcc-build/gcc/xgcc -shared-libgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -nostdinc++  -L/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/src -L/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/src/.libs -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include accepts -g
+configure:1322: checking for working aclocal
+configure:1335: checking for working autoconf
+configure:1348: checking for working automake
+configure:1361: checking for working autoheader
+configure:1374: checking for working makeinfo
+configure:1393: checking build system type
+configure:1414: checking for as
+configure:1446: checking for ar
+configure:1478: checking for ranlib
+configure:1555: checking for a BSD compatible install
+configure:1609: checking whether to enable maintainer-specific portions of Makefiles
+configure:1635: checking for executable suffix
+configure:1795: checking for ld used by GCC
+configure:1863: checking if the linker (ld) is GNU ld
+configure:1880: checking for ld option to reload object files
+configure:1892: checking for BSD-compatible nm
+configure:1930: checking how to recognise dependant libraries
+configure:2103: checking for object suffix
+configure:2266: checking for ranlib
+configure:2333: checking for strip
+configure:2576: checking how to run the C++ preprocessor
+ltconfig:678:checking for /home/yanxin/git/jrate/gcc-build/gcc/xgcc option to produce PIC
+ltconfig:687:checking that /home/yanxin/git/jrate/gcc-build/gcc/xgcc PIC flag  -fPIC -DPIC works.
+ltconfig:749: checking if /home/yanxin/git/jrate/gcc-build/gcc/xgcc static flag -static works
+ltconfig:780: finding the maximum length of command line arguments
+ltconfig:@lineno@: result: 49153
+ltconfig:887: checking if /home/yanxin/git/jrate/gcc-build/gcc/xgcc supports -fno-rtti -fno-exceptions
+ltconfig:888: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -O2 -g -O2 -fno-rtti -fno-exceptions -c conftest.c  conftest.c 1>&5
+ltconfig:1431: checking if global_symbol_pipe works
+ltconfig:1432: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -O2 -g -O2  conftest.c 1>&5
+ltconfig:1435: eval "nm conftest.o | sed -n -e 's/^.*[ 	]\([ABCDGISTW][ABCDGISTW]*\)[ 	][ 	]*\(\)\([_A-Za-z][_A-Za-z0-9]*\)$/  /p' > conftest.nm"
+ltconfig:1487: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2 -fno-builtin   conftest.c conftstm.o 1>&5
+ltconfig:1871: checking for dlfcn.h
+ltconfig:1910: checking whether a program can dlopen itself
+ltconfig:1984: checking whether a statically linked program can dlopen itself
+/home/yanxin/git/jrate/gcc-build/gcc/xgcc -shared-libgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -nostdinc++  -L/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/src -L/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/src/.libs -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -E conftest.cc
+ltconfig:678:checking for /home/yanxin/git/jrate/gcc-build/gcc/xgcc option to produce PIC
+ltconfig:687:checking that /home/yanxin/git/jrate/gcc-build/gcc/xgcc PIC flag -fPIC -DPIC works.
+ltconfig:697: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -shared-libgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -nostdinc++  -L/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/src -L/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/src/.libs -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -g -O2 -D_GNU_SOURCE -fPIC -DPIC -DPIC  conftest.cc 1>&5
+ltconfig:749: checking if /home/yanxin/git/jrate/gcc-build/gcc/xgcc static flag -static works
+ltconfig:758: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -shared-libgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -nostdinc++  -L/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/src -L/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/src/.libs -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -g -O2 -D_GNU_SOURCE   -static conftest.cc  1>&5
+ltconfig:780: finding the maximum length of command line arguments
+ltconfig:@lineno@: result: 49153
+ltconfig:887: checking if /home/yanxin/git/jrate/gcc-build/gcc/xgcc supports -fno-rtti -fno-exceptions
+ltconfig:888: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -shared-libgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -nostdinc++  -L/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/src -L/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/src/.libs -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -g -O2 -D_GNU_SOURCE -fno-rtti -fno-exceptions -c conftest.cc  conftest.cc 1>&5
+ltconfig:1431: checking if global_symbol_pipe works
+ltconfig:1432: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -shared-libgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -nostdinc++  -L/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/src -L/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/src/.libs -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -g -O2 -D_GNU_SOURCE  conftest.cc 1>&5
+ltconfig:1435: eval "nm conftest.o | sed -n -e 's/^.*[ 	]\([ABCDGISTW][ABCDGISTW]*\)[ 	][ 	]*\(\)\([_A-Za-z][_A-Za-z0-9]*\)$/  /p' > conftest.nm"
+ltconfig:1487: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -shared-libgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -nostdinc++  -L/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/src -L/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/src/.libs -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -g -O2 -D_GNU_SOURCE -fno-builtin -fno-rtti -fno-exceptions   conftest.cc conftstm.o 1>&5
+ltconfig:1871: checking for dlfcn.h
+ltconfig:1910: checking whether a program can dlopen itself
+ltconfig:1984: checking whether a statically linked program can dlopen itself
+configure:2832: checking for exception model to use
+configure:2858: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -shared-libgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -nostdinc++  -L/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/src -L/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/src/.libs -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -S  conftest.C 1>&5
+configure:3012: checking how to run the C preprocessor
+configure:3138:24: sys/config.h: No such file or directory
+configure:3221: checking for garbage collector to use
+configure:3284: checking for thread model used by GCC
+configure:3492: checking for strerror
+configure:3492: checking for ioctl
+configure:3520: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  1>&5
+configure:3492: checking for select
+configure:3520: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  1>&5
+configure:3492: checking for fstat
+configure:3520: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  1>&5
+configure:3492: checking for open
+configure:3520: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  1>&5
+configure:3492: checking for fsync
+configure:3520: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  1>&5
+configure:3492: checking for sleep
+configure:3520: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  1>&5
+configure:3492: checking for opendir
+configure:3520: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  1>&5
+configure:3547: checking for gmtime_r
+configure:3575: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  1>&5
+configure:3547: checking for localtime_r
+configure:3575: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  1>&5
+configure:3547: checking for readdir_r
+configure:3575: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  1>&5
+configure:3547: checking for getpwuid_r
+configure:3575: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  1>&5
+configure:3547: checking for getcwd
+configure:3602: checking for access
+configure:3630: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  1>&5
+configure:3602: checking for stat
+configure:3630: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  1>&5
+configure:3602: checking for mkdir
+configure:3630: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  1>&5
+configure:3602: checking for rename
+configure:3602: checking for rmdir
+configure:3630: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  1>&5
+configure:3602: checking for unlink
+configure:3630: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  1>&5
+configure:3602: checking for realpath
+configure:3602: checking for utime
+configure:3630: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  1>&5
+configure:3602: checking for chmod
+configure:3630: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  1>&5
+configure:3657: checking for nl_langinfo
+configure:3657: checking for setlocale
+configure:3685: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  1>&5
+configure:3712: checking for inet_aton
+configure:3740: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  1>&5
+configure:3767: checking for inet_pton
+configure:3795: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  1>&5
+configure:3767: checking for uname
+configure:3795: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  1>&5
+configure:3767: checking for inet_ntoa
+configure:3795: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  1>&5
+configure:3822: checking for fork
+configure:3850: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  1>&5
+configure:3822: checking for execvp
+configure:3850: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  1>&5
+configure:3822: checking for pipe
+configure:3850: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  1>&5
+configure:3822: checking for sigaction
+configure:3850: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  1>&5
+configure:3822: checking for ftruncate
+configure:3850: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  1>&5
+configure:3878: checking for execinfo.h
+configure:3888: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -E  conftest.c >/dev/null 2>conftest.out
+configure:3878: checking for unistd.h
+configure:3878: checking for dlfcn.h
+configure:3915: checking for backtrace
+configure:3943: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  1>&5
+configure:3987: checking for dladdr in -ldl
+configure:4006: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c -ldl   1>&5
+configure:4036: checking for /proc/self/exe
+configure:4094: checking for iconv
+configure:4112: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  1>&5
+configure:4155: checking for iconv declaration
+configure:4180: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -O2 -g -O2  conftest.c 1>&5
+configure:4209: checking for LC_MESSAGES
+configure:4221: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  1>&5
+configure:4242: checking whether struct tm is in sys/time.h or time.h
+configure:4255: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -O2 -g -O2  conftest.c 1>&5
+configure:4276: checking for tm_zone in struct tm
+configure:4289: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -O2 -g -O2  conftest.c 1>&5
+configure:4349: checking for gethostbyname_r
+configure:4377: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  1>&5
+configure:4424: checking whether gethostbyname_r declaration requires -D_REENTRANT
+configure:4444: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -shared-libgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -nostdinc++  -L/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/src -L/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/src/.libs -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -g -O2 -D_GNU_SOURCE  conftest.C 1>&5
+/usr/include/netdb.h: In function `int main()':
+/usr/include/netdb.h:184: error: too few arguments to function `int 
+   gethostbyname_r(const char*, hostent*, char*, unsigned int, hostent**, int*)
+   '
+configure:4440: error: at this point in file
+configure: failed program was:
+#line 4437 "configure"
+#include "confdefs.h"
+#include <netdb.h>
+int main() {
+gethostbyname_r("", 0, 0);
+; return 0; }
+configure:4461: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -shared-libgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -nostdinc++  -L/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/src -L/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/src/.libs -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -g -O2 -D_GNU_SOURCE  -D_REENTRANT conftest.C 1>&5
+/usr/include/netdb.h: In function `int main()':
+/usr/include/netdb.h:184: error: too few arguments to function `int 
+   gethostbyname_r(const char*, hostent*, char*, unsigned int, hostent**, int*)
+   '
+configure:4457: error: at this point in file
+configure: failed program was:
+#line 4454 "configure"
+#include "confdefs.h"
+#include <netdb.h>
+int main() {
+gethostbyname_r("", 0, 0);
+; return 0; }
+configure:4496: checking for struct hostent_data
+configure:4512: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -O2 -g -O2  conftest.c 1>&5
+configure: In function `main':
+configure:4508: error: storage size of `data' isn't known
+configure: failed program was:
+#line 4501 "configure"
+#include "confdefs.h"
+
+#if GETHOSTBYNAME_R_NEEDS_REENTRANT && !defined(_REENTRANT)
+# define _REENTRANT 1
+#endif
+#include <netdb.h>
+int main() {
+struct hostent_data data;
+; return 0; }
+configure:4555: checking for gethostbyaddr_r
+configure:4583: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  1>&5
+configure:4637: checking for gethostname
+configure:4665: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  1>&5
+configure:4720: checking for pthread_mutexattr_settype
+configure:4748: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  -lpthread 1>&5
+configure:4720: checking for pthread_mutexattr_setkind_np
+configure:4748: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  -lpthread 1>&5
+configure:4778: checking for sched_yield
+configure:4806: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  -lpthread 1>&5
+configure:4937: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -O2 -g -O2  conftest.c 1>&5
+configure: In function `main':
+configure:4932: error: union has no member named `m_count'
+configure: failed program was:
+#line 4928 "configure"
+#include "confdefs.h"
+#include <pthread.h>
+int main() {
+
+          extern pthread_mutex_t *mutex; int q = mutex->m_count;
+        
+; return 0; }
+configure:4958: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -O2 -g -O2  conftest.c 1>&5
+configure: In function `main':
+configure:4953: error: union has no member named `__m_count'
+configure: failed program was:
+#line 4949 "configure"
+#include "confdefs.h"
+#include <pthread.h>
+int main() {
+
+	    extern pthread_mutex_t *mutex; int q = mutex->__m_count;
+	  
+; return 0; }
+configure:4978: checking for gettimeofday
+configure:4978: checking for time
+configure:5006: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  1>&5
+configure:4978: checking for ftime
+configure:5006: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  1>&5
+configure:5037: checking for memmove
+configure:5095: checking for memcpy
+configure:5152: checking for dlopen in -ldl
+configure:5216: checking for socket libraries
+configure:5224: checking for connect
+configure:5252: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  1>&5
+configure:5372: checking for gethostbyname
+configure:5400: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c   1>&5
+configure:5592: checking for gcj
+ltconfig:678:checking for /home/yanxin/git/jrate/gcc-build/gcc/gcj option to produce PIC
+ltconfig:687:checking that /home/yanxin/git/jrate/gcc-build/gcc/gcj PIC flag -fPIC works.
+ltconfig:749: checking if /home/yanxin/git/jrate/gcc-build/gcc/gcj static flag -static works
+ltconfig:780: finding the maximum length of command line arguments
+ltconfig:@lineno@: result: 49153
+ltconfig:887: checking if /home/yanxin/git/jrate/gcc-build/gcc/gcj supports -fno-rtti -fno-exceptions
+ltconfig:888: /home/yanxin/git/jrate/gcc-build/gcc/gcj -B/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libjava/ -B/home/yanxin/git/jrate/gcc-build/gcc/ -c -g -O2 -fno-rtti -fno-exceptions -c conftest.java  -I/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libjava -I/home/yanxin/git/jrate/gcc/libjava conftest.java 1>&5
+ltconfig:1431: checking if global_symbol_pipe works
+ltconfig:1432: /home/yanxin/git/jrate/gcc-build/gcc/gcj -B/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libjava/ -B/home/yanxin/git/jrate/gcc-build/gcc/ -c -g -O2  -I/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libjava -I/home/yanxin/git/jrate/gcc/libjava conftest.java 1>&5
+conftest.java:1: error: Invalid character `#' in input.
+   #ifdef __cplusplus
+   ^
+1 error
+ltconfig: failed program was:
+#ifdef __cplusplus
+extern "C" {
+#endif
+char nm_test_var;
+void nm_test_func(){}
+#ifdef __cplusplus
+}
+#endif
+int main(){nm_test_var='a';nm_test_func();return(0);}
+ltconfig:1431: checking if global_symbol_pipe works
+ltconfig:1432: /home/yanxin/git/jrate/gcc-build/gcc/gcj -B/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libjava/ -B/home/yanxin/git/jrate/gcc-build/gcc/ -c -g -O2  -I/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libjava -I/home/yanxin/git/jrate/gcc/libjava conftest.java 1>&5
+conftest.java:1: error: Invalid character `#' in input.
+   #ifdef __cplusplus
+   ^
+1 error
+ltconfig: failed program was:
+#ifdef __cplusplus
+extern "C" {
+#endif
+char nm_test_var;
+void nm_test_func(){}
+#ifdef __cplusplus
+}
+#endif
+int main(){nm_test_var='a';nm_test_func();return(0);}
+ltconfig:1871: checking for dlfcn.h
+ltconfig:1910: checking whether a program can dlopen itself
+ltconfig:1984: checking whether a statically linked program can dlopen itself
+configure:5686: checking size of void *
+configure:5808: checking for g++ -ffloat-store bug
+configure:5819: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -x c++ -O2 -ffloat-store  conftest.c 1>&5
+configure:5839: checking for unistd.h
+configure:5839: checking for bstring.h
+configure:5849: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -E  conftest.c >/dev/null 2>conftest.out
+configure:5845:21: bstring.h: No such file or directory
+configure: failed program was:
+#line 5844 "configure"
+#include "confdefs.h"
+#include <bstring.h>
+configure:5839: checking for sys/time.h
+configure:5839: checking for sys/types.h
+configure:5839: checking for fcntl.h
+configure:5839: checking for sys/ioctl.h
+configure:5839: checking for sys/filio.h
+configure:5839: checking for sys/stat.h
+configure:5839: checking for sys/select.h
+configure:5849: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -E  conftest.c >/dev/null 2>conftest.out
+configure:5839: checking for sys/socket.h
+configure:5849: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -E  conftest.c >/dev/null 2>conftest.out
+configure:5839: checking for netinet/in.h
+configure:5849: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -E  conftest.c >/dev/null 2>conftest.out
+configure:5839: checking for arpa/inet.h
+configure:5849: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -E  conftest.c >/dev/null 2>conftest.out
+configure:5839: checking for netdb.h
+configure:5849: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -E  conftest.c >/dev/null 2>conftest.out
+configure:5839: checking for net/if.h
+configure:5849: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -E  conftest.c >/dev/null 2>conftest.out
+configure:5839: checking for pwd.h
+configure:5849: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -E  conftest.c >/dev/null 2>conftest.out
+configure:5839: checking for sys/config.h
+configure:5849: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -E  conftest.c >/dev/null 2>conftest.out
+configure:5845:24: sys/config.h: No such file or directory
+configure: failed program was:
+#line 5844 "configure"
+#include "confdefs.h"
+#include <sys/config.h>
+configure:5839: checking for stdint.h
+configure:5849: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -E  conftest.c >/dev/null 2>conftest.out
+configure:5839: checking for langinfo.h
+configure:5839: checking for locale.h
+configure:5879: checking for dirent.h
+configure:5889: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -E  conftest.c >/dev/null 2>conftest.out
+configure:5919: checking for inttypes.h
+configure:5965: checking for sys/wait.h that is POSIX.1 compatible
+configure:6008: checking for ANSI C header files
+configure:6112: checking for ssize_t
+configure:6146: checking for in_addr_t
+configure:6162: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -O2 -g -O2  conftest.c 1>&5
+configure:6178: checking whether struct ip_mreq is in netinet/in.h
+configure:6187: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -O2 -g -O2  conftest.c 1>&5
+configure:6203: checking whether struct ipv6_mreq is in netinet/in.h
+configure:6212: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -O2 -g -O2  conftest.c 1>&5
+configure:6228: checking whether struct sockaddr_in6 is in netinet/in.h
+configure:6237: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -O2 -g -O2  conftest.c 1>&5
+configure:6253: checking for socklen_t in sys/socket.h
+configure:6264: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -O2 -g -O2  conftest.c 1>&5
+configure:6280: checking for tm_gmtoff in struct tm
+configure:6289: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -O2 -g -O2  conftest.c 1>&5
+configure:6355: checking for working alloca.h
+configure:6388: checking for alloca
+configure:6592: checking for perl
+configure:6691: checking for X
+configure:6758: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -E  conftest.c >/dev/null 2>conftest.out
+configure:6834: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c -lXt  1>&5
+configure:7005: checking for dnet_ntoa in -ldnet
+configure:7024: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c -ldnet   1>&5
+/usr/bin/ld: cannot find -ldnet
+collect2: ld returned 1 exit status
+configure: failed program was:
+#line 7013 "configure"
+#include "confdefs.h"
+/* Override any gcc2 internal prototype to avoid an error.  */
+/* We use char because int might match the return type of a gcc2
+    builtin and then its argument prototype would still apply.  */
+char dnet_ntoa();
+
+int main() {
+dnet_ntoa()
+; return 0; }
+configure:7046: checking for dnet_ntoa in -ldnet_stub
+configure:7065: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c -ldnet_stub   1>&5
+/usr/bin/ld: cannot find -ldnet_stub
+collect2: ld returned 1 exit status
+configure: failed program was:
+#line 7054 "configure"
+#include "confdefs.h"
+/* Override any gcc2 internal prototype to avoid an error.  */
+/* We use char because int might match the return type of a gcc2
+    builtin and then its argument prototype would still apply.  */
+char dnet_ntoa();
+
+int main() {
+dnet_ntoa()
+; return 0; }
+configure:7094: checking for gethostbyname
+configure:7122: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  1>&5
+configure:7192: checking for connect
+configure:7284: checking for remove
+configure:7312: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  1>&5
+configure:7376: checking for shmat
+configure:7404: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  1>&5
+configure:7477: checking for IceConnectionNumber in -lICE
+configure:7496: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c -lICE   1>&5

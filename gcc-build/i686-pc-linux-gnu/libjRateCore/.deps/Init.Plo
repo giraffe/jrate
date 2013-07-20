@@ -1,0 +1,335 @@
+Init.lo Init.o: /home/yanxin/git/jrate/gcc/libjRateCore/sched/Init.cc \
+  /home/yanxin/git/jrate/src/native/src/jrate/sched/Types.h \
+  /home/yanxin/git/jrate/src/native/src/jrate/sched/Config.h \
+  /home/yanxin/git/jrate/src/native/src/jrate/sched/PriorityScheduler.h \
+  /usr/include/sched.h /usr/include/features.h \
+  /usr/include/i386-linux-gnu/bits/predefs.h \
+  /usr/include/i386-linux-gnu/sys/cdefs.h \
+  /usr/include/i386-linux-gnu/bits/wordsize.h \
+  /usr/include/i386-linux-gnu/gnu/stubs.h \
+  /usr/include/i386-linux-gnu/gnu/stubs-32.h \
+  /usr/include/i386-linux-gnu/bits/types.h \
+  /usr/include/i386-linux-gnu/bits/typesizes.h \
+  /home/yanxin/git/jrate/gcc-build/gcc/include/stddef.h \
+  /usr/include/time.h /usr/include/i386-linux-gnu/bits/sched.h \
+  /usr/include/pthread.h /usr/include/endian.h \
+  /usr/include/i386-linux-gnu/bits/endian.h \
+  /usr/include/i386-linux-gnu/bits/byteswap.h \
+  /usr/include/i386-linux-gnu/bits/time.h \
+  /usr/include/i386-linux-gnu/bits/timex.h /usr/include/xlocale.h \
+  /usr/include/i386-linux-gnu/bits/pthreadtypes.h \
+  /usr/include/i386-linux-gnu/bits/setjmp.h \
+  /usr/include/i386-linux-gnu/sys/types.h \
+  /usr/include/i386-linux-gnu/sys/select.h \
+  /usr/include/i386-linux-gnu/bits/select.h \
+  /usr/include/i386-linux-gnu/bits/sigset.h \
+  /usr/include/i386-linux-gnu/sys/sysmacros.h /usr/include/unistd.h \
+  /usr/include/i386-linux-gnu/bits/posix_opt.h \
+  /usr/include/i386-linux-gnu/bits/environments.h \
+  /usr/include/i386-linux-gnu/bits/confname.h /usr/include/getopt.h \
+  /usr/include/stdio.h \
+  /home/yanxin/git/jrate/gcc/libstdc++-v3/libio/libio.h \
+  /home/yanxin/git/jrate/gcc/libstdc++-v3/libio/_G_config.h \
+  /home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/i686-pc-linux-gnu/bits/c++config.h \
+  /home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/i686-pc-linux-gnu/bits/os_defines.h \
+  /home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/cstddef \
+  /usr/include/iconv.h \
+  /home/yanxin/git/jrate/gcc-build/gcc/include/stdarg.h \
+  /usr/include/i386-linux-gnu/bits/stdio_lim.h \
+  /usr/include/i386-linux-gnu/bits/sys_errlist.h \
+  /home/yanxin/git/jrate/src/native/src/jrate/sched/Thread.h \
+  /home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/map \
+  /home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/stl_tree.h \
+  /home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/stl_algobase.h \
+  /home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/cstring \
+  /usr/include/string.h \
+  /home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/climits \
+  /home/yanxin/git/jrate/gcc-build/gcc/include/limits.h \
+  /home/yanxin/git/jrate/gcc-build/gcc/include/syslimits.h \
+  /usr/local/lib/gcc-lib/i686-pc-linux-gnu/3.3.3/include/limits.h \
+  /usr/include/limits.h /usr/include/i386-linux-gnu/bits/posix1_lim.h \
+  /usr/include/i386-linux-gnu/bits/local_lim.h \
+  /usr/include/linux/limits.h \
+  /usr/include/i386-linux-gnu/bits/posix2_lim.h \
+  /usr/include/i386-linux-gnu/bits/xopen_lim.h \
+  /home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/cstdlib \
+  /usr/include/stdlib.h /usr/include/i386-linux-gnu/bits/waitflags.h \
+  /usr/include/i386-linux-gnu/bits/waitstatus.h /usr/include/alloca.h \
+  /home/yanxin/git/jrate/gcc/libstdc++-v3/libsupc++/new \
+  /home/yanxin/git/jrate/gcc/libstdc++-v3/libsupc++/exception \
+  /home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/iosfwd \
+  /home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/i686-pc-linux-gnu/bits/c++locale.h \
+  /home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/clocale \
+  /usr/include/locale.h /usr/include/i386-linux-gnu/bits/locale.h \
+  /home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/cctype \
+  /usr/include/ctype.h \
+  /home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/stringfwd.h \
+  /home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/fpos.h \
+  /home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/i686-pc-linux-gnu/bits/c++io.h \
+  /home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/cstdio \
+  /home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/i686-pc-linux-gnu/bits/gthr.h \
+  /home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/i686-pc-linux-gnu/bits/gthr-default.h \
+  /home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/cwchar \
+  /home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/ctime \
+  /usr/include/wchar.h /usr/include/i386-linux-gnu/bits/wchar.h \
+  /home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/functexcept.h \
+  /home/yanxin/git/jrate/gcc/libstdc++-v3/libsupc++/exception_defines.h \
+  /home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/stl_pair.h \
+  /home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/type_traits.h \
+  /home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/stl_iterator_base_types.h \
+  /home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/stl_iterator_base_funcs.h \
+  /home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/concept_check.h \
+  /home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/stl_iterator.h \
+  /home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/stl_alloc.h \
+  /home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/stl_threads.h \
+  /home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/i686-pc-linux-gnu/bits/atomicity.h \
+  /home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/stl_construct.h \
+  /home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/stl_function.h \
+  /home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/stl_map.h \
+  /home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/stl_multimap.h \
+  /home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/string \
+  /home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/char_traits.h \
+  /home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/memory \
+  /home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/stl_uninitialized.h \
+  /home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/stl_raw_storage_iter.h \
+  /home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.h \
+  /home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/algorithm \
+  /home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/stl_algo.h \
+  /home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/stl_heap.h \
+  /home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/stl_tempbuf.h \
+  /home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.tcc \
+  /home/yanxin/git/jrate/src/native/src/jrate/synch/Synchronizer.h \
+  /home/yanxin/git/jrate/src/native/src/jrate/synch/Mutex.h \
+  /home/yanxin/git/jrate/src/native/src/jrate/sched/Runnable.h \
+  /home/yanxin/git/jrate/src/native/src/jrate/synch/Guard.h \
+  /home/yanxin/git/jrate/src/native/src/jrate/sched/PriorityParameters.h
+
+/home/yanxin/git/jrate/src/native/src/jrate/sched/Types.h:
+
+/home/yanxin/git/jrate/src/native/src/jrate/sched/Config.h:
+
+/home/yanxin/git/jrate/src/native/src/jrate/sched/PriorityScheduler.h:
+
+/usr/include/sched.h:
+
+/usr/include/features.h:
+
+/usr/include/i386-linux-gnu/bits/predefs.h:
+
+/usr/include/i386-linux-gnu/sys/cdefs.h:
+
+/usr/include/i386-linux-gnu/bits/wordsize.h:
+
+/usr/include/i386-linux-gnu/gnu/stubs.h:
+
+/usr/include/i386-linux-gnu/gnu/stubs-32.h:
+
+/usr/include/i386-linux-gnu/bits/types.h:
+
+/usr/include/i386-linux-gnu/bits/typesizes.h:
+
+/home/yanxin/git/jrate/gcc-build/gcc/include/stddef.h:
+
+/usr/include/time.h:
+
+/usr/include/i386-linux-gnu/bits/sched.h:
+
+/usr/include/pthread.h:
+
+/usr/include/endian.h:
+
+/usr/include/i386-linux-gnu/bits/endian.h:
+
+/usr/include/i386-linux-gnu/bits/byteswap.h:
+
+/usr/include/i386-linux-gnu/bits/time.h:
+
+/usr/include/i386-linux-gnu/bits/timex.h:
+
+/usr/include/xlocale.h:
+
+/usr/include/i386-linux-gnu/bits/pthreadtypes.h:
+
+/usr/include/i386-linux-gnu/bits/setjmp.h:
+
+/usr/include/i386-linux-gnu/sys/types.h:
+
+/usr/include/i386-linux-gnu/sys/select.h:
+
+/usr/include/i386-linux-gnu/bits/select.h:
+
+/usr/include/i386-linux-gnu/bits/sigset.h:
+
+/usr/include/i386-linux-gnu/sys/sysmacros.h:
+
+/usr/include/unistd.h:
+
+/usr/include/i386-linux-gnu/bits/posix_opt.h:
+
+/usr/include/i386-linux-gnu/bits/environments.h:
+
+/usr/include/i386-linux-gnu/bits/confname.h:
+
+/usr/include/getopt.h:
+
+/usr/include/stdio.h:
+
+/home/yanxin/git/jrate/gcc/libstdc++-v3/libio/libio.h:
+
+/home/yanxin/git/jrate/gcc/libstdc++-v3/libio/_G_config.h:
+
+/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/i686-pc-linux-gnu/bits/c++config.h:
+
+/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/i686-pc-linux-gnu/bits/os_defines.h:
+
+/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/cstddef:
+
+/usr/include/iconv.h:
+
+/home/yanxin/git/jrate/gcc-build/gcc/include/stdarg.h:
+
+/usr/include/i386-linux-gnu/bits/stdio_lim.h:
+
+/usr/include/i386-linux-gnu/bits/sys_errlist.h:
+
+/home/yanxin/git/jrate/src/native/src/jrate/sched/Thread.h:
+
+/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/map:
+
+/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/stl_tree.h:
+
+/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/stl_algobase.h:
+
+/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/cstring:
+
+/usr/include/string.h:
+
+/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/climits:
+
+/home/yanxin/git/jrate/gcc-build/gcc/include/limits.h:
+
+/home/yanxin/git/jrate/gcc-build/gcc/include/syslimits.h:
+
+/usr/local/lib/gcc-lib/i686-pc-linux-gnu/3.3.3/include/limits.h:
+
+/usr/include/limits.h:
+
+/usr/include/i386-linux-gnu/bits/posix1_lim.h:
+
+/usr/include/i386-linux-gnu/bits/local_lim.h:
+
+/usr/include/linux/limits.h:
+
+/usr/include/i386-linux-gnu/bits/posix2_lim.h:
+
+/usr/include/i386-linux-gnu/bits/xopen_lim.h:
+
+/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/cstdlib:
+
+/usr/include/stdlib.h:
+
+/usr/include/i386-linux-gnu/bits/waitflags.h:
+
+/usr/include/i386-linux-gnu/bits/waitstatus.h:
+
+/usr/include/alloca.h:
+
+/home/yanxin/git/jrate/gcc/libstdc++-v3/libsupc++/new:
+
+/home/yanxin/git/jrate/gcc/libstdc++-v3/libsupc++/exception:
+
+/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/iosfwd:
+
+/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/i686-pc-linux-gnu/bits/c++locale.h:
+
+/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/clocale:
+
+/usr/include/locale.h:
+
+/usr/include/i386-linux-gnu/bits/locale.h:
+
+/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/cctype:
+
+/usr/include/ctype.h:
+
+/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/stringfwd.h:
+
+/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/fpos.h:
+
+/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/i686-pc-linux-gnu/bits/c++io.h:
+
+/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/cstdio:
+
+/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/i686-pc-linux-gnu/bits/gthr.h:
+
+/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/i686-pc-linux-gnu/bits/gthr-default.h:
+
+/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/cwchar:
+
+/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/ctime:
+
+/usr/include/wchar.h:
+
+/usr/include/i386-linux-gnu/bits/wchar.h:
+
+/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/functexcept.h:
+
+/home/yanxin/git/jrate/gcc/libstdc++-v3/libsupc++/exception_defines.h:
+
+/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/stl_pair.h:
+
+/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/type_traits.h:
+
+/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/stl_iterator_base_types.h:
+
+/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/stl_iterator_base_funcs.h:
+
+/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/concept_check.h:
+
+/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/stl_iterator.h:
+
+/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/stl_alloc.h:
+
+/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/stl_threads.h:
+
+/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/i686-pc-linux-gnu/bits/atomicity.h:
+
+/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/stl_construct.h:
+
+/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/stl_function.h:
+
+/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/stl_map.h:
+
+/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/stl_multimap.h:
+
+/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/string:
+
+/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/char_traits.h:
+
+/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/memory:
+
+/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/stl_uninitialized.h:
+
+/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/stl_raw_storage_iter.h:
+
+/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.h:
+
+/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/algorithm:
+
+/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/stl_algo.h:
+
+/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/stl_heap.h:
+
+/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/stl_tempbuf.h:
+
+/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.tcc:
+
+/home/yanxin/git/jrate/src/native/src/jrate/synch/Synchronizer.h:
+
+/home/yanxin/git/jrate/src/native/src/jrate/synch/Mutex.h:
+
+/home/yanxin/git/jrate/src/native/src/jrate/sched/Runnable.h:
+
+/home/yanxin/git/jrate/src/native/src/jrate/synch/Guard.h:
+
+/home/yanxin/git/jrate/src/native/src/jrate/sched/PriorityParameters.h:

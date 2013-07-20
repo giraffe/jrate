@@ -1,0 +1,5 @@
+Runnable.lo Runnable.o:  \
+ /home/yanxin/git/jrate/gcc/libjRateCore/sched/Runnable.cc \
+  /home/yanxin/git/jrate/src/native/src/jrate/sched/Runnable.h
+
+/home/yanxin/git/jrate/src/native/src/jrate/sched/Runnable.h:

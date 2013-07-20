@@ -1,0 +1,66 @@
+This file contains any messages produced by compilers while
+running configure, to aid debugging if configure makes a mistake.
+
+configure:597: checking for a BSD compatible install
+configure:650: checking whether build environment is sane
+configure:707: checking whether make sets ${MAKE}
+configure:740: checking for Cygwin environment
+configure:773: checking for mingw32 environment
+configure:896: checking host system type
+configure:917: checking target system type
+configure:935: checking build system type
+configure:975: checking for working aclocal
+configure:988: checking for working autoconf
+configure:1001: checking for working automake
+configure:1014: checking for working autoheader
+configure:1027: checking for working makeinfo
+configure:1053: checking for gcc
+configure:1132: checking whether we are using GNU C
+configure:1156: checking whether /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include accepts -g
+configure:1193: checking for c++
+configure:1226: checking whether we are using GNU C++
+configure:1250: checking whether /home/yanxin/git/jrate/gcc-build/gcc/g++ -B/home/yanxin/git/jrate/gcc-build/gcc/ -nostdinc++ -nostdinc++ -I/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/i686-pc-linux-gnu -I/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include -I/home/yanxin/git/jrate/gcc/libstdc++-v3/libsupc++ -I/home/yanxin/git/jrate/gcc/libstdc++-v3/libio -I/home/yanxin/git/jrate/gcc/libstdc++-v3/include/backward -I/home/yanxin/git/jrate/gcc/libstdc++-v3/testsuite -L/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/src -L/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/src/.libs -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include accepts -g
+configure:1283: checking build system type
+configure:1304: checking for as
+configure:1336: checking for ar
+configure:1368: checking for ranlib
+configure:1445: checking for a BSD compatible install
+configure:1499: checking whether to enable maintainer-specific portions of Makefiles
+configure:1669: checking for ld used by GCC
+configure:1737: checking if the linker (ld) is GNU ld
+configure:1754: checking for ld option to reload object files
+configure:1766: checking for BSD-compatible nm
+configure:1804: checking whether ln -s works
+configure:1825: checking how to recognise dependant libraries
+configure:1998: checking for object suffix
+configure:2161: checking for ranlib
+configure:2228: checking for strip
+configure:2471: checking how to run the C++ preprocessor
+ltconfig:678:checking for /home/yanxin/git/jrate/gcc-build/gcc/xgcc option to produce PIC
+ltconfig:687:checking that /home/yanxin/git/jrate/gcc-build/gcc/xgcc PIC flag  -fPIC -DPIC works.
+ltconfig:749: checking if /home/yanxin/git/jrate/gcc-build/gcc/xgcc static flag -static works
+ltconfig:780: finding the maximum length of command line arguments
+ltconfig:@lineno@: result: 49153
+ltconfig:887: checking if /home/yanxin/git/jrate/gcc-build/gcc/xgcc supports -fno-rtti -fno-exceptions
+ltconfig:888: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -O2 -g -O2 -fno-rtti -fno-exceptions -c conftest.c  conftest.c 1>&5
+ltconfig:1431: checking if global_symbol_pipe works
+ltconfig:1432: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -O2 -g -O2  conftest.c 1>&5
+ltconfig:1435: eval "nm conftest.o | sed -n -e 's/^.*[ 	]\([ABCDGISTW][ABCDGISTW]*\)[ 	][ 	]*\(\)\([_A-Za-z][_A-Za-z0-9]*\)$/  /p' > conftest.nm"
+ltconfig:1487: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2 -fno-builtin   conftest.c conftstm.o 1>&5
+/home/yanxin/git/jrate/gcc-build/gcc/g++ -B/home/yanxin/git/jrate/gcc-build/gcc/ -nostdinc++ -nostdinc++ -I/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/i686-pc-linux-gnu -I/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include -I/home/yanxin/git/jrate/gcc/libstdc++-v3/libsupc++ -I/home/yanxin/git/jrate/gcc/libstdc++-v3/libio -I/home/yanxin/git/jrate/gcc/libstdc++-v3/include/backward -I/home/yanxin/git/jrate/gcc/libstdc++-v3/testsuite -L/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/src -L/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/src/.libs -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -E conftest.cc
+ltconfig:678:checking for /home/yanxin/git/jrate/gcc-build/gcc/g++ option to produce PIC
+ltconfig:687:checking that /home/yanxin/git/jrate/gcc-build/gcc/g++ PIC flag -fPIC -DPIC works.
+ltconfig:697: /home/yanxin/git/jrate/gcc-build/gcc/g++ -B/home/yanxin/git/jrate/gcc-build/gcc/ -nostdinc++ -nostdinc++ -I/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/i686-pc-linux-gnu -I/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include -I/home/yanxin/git/jrate/gcc/libstdc++-v3/libsupc++ -I/home/yanxin/git/jrate/gcc/libstdc++-v3/libio -I/home/yanxin/git/jrate/gcc/libstdc++-v3/include/backward -I/home/yanxin/git/jrate/gcc/libstdc++-v3/testsuite -L/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/src -L/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/src/.libs -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -g -O2 -D_GNU_SOURCE -fPIC -DPIC -DPIC  conftest.cc 1>&5
+ltconfig:749: checking if /home/yanxin/git/jrate/gcc-build/gcc/g++ static flag -static works
+ltconfig:758: /home/yanxin/git/jrate/gcc-build/gcc/g++ -B/home/yanxin/git/jrate/gcc-build/gcc/ -nostdinc++ -nostdinc++ -I/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/i686-pc-linux-gnu -I/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include -I/home/yanxin/git/jrate/gcc/libstdc++-v3/libsupc++ -I/home/yanxin/git/jrate/gcc/libstdc++-v3/libio -I/home/yanxin/git/jrate/gcc/libstdc++-v3/include/backward -I/home/yanxin/git/jrate/gcc/libstdc++-v3/testsuite -L/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/src -L/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/src/.libs -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -g -O2 -D_GNU_SOURCE   -static conftest.cc  1>&5
+ltconfig:780: finding the maximum length of command line arguments
+ltconfig:@lineno@: result: 49153
+ltconfig:887: checking if /home/yanxin/git/jrate/gcc-build/gcc/g++ supports -fno-rtti -fno-exceptions
+ltconfig:888: /home/yanxin/git/jrate/gcc-build/gcc/g++ -B/home/yanxin/git/jrate/gcc-build/gcc/ -nostdinc++ -nostdinc++ -I/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/i686-pc-linux-gnu -I/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include -I/home/yanxin/git/jrate/gcc/libstdc++-v3/libsupc++ -I/home/yanxin/git/jrate/gcc/libstdc++-v3/libio -I/home/yanxin/git/jrate/gcc/libstdc++-v3/include/backward -I/home/yanxin/git/jrate/gcc/libstdc++-v3/testsuite -L/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/src -L/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/src/.libs -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -g -O2 -D_GNU_SOURCE -fno-rtti -fno-exceptions -c conftest.cc  conftest.cc 1>&5
+ltconfig:1431: checking if global_symbol_pipe works
+ltconfig:1432: /home/yanxin/git/jrate/gcc-build/gcc/g++ -B/home/yanxin/git/jrate/gcc-build/gcc/ -nostdinc++ -nostdinc++ -I/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/i686-pc-linux-gnu -I/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include -I/home/yanxin/git/jrate/gcc/libstdc++-v3/libsupc++ -I/home/yanxin/git/jrate/gcc/libstdc++-v3/libio -I/home/yanxin/git/jrate/gcc/libstdc++-v3/include/backward -I/home/yanxin/git/jrate/gcc/libstdc++-v3/testsuite -L/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/src -L/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/src/.libs -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -g -O2 -D_GNU_SOURCE  conftest.cc 1>&5
+ltconfig:1435: eval "nm conftest.o | sed -n -e 's/^.*[ 	]\([ABCDGISTW][ABCDGISTW]*\)[ 	][ 	]*\(\)\([_A-Za-z][_A-Za-z0-9]*\)$/  /p' > conftest.nm"
+ltconfig:1487: /home/yanxin/git/jrate/gcc-build/gcc/g++ -B/home/yanxin/git/jrate/gcc-build/gcc/ -nostdinc++ -nostdinc++ -I/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/i686-pc-linux-gnu -I/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include -I/home/yanxin/git/jrate/gcc/libstdc++-v3/libsupc++ -I/home/yanxin/git/jrate/gcc/libstdc++-v3/libio -I/home/yanxin/git/jrate/gcc/libstdc++-v3/include/backward -I/home/yanxin/git/jrate/gcc/libstdc++-v3/testsuite -L/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/src -L/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/src/.libs -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -g -O2 -D_GNU_SOURCE -fno-builtin -fno-rtti -fno-exceptions   conftest.cc conftstm.o 1>&5
+configure:2636: checking whether to enable maintainer-specific portions of Makefiles
+configure:2702: checking for thread model used by GCC
+configure:2839: checking for dlopen in -ldl

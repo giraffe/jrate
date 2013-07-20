@@ -1,0 +1,736 @@
+# Top level -*- makefile -*- fragment for GNU C++.
+#   Copyright (C) 1994, 1995, 1997, 1998, 1999, 2000, 2001
+#   Free Software Foundation, Inc.
+
+#This file is part of GNU CC.
+
+#GNU CC is free software; you can redistribute it and/or modify
+#it under the terms of the GNU General Public License as published by
+#the Free Software Foundation; either version 2, or (at your option)
+#any later version.
+
+#GNU CC is distributed in the hope that it will be useful,
+#but WITHOUT ANY WARRANTY; without even the implied warranty of
+#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#GNU General Public License for more details.
+
+#You should have received a copy of the GNU General Public License
+#along with GNU CC; see the file COPYING.  If not, write to
+#the Free Software Foundation, 59 Temple Place - Suite 330,
+#Boston, MA 02111-1307, USA.
+
+# This file provides the language dependent support in the main Makefile.
+# Each language makefile fragment must provide the following targets:
+#
+# foo.all.build, foo.all.cross, foo.start.encap, foo.rest.encap,
+# foo.info, foo.dvi,
+# foo.install-normal, foo.install-common, foo.install-info, foo.install-man,
+# foo.uninstall,
+# foo.mostlyclean, foo.clean, foo.distclean, foo.extraclean,
+# foo.maintainer-clean, foo.stage1, foo.stage2, foo.stage3, foo.stage4
+#
+# where `foo' is the name of the language.
+#
+# It should also provide rules for:
+#
+# - making any compiler driver (eg: g++)
+# - the compiler proper (eg: cc1plus)
+# - define the names for selecting the language in LANGUAGES.
+
+# Actual names to use when installing a native compiler.
+CXX_INSTALL_NAME = `echo c++|sed '$(program_transform_name)'`
+GXX_INSTALL_NAME = `echo g++|sed '$(program_transform_name)'`
+CXX_TARGET_INSTALL_NAME = $(target_alias)-`echo c++|sed '$(program_transform_name)'`
+GXX_TARGET_INSTALL_NAME = $(target_alias)-`echo g++|sed '$(program_transform_name)'`
+
+# Actual names to use when installing a cross-compiler.
+CXX_CROSS_NAME = `echo c++|sed '$(program_transform_cross_name)'`
+GXX_CROSS_NAME = `echo g++|sed '$(program_transform_cross_name)'`
+
+#
+# Define the names for selecting c++ in LANGUAGES.
+# Note that it would be nice to move the dependency on g++
+# into the C++ rule, but that needs a little bit of work
+# to do the right thing within all.cross.
+C++ c++: cc1plus$(exeext)
+
+# Tell GNU make to ignore these if they exist.
+.PHONY: C++ c++
+
+g++spec.o: $(srcdir)/cp/g++spec.c $(SYSTEM_H) $(GCC_H) $(CONFIG_H)
+	(SHLIB_LINK='$(SHLIB_LINK)' \
+	SHLIB_MULTILIB='$(SHLIB_MULTILIB)'; \
+	$(CC) -c $(ALL_CFLAGS) $(ALL_CPPFLAGS) $(DRIVER_DEFINES) \
+		$(INCLUDES) $(srcdir)/cp/g++spec.c)
+
+po-generated: $(srcdir)/cp/parse.c
+
+# Create the compiler driver for g++.
+GXX_OBJS = gcc.o g++spec.o intl.o prefix.o version.o 
+g++$(exeext): $(GXX_OBJS) $(EXTRA_GCC_OBJS) $(LIBDEPS)
+	$(CC) $(ALL_CFLAGS) $(LDFLAGS) -o $@ \
+	  $(GXX_OBJS) $(EXTRA_GCC_OBJS) $(LIBS)
+
+# Create a version of the g++ driver which calls the cross-compiler.
+g++-cross$(exeext): g++$(exeext)
+	-rm -f g++-cross$(exeext)
+	cp g++$(exeext) g++-cross$(exeext)
+
+# The compiler itself.
+# Shared with C front end:
+CXX_C_OBJS = attribs.o c-common.o c-format.o c-pragma.o c-semantics.o c-lex.o \
+	c-dump.o $(CXX_TARGET_OBJS) c-pretty-print.o c-opts.o
+
+# Language-specific object files.
+CXX_OBJS = cp/call.o cp/decl.o cp/expr.o cp/pt.o cp/typeck2.o \
+ cp/class.o cp/decl2.o cp/error.o cp/lex.o cp/parse.o cp/ptree.o cp/rtti.o \
+ cp/spew.o cp/typeck.o cp/cvt.o cp/except.o cp/friend.o cp/init.o cp/method.o \
+ cp/search.o cp/semantics.o cp/tree.o cp/repo.o cp/dump.o \
+ cp/optimize.o cp/mangle.o cp/cp-lang.o
+
+# Use loose warnings for this front end.
+cp-warn =
+
+cc1plus$(exeext): $(CXX_OBJS) $(CXX_C_OBJS) $(BACKEND) \
+		  libcpp.a $(LIBDEPS)
+	$(CC) $(ALL_CFLAGS) $(LDFLAGS) -o $@ \
+	      $(CXX_OBJS) $(CXX_C_OBJS) $(BACKEND) libcpp.a $(LIBS)
+
+# Special build rules.
+$(srcdir)/cp/cfns.h: $(srcdir)/cp/cfns.gperf
+	gperf -o -C -E -k '1-6,$$' -j1 -D -N 'libc_name_p' \
+		$(srcdir)/cp/cfns.gperf > $(srcdir)/cp/cfns.h
+
+$(srcdir)/cp/parse.h: $(srcdir)/cp/parse.c
+$(srcdir)/cp/parse.c: $(srcdir)/cp/parse.y
+	@echo "Expect 33 shift/reduce conflicts and 58 reduce/reduce conflicts."
+	cd $(srcdir)/cp && \
+	if $(BISON) $(BISONFLAGS) -d -o p$$$$.c parse.y; then \
+	  grep '^#define[ 	]*YYEMPTY' p$$$$.c >> p$$$$.h ; \
+	  test -f p$$$$.output && mv -f p$$$$.output parse.output ; \
+	  mv -f p$$$$.c parse.c ; mv -f p$$$$.h parse.h ; \
+	else \
+	  rm -f p$$$$.* ; \
+	  false ; \
+	fi
+
+gtype-cp.h gt-cp-call.h gt-cp-decl.h gt-cp-decl2.h : s-gtype; @true
+gt-cp-parse.h gt-cp-pt.h gt-cp-repo.h gt-cp-spew.h : s-gtype; @true
+gt-cp-tree.h gt-cp-mangle.h : s-gtype; @true
+
+#
+# Build hooks:
+
+c++.all.build: g++$(exeext)
+c++.all.cross: g++-cross$(exeext)
+c++.start.encap: g++$(exeext)
+c++.rest.encap:
+
+c++.info: 
+c++.dvi:
+c++.generated-manpages:
+
+#
+# Install hooks:
+# cc1plus is installed elsewhere as part of $(COMPILERS).
+
+# Nothing to do here.
+c++.install-normal:
+
+# Install the driver program as $(target)-g++
+# and also as either g++ (if native) or $(tooldir)/bin/g++.
+c++.install-common: installdirs
+	-if [ -f cc1plus$(exeext) ] ; then \
+	  if [ -f g++-cross$(exeext) ] ; then \
+	    rm -f $(DESTDIR)$(bindir)/$(GXX_CROSS_NAME)$(exeext); \
+	    $(INSTALL_PROGRAM) g++-cross$(exeext) $(DESTDIR)$(bindir)/$(GXX_CROSS_NAME)$(exeext); \
+	    chmod a+x $(DESTDIR)$(bindir)/$(GXX_CROSS_NAME)$(exeext); \
+	    rm -f $(DESTDIR)$(bindir)/$(CXX_CROSS_NAME)$(exeext); \
+	    ( cd $(DESTDIR)$(bindir) && \
+	      $(LN) $(GXX_CROSS_NAME)$(exeext) $(CXX_CROSS_NAME)$(exeext) ); \
+	    if [ -d $(DESTDIR)$(gcc_tooldir)/bin/. ] ; then \
+	      rm -f $(DESTDIR)$(gcc_tooldir)/bin/g++$(exeext); \
+	      $(INSTALL_PROGRAM) g++-cross$(exeext) $(DESTDIR)$(gcc_tooldir)/bin/g++$(exeext); \
+	      rm -f $(DESTDIR)$(gcc_tooldir)/bin/c++$(exeext); \
+	      ( cd $(DESTDIR)$(gcc_tooldir)/bin && \
+	        $(LN) g++$(exeext) c++$(exeext) ); \
+	    else true; fi; \
+	  else \
+	    rm -f $(DESTDIR)$(bindir)/$(GXX_INSTALL_NAME)$(exeext); \
+	    $(INSTALL_PROGRAM) g++$(exeext) $(DESTDIR)$(bindir)/$(GXX_INSTALL_NAME)$(exeext); \
+	    chmod a+x $(DESTDIR)$(bindir)/$(GXX_INSTALL_NAME)$(exeext); \
+	    rm -f $(DESTDIR)$(bindir)/$(CXX_INSTALL_NAME)$(exeext); \
+	    ( cd $(DESTDIR)$(bindir) && \
+	      $(LN) $(GXX_INSTALL_NAME)$(exeext) $(CXX_INSTALL_NAME)$(exeext) ); \
+	    rm -f $(DESTDIR)$(bindir)/$(GXX_TARGET_INSTALL_NAME)$(exeext); \
+	    ( cd $(DESTDIR)$(bindir) && \
+	      $(LN) $(GXX_INSTALL_NAME)$(exeext) $(GXX_TARGET_INSTALL_NAME)$(exeext) ); \
+	    rm -f $(DESTDIR)$(bindir)/$(CXX_TARGET_INSTALL_NAME)$(exeext); \
+	    ( cd $(DESTDIR)$(bindir) && \
+	      $(LN) $(CXX_INSTALL_NAME)$(exeext) $(CXX_TARGET_INSTALL_NAME)$(exeext) ); \
+	  fi ; \
+	fi
+
+c++.install-info: 
+
+c++.install-man: installdirs $(srcdir)/cp/g++.1
+	-if [ -f cc1plus$(exeext) ] ; then \
+	  if [ -f g++-cross$(exeext) ] ; then \
+	    rm -f $(DESTDIR)$(man1dir)/$(GXX_CROSS_NAME)$(man1ext); \
+	    $(INSTALL_DATA) $(srcdir)/cp/g++.1 $(DESTDIR)$(man1dir)/$(GXX_CROSS_NAME)$(man1ext); \
+	    chmod a-x $(DESTDIR)$(man1dir)/$(GXX_CROSS_NAME)$(man1ext); \
+	  else \
+	    rm -f $(DESTDIR)$(man1dir)/$(GXX_INSTALL_NAME)$(man1ext); \
+	    $(INSTALL_DATA) $(srcdir)/cp/g++.1 $(DESTDIR)$(man1dir)/$(GXX_INSTALL_NAME)$(man1ext); \
+	    chmod a-x $(DESTDIR)$(man1dir)/$(GXX_INSTALL_NAME)$(man1ext); \
+	  fi; \
+	else true; fi
+
+c++.uninstall:
+	-rm -rf $(DESTDIR)$(bindir)/$(CXX_INSTALL_NAME)$(exeext)
+	-rm -rf $(DESTDIR)$(bindir)/$(CXX_CROSS_NAME)$(exeext)
+	-rm -rf $(DESTDIR)$(bindir)/$(GXX_INSTALL_NAME)$(exeext)
+	-rm -rf $(DESTDIR)$(bindir)/$(GXX_CROSS_NAME)$(exeext)
+	-rm -rf $(DESTDIR)$(man1dir)/$(GXX_INSTALL_NAME)$(man1ext)
+	-rm -rf $(DESTDIR)$(man1dir)/$(GXX_CROSS_NAME)$(man1ext)
+#
+# Clean hooks:
+# A lot of the ancillary files are deleted by the main makefile.
+# We just have to delete files specific to us.
+
+c++.mostlyclean:
+	-rm -f cp/*$(objext)
+	-rm -f cp/*$(coverageexts)
+c++.clean:
+c++.distclean:
+	-rm -f cp/config.status cp/Makefile
+	-rm -f $(srcdir)/cp/parse.output
+c++.extraclean:
+c++.maintainer-clean:
+	-rm -f $(srcdir)/cp/parse.c $(srcdir)/cp/parse.h
+#
+# Stage hooks:
+# The main makefile has already created stage?/cp.
+
+c++.stage1: stage1-start
+	-mv cp/*$(objext) stage1/cp
+c++.stage2: stage2-start
+	-mv cp/*$(objext) stage2/cp
+c++.stage3: stage3-start
+	-mv cp/*$(objext) stage3/cp
+c++.stage4: stage4-start
+	-mv cp/*$(objext) stage4/cp
+
+#
+# .o: .h dependencies.
+CXX_TREE_H = $(TREE_H) cp/cp-tree.h c-common.h cp/cp-tree.def c-common.def \
+	function.h varray.h $(SYSTEM_H) $(CONFIG_H) $(TARGET_H) \
+	$(srcdir)/../include/hashtab.h $(srcdir)/../include/splay-tree.h
+
+cp/spew.o: cp/spew.c $(CXX_TREE_H) $(srcdir)/cp/parse.h flags.h cp/lex.h \
+  toplev.h gt-cp-spew.h
+cp/lex.o: cp/lex.c $(CXX_TREE_H) $(srcdir)/cp/parse.h flags.h cp/lex.h \
+  c-pragma.h toplev.h output.h mbchar.h $(GGC_H) input.h diagnostic.h \
+  cp/operators.def $(TM_P_H)
+cp/cp-lang.o: cp/cp-lang.c $(CXX_TREE_H) toplev.h langhooks.h $(LANGHOOKS_DEF_H) \
+  c-common.h
+cp/decl.o: cp/decl.c $(CXX_TREE_H) flags.h cp/lex.h cp/decl.h stack.h \
+  output.h $(EXPR_H) except.h toplev.h $(HASHTAB_H) $(GGC_H) $(RTL_H) \
+  cp/operators.def $(TM_P_H) tree-inline.h diagnostic.h c-pragma.h \
+  debug.h gt-cp-decl.h gtype-cp.h timevar.h input.h
+cp/decl2.o: cp/decl2.c $(CXX_TREE_H) flags.h cp/lex.h cp/decl.h $(EXPR_H) \
+  output.h except.h toplev.h $(GGC_H) $(RTL_H) c-common.h gt-cp-decl2.h \
+  timevar.h
+cp/typeck2.o: cp/typeck2.c $(CXX_TREE_H) flags.h toplev.h output.h $(TM_P_H) \
+   diagnostic.h
+cp/typeck.o: cp/typeck.c $(CXX_TREE_H) flags.h $(RTL_H) $(EXPR_H) toplev.h \
+   diagnostic.h
+cp/class.o: cp/class.c $(CXX_TREE_H) flags.h toplev.h $(RTL_H) $(TARGET_H)
+cp/call.o: cp/call.c $(CXX_TREE_H) flags.h toplev.h $(RTL_H) $(EXPR_H) \
+     $(GGC_H) diagnostic.h gt-cp-call.h
+cp/friend.o: cp/friend.c $(CXX_TREE_H) flags.h $(RTL_H) toplev.h $(EXPR_H)
+cp/init.o: cp/init.c $(CXX_TREE_H) flags.h $(RTL_H) $(EXPR_H) toplev.h \
+  $(GGC_H) except.h
+cp/method.o: cp/method.c $(CXX_TREE_H) toplev.h $(GGC_H) $(RTL_H) $(EXPR_H) \
+  $(TM_P_H) $(TARGET_H)
+cp/cvt.o: cp/cvt.c $(CXX_TREE_H) cp/decl.h flags.h toplev.h convert.h
+cp/search.o: cp/search.c $(CXX_TREE_H) stack.h flags.h toplev.h $(RTL_H)
+cp/tree.o: cp/tree.c $(CXX_TREE_H) flags.h toplev.h $(GGC_H) $(RTL_H) \
+  insn-config.h integrate.h tree-inline.h real.h gt-cp-tree.h $(TARGET_H)
+cp/ptree.o: cp/ptree.c $(CXX_TREE_H) $(SYSTEM_H)
+cp/rtti.o: cp/rtti.c $(CXX_TREE_H) flags.h toplev.h
+cp/except.o: cp/except.c $(CXX_TREE_H) flags.h $(RTL_H) except.h toplev.h \
+  cp/cfns.h $(EXPR_H) libfuncs.h tree-inline.h
+cp/expr.o: cp/expr.c $(CXX_TREE_H) $(RTL_H) flags.h $(EXPR_H) toplev.h \
+  except.h $(TM_P_H)
+cp/pt.o: cp/pt.c $(CXX_TREE_H) cp/decl.h $(srcdir)/cp/parse.h cp/lex.h \
+  toplev.h $(GGC_H) $(RTL_H) except.h tree-inline.h gt-cp-pt.h
+cp/error.o: cp/error.c $(CXX_TREE_H) toplev.h diagnostic.h flags.h real.h \
+  $(LANGHOOKS_DEF_H)
+cp/repo.o: cp/repo.c $(CXX_TREE_H) toplev.h $(GGC_H) diagnostic.h \
+  gt-cp-repo.h
+cp/semantics.o: cp/semantics.c $(CXX_TREE_H) cp/lex.h except.h toplev.h \
+  flags.h $(GGC_H) debug.h output.h $(RTL_H) $(TIMEVAR_H) $(EXPR_H) \
+  tree-inline.h
+cp/dump.o: cp/dump.c $(CXX_TREE_H) tree-dump.h
+cp/optimize.o: cp/optimize.c $(CXX_TREE_H) rtl.h integrate.h insn-config.h \
+  input.h $(PARAMS_H) debug.h tree-inline.h
+cp/mangle.o: cp/mangle.c $(CXX_TREE_H) toplev.h real.h gt-cp-mangle.h $(TM_P_H)
+
+cp/parse.o: cp/parse.c $(CXX_TREE_H) flags.h cp/lex.h except.h output.h \
+	cp/decl.h $(SYSTEM_H) toplev.h $(GGC_H) gt-cp-parse.h
+	$(CC) -c $(ALL_CFLAGS) $(ALL_CPPFLAGS) $(INCLUDES) $(BIG_SWITCHFLAG) \
+		$(srcdir)/cp/parse.c $(OUTPUT_OPTION)
+#
+# These exist for maintenance purposes.
+
+# Update the tags table.
+cp/TAGS: force
+	cd $(srcdir)/cp ;			\
+	etags --no-globals -l c `echo *.c | sed 's/parse.c//'` \
+	  parse.y *.h ../*.c ../*.h;
+
+.PHONY: cp/TAGS
+# Top level makefile fragment for the GNU compiler for the Java(TM)
+# language.
+#   Copyright (C) 1996, 1998, 1999, 2000, 2001, 2002, 2003 Free Software Foundation, Inc.
+
+#This file is part of GNU CC.
+
+#GNU CC is free software; you can redistribute it and/or modify
+#it under the terms of the GNU General Public License as published by
+#the Free Software Foundation; either version 2, or (at your option)
+#any later version.
+
+#GNU CC is distributed in the hope that it will be useful,
+#but WITHOUT ANY WARRANTY; without even the implied warranty of
+#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#GNU General Public License for more details.
+
+#You should have received a copy of the GNU General Public License
+#along with GNU CC; see the file COPYING.  If not, write to
+#the Free Software Foundation, 59 Temple Place - Suite 330,
+#Boston, MA 02111-1307, USA.
+
+#Java and all Java-based marks are trademarks or registered trademarks
+#of Sun Microsystems, Inc. in the United States and other countries.
+#The Free Software Foundation is independent of Sun Microsystems, Inc.
+
+# This file provides the language dependent support in the main Makefile.
+# Each language makefile fragment must provide the following targets:
+#
+# foo.all.build, foo.all.cross, foo.start.encap, foo.rest.encap,
+# foo.info, foo.dvi,
+# foo.install-normal, foo.install-common, foo.install-info, foo.install-man,
+# foo.uninstall,
+# foo.mostlyclean, foo.clean, foo.distclean, foo.extraclean,
+# foo.maintainer-clean, foo.stage1, foo.stage2, foo.stage3, foo.stage4
+#
+# where `foo' is the name of the language.
+#
+# It should also provide rules for:
+#
+# - making any compiler driver (eg: g++)
+# - the compiler proper (eg: jc1)
+# - define the names for selecting the language in LANGUAGES.
+
+# Actual names to use when installing a native compiler.
+JAVA_INSTALL_NAME = `echo gcj|sed '$(program_transform_name)'`
+JAVA_TARGET_INSTALL_NAME = $(target_alias)-`echo gcj|sed '$(program_transform_name)'`
+
+# Actual names to use when installing a cross-compiler.
+JAVA_CROSS_NAME = `echo gcj|sed '$(program_transform_cross_name)'`
+
+GCJ = gcj
+
+# Define the names for selecting java in LANGUAGES.
+java: jc1$(exeext) $(GCJ)$(exeext) jvgenmain$(exeext) \
+      gcjh$(exeext) jv-scan$(exeext) jcf-dump$(exeext)
+
+# Define the name of target independent tools to be installed in $(bindir)
+# Names are subject to changes
+JAVA_TARGET_INDEPENDENT_BIN_TOOLS = gcjh jv-scan jcf-dump
+
+# Tell GNU make to ignore these if they exist.
+.PHONY: java
+
+jvspec.o: $(srcdir)/java/jvspec.c $(SYSTEM_H) $(GCC_H) $(CONFIG_H)
+	(SHLIB_LINK='$(SHLIB_LINK)' \
+	SHLIB_MULTILIB='$(SHLIB_MULTILIB)'; \
+	$(CC) -c $(ALL_CFLAGS) $(ALL_CPPFLAGS) $(DRIVER_DEFINES) \
+		$(INCLUDES) $(srcdir)/java/jvspec.c $(OUTPUT_OPTION))
+
+# Create the compiler driver for $(GCJ).
+$(GCJ)$(exeext): gcc.o jvspec.o version.o \
+	   prefix.o intl.o $(LIBDEPS) $(EXTRA_GCC_OBJS)
+	$(CC) $(ALL_CFLAGS) $(LDFLAGS) -o $@ gcc.o jvspec.o prefix.o intl.o \
+	  version.o $(EXTRA_GCC_OBJS) $(LIBS)
+
+# Create a version of the $(GCJ) driver which calls the cross-compiler.
+$(GCJ)-cross$(exeext): $(GCJ)$(exeext)
+	-rm -f $(GCJ)-cross$(exeext)
+	cp $(GCJ)$(exeext) $(GCJ)-cross$(exeext)
+
+po-generated: $(srcdir)/java/parse.c $(srcdir)/java/parse-scan.c
+
+$(srcdir)/java/parse.c: $(srcdir)/java/parse.y
+	$(BISON) -t --name-prefix=java_ $(BISONFLAGS) \
+	    -o p$$$$.c $(srcdir)/java/parse.y && \
+	mv -f p$$$$.c $(srcdir)/java/parse.c
+
+$(srcdir)/java/parse-scan.c:  $(srcdir)/java/parse-scan.y
+	$(BISON) -t $(BISONFLAGS) -o ps$$$$.c $(srcdir)/java/parse-scan.y && \
+	mv -f ps$$$$.c $(srcdir)/java/parse-scan.c
+
+$(srcdir)/java/keyword.h: $(srcdir)/java/keyword.gperf
+	(cd $(srcdir)/java || exit 1; \
+	gperf -L C -C -F ', 0' -p -t -j1 -i 1 -g -o -N java_keyword -k1,4,$$ \
+		keyword.gperf > k$$$$.h || { \
+	echo "Please update gperf from ftp://ftp.gnu.org/pub/gnu/gperf/" >&2; \
+	rm -f k$$$$.h; \
+	exit 1; } ; \
+	mv -f k$$$$.h keyword.h)
+
+gt-java-class.h gt-java-constants.h gt-java-decl.h : s-gtype ; @true
+gt-java-expr.h gt-java-jcf-parse.h gt-java-jcf-write.h : s-gtype ; @true
+gt-java-lang.h gt-java-mangle.h gt-java-parse.h : s-gtype ; @true
+gt-java-builtins.h gtype-java.h : s-gtype ; @true
+
+# Executables built by this Makefile:
+JAVA_OBJS = java/parse.o java/class.o java/decl.o java/expr.o \
+  java/constants.o java/lang.o java/typeck.o java/except.o java/verify.o \
+  java/zextract.o java/jcf-io.o java/win32-host.o java/jcf-parse.o \
+  java/mangle.o java/mangle_name.o java/builtins.o \
+  java/jcf-write.o java/buffer.o java/check-init.o java/jcf-depend.o \
+  java/jcf-path.o java/xref.o java/boehm.o java/java-tree-inline.o mkdeps.o
+
+GCJH_OBJS = java/gjavah.o java/jcf-io.o java/win32-host.o java/jcf-depend.o \
+  java/jcf-path.o java/zextract.o version.o mkdeps.o errors.o
+
+JVSCAN_OBJS = java/parse-scan.o java/jv-scan.o version.o
+
+JCFDUMP_OBJS = java/jcf-dump.o java/jcf-io.o java/win32-host.o java/jcf-depend.o \
+  java/jcf-path.o java/zextract.o errors.o version.o mkdeps.o
+
+JVGENMAIN_OBJS = java/jvgenmain.o java/mangle_name.o errors.o
+
+# Use loose warnings for this front end.
+java-warn =
+
+jc1$(exeext): $(JAVA_OBJS) $(BACKEND) $(LIBDEPS)
+	rm -f $@
+	$(CC) $(ALL_CFLAGS) $(LDFLAGS) -o $@ \
+		$(JAVA_OBJS) $(BACKEND) $(ZLIB) $(LIBICONV) $(LIBS)
+
+gcjh$(exeext): $(GCJH_OBJS) $(LIBDEPS)
+	rm -f $@
+	$(CC) $(ALL_CFLAGS) $(LDFLAGS) -o $@ $(GCJH_OBJS) $(ZLIB) $(LIBS)
+
+jv-scan$(exeext): $(JVSCAN_OBJS) $(LIBDEPS)
+	rm -f $@
+	$(CC) $(ALL_CFLAGS) $(LDFLAGS) -o $@ $(JVSCAN_OBJS) $(LIBICONV) $(LIBS)
+
+jcf-dump$(exeext): $(JCFDUMP_OBJS) $(LIBDEPS)
+	rm -f $@
+	$(CC) $(ALL_CFLAGS) $(LDFLAGS) -o $@ $(JCFDUMP_OBJS) \
+		$(ZLIB) $(LDEXP_LIB) $(LIBS)
+
+jvgenmain$(exeext): $(JVGENMAIN_OBJS) $(LIBDEPS)
+	rm -f $@
+	$(CC) $(ALL_CFLAGS) $(LDFLAGS) -o $@ $(JVGENMAIN_OBJS) $(LIBS)
+
+#
+# Build hooks:
+
+java.all.build: $(GCJ)$(exeext)
+java.all.cross: $(GCJ)-cross$(exeext)
+java.start.encap: $(GCJ)$(exeext)
+java.rest.encap:
+
+java.info: $(srcdir)/java/gcj.info
+java.dvi: java/gcj.dvi
+java.generated-manpages: $(srcdir)/java/gcj.1 $(srcdir)/java/gcjh.1 \
+	$(srcdir)/java/jv-scan.1 $(srcdir)/java/jcf-dump.1 \
+	$(srcdir)/java/gij.1 $(srcdir)/java/jv-convert.1 \
+	$(srcdir)/java/rmic.1 $(srcdir)/java/rmiregistry.1
+
+# Install hooks:
+# jc1, gcj, jvgenmain, and gcjh are installed elsewhere as part
+# of $(COMPILERS).
+
+# Nothing to do here.
+java.install-normal:
+
+java.install-common: installdirs
+	-if [ -f $(GCJ)$(exeext) ]; then \
+	  if [ -f $(GCJ)-cross$(exeext) ]; then \
+	    rm -f $(DESTDIR)$(bindir)/$(JAVA_CROSS_NAME)$(exeext); \
+	    $(INSTALL_PROGRAM) $(GCJ)-cross$(exeext) $(DESTDIR)$(bindir)/$(JAVA_CROSS_NAME)$(exeext); \
+	    chmod a+x $(DESTDIR)$(bindir)/$(JAVA_CROSS_NAME)$(exeext); \
+	  else \
+	    rm -f $(DESTDIR)$(bindir)/$(JAVA_INSTALL_NAME)$(exeext); \
+	    $(INSTALL_PROGRAM) $(GCJ)$(exeext) $(DESTDIR)$(bindir)/$(JAVA_INSTALL_NAME)$(exeext); \
+	    chmod a+x $(DESTDIR)$(bindir)/$(JAVA_INSTALL_NAME)$(exeext); \
+	    rm -f $(DESTDIR)$(bindir)/$(JAVA_TARGET_INSTALL_NAME)$(exeext); \
+	    ( cd $(DESTDIR)$(bindir) && \
+	      $(LN) $(JAVA_INSTALL_NAME)$(exeext) $(JAVA_TARGET_INSTALL_NAME)$(exeext) ); \
+	  fi ; \
+	fi ; \
+        for tool in $(JAVA_TARGET_INDEPENDENT_BIN_TOOLS); do \
+	  tool_transformed_name=`echo $$tool|sed '$(program_transform_name)'`; \
+          if [ -f $$tool$(exeext) ]; then \
+	    rm -f $(DESTDIR)$(bindir)/$$tool_transformed_name$(exeext); \
+	    $(INSTALL_PROGRAM) $$tool$(exeext) $(DESTDIR)$(bindir)/$$tool_transformed_name$(exeext); \
+	    chmod a+x $(DESTDIR)$(bindir)/$$tool_transformed_name$(exeext); \
+          fi ; \
+       done
+
+java.install-man:
+
+java.uninstall:
+	-rm -rf $(DESTDIR)$(bindir)/$(JAVA_INSTALL_NAME)$(exeext)
+	-rm -rf $(DESTDIR)$(bindir)/$(JAVA_CROSS_NAME)$(exeext)
+	-rm -rf $(DESTDIR)$(man1dir)/$(JAVA_INSTALL_NAME)$(man1ext)
+	-rm -rf $(DESTDIR)$(man1dir)/$(JAVA_CROSS_NAME)$(man1ext)
+	-rm -rf $(DESTDIR)$(man1dir)/gcjh$(man1ext)
+	-rm -rf $(DESTDIR)$(man1dir)/jv-scan$(man1ext)
+	-rm -rf $(DESTDIR)$(man1dir)/jcf-dump$(man1ext)
+	-rm -rf $(DESTDIR)$(man1dir)/gij$(man1ext)
+	-rm -rf $(DESTDIR)$(man1dir)/jv-convert$(man1ext)
+
+java.install-info: installdirs
+	if [ -f jc1$(exeext) ] ; then \
+	  if [ -f $(srcdir)/java/gcj.info ]; then \
+	    rm -f $(DESTDIR)$(infodir)/gcj.info*; \
+	    for f in $(srcdir)/java/gcj.info*; do \
+	      realfile=`echo $$f | sed -e 's|.*/\([^/]*\)$$|\1|'`; \
+	      $(INSTALL_DATA) $$f $(DESTDIR)$(infodir)/$$realfile; \
+	    done; \
+	    chmod a-x $(DESTDIR)$(infodir)/gcj.info*; \
+	  else true; fi; \
+	else true; fi
+	-if [ -f jc1$(exeext) ] && [ -f $(DESTDIR)$(infodir)/gcj.info ]; then \
+	  if $(SHELL) -c 'install-info --version' >/dev/null 2>&1; then \
+	    install-info --dir-file=$(DESTDIR)$(infodir)/dir $(DESTDIR)$(infodir)/gcj.info; \
+	  else true; fi; \
+	else true; fi
+
+#
+# Clean hooks:
+# A lot of the ancillary files are deleted by the main makefile.
+# We just have to delete files specific to us.
+
+java.mostlyclean:
+	-rm -f java/*$(objext) $(DEMANGLER_PROG)
+	-rm -f java/*$(coverageexts)
+	-rm -f jc1$(exeext) $(GCJ)$(exeext) jvgenmain$(exeext) gcjh$(exeext) jv-scan$(exeext) jcf-dump$(exeext) s-java
+java.clean:
+java.distclean:
+	-rm -f java/config.status java/Makefile
+	-rm -f java/parse.output
+java.extraclean:
+java.maintainer-clean:
+	-rm -f java/parse.c java/parse-scan.c java/parse.output java/y.tab.c
+	-rm -f $(srcdir)/java/gcj.1 $(srcdir)/java/gcjh.1
+	-rm -f $(srcdir)/java/jv-scan.1 $(srcdir)/java/jcf-dump.1
+	-rm -f $(srcdir)/java/gij.1
+	-rm -f $(srcdir)/java/jv-convert.1
+	-rm -f $(srcdir)/java/rmic.1
+	-rm -f $(srcdir)/java/rmiregistry.1
+#
+# Stage hooks:
+# The main makefile has already created stage?/java.
+
+java.stage1: stage1-start
+	-mv java/*$(objext) stage1/java
+java.stage2: stage2-start
+	-mv java/*$(objext) stage2/java
+java.stage3: stage3-start
+	-mv java/*$(objext) stage3/java
+java.stage4: stage4-start
+	-mv java/*$(objext) stage4/java
+
+#
+# .o:.h dependencies.
+JAVA_TREE_H = $(TREE_H) $(HASHTAB_H) java/java-tree.h java/java-tree.def
+JAVA_LEX_C = java/lex.c java/keyword.h java/chartables.h
+
+java/parse.o: java/parse.c java/jcf-reader.c $(CONFIG_H) $(SYSTEM_H) \
+  function.h $(JAVA_TREE_H) $(JAVA_LEX_C) java/parse.h java/lex.h $(GGC_H) \
+  debug.h gt-java-parse.h gtype-java.h
+java/jcf-dump.o: $(CONFIG_H) $(SYSTEM_H) $(JAVA_TREE_H) java/jcf-dump.c \
+  java/jcf-reader.c java/jcf.h java/javaop.h java/javaop.def version.h
+java/gjavah.o: $(CONFIG_H) $(SYSTEM_H) $(JAVA_TREE_H) java/gjavah.c \
+  java/jcf-reader.c java/jcf.h java/javaop.h version.h
+java/boehm.o: java/boehm.c $(CONFIG_H) $(SYSTEM_H) $(TREE_H) $(JAVA_TREE_H) \
+  java/parse.h toplev.h
+java/buffer.o: java/buffer.c $(CONFIG_H) java/buffer.h $(SYSTEM_H) toplev.h
+java/builtins.o: java/builtins.c $(CONFIG_H) $(SYSTEM_H) $(JAVA_TREE_H) \
+  $(GGC_H) flags.h builtin-types.def langhooks.h gt-java-builtins.h
+java/check-init.o: java/check-init.c $(CONFIG_H) \
+  $(JAVA_TREE_H) $(SYSTEM_H) toplev.h
+java/class.o: java/class.c $(CONFIG_H) $(JAVA_TREE_H) $(RTL_H) java/jcf.h \
+  java/parse.h toplev.h $(SYSTEM_H) output.h $(GGC_H) $(TARGET_H) function.h \
+  gt-java-class.h
+java/constants.o: java/constants.c $(CONFIG_H) $(JAVA_TREE_H) java/jcf.h \
+  toplev.h $(SYSTEM_H) $(GGC_H) gt-java-constants.h
+java/decl.o: java/decl.c $(CONFIG_H) $(JAVA_TREE_H) $(RTL_H) java/jcf.h \
+  toplev.h flags.h $(SYSTEM_H) function.h expr.h libfuncs.h except.h \
+  java/java-except.h $(GGC_H) real.h gt-java-decl.h
+java/except.o: java/except.c $(CONFIG_H) $(JAVA_TREE_H) java/jcf.h real.h \
+  $(RTL_H) java/javaop.h java/java-opcodes.h except.h java/java-except.h \
+  toplev.h $(SYSTEM_H) function.h 
+java/expr.o: java/expr.c $(CONFIG_H) $(JAVA_TREE_H) java/jcf.h real.h \
+  $(RTL_H) $(EXPR_H) java/javaop.h java/java-opcodes.h except.h \
+  java/java-except.h java/java-except.h java/parse.h toplev.h \
+  $(SYSTEM_H) $(GGC_H) gt-java-expr.h
+java/java-tree-inline.o: tree-inline.c $(CONFIG_H) $(SYSTEM_H) \
+   $(TREE_H) $(RTL_H) expr.h flags.h params.h input.h insn-config.h \
+   $(INTEGRATE_H) $(VARRAY_H) $(HASHTAB_H) $(SPLAY_TREE_H) toplev.h \
+   langhooks.h $(C_COMMON_H) $(srcdir)/tree-inline.h
+	$(CC) -c $(ALL_CFLAGS) $(ALL_CPPFLAGS) $(INCLUDES) \
+	-DINLINER_FOR_JAVA=1 \
+	$(srcdir)/tree-inline.c -o $@
+java/jcf-depend.o: java/jcf-depend.c $(CONFIG_H) $(SYSTEM_H) java/jcf.h
+java/jcf-parse.o: java/jcf-parse.c $(CONFIG_H) $(JAVA_TREE_H) flags.h \
+  input.h java/java-except.h $(SYSTEM_H) toplev.h java/parse.h $(GGC_H) \
+  debug.h real.h gt-java-jcf-parse.h
+java/win32-host.o: java/win32-host.c $(CONFIG_H) $(SYSTEM_H) java/jcf.h
+java/jcf-write.o: java/jcf-write.c $(CONFIG_H) $(JAVA_TREE_H) java/jcf.h \
+  $(RTL_H) java/java-opcodes.h java/parse.h java/buffer.h $(SYSTEM_H) \
+  toplev.h $(GGC_H) gt-java-jcf-write.h
+java/jv-scan.o: java/jv-scan.c $(CONFIG_H) $(SYSTEM_H) version.h
+java/jvgenmain.o: java/jvgenmain.c $(CONFIG_H) $(JAVA_TREE_H) $(SYSTEM_H)
+java/lang.o: java/lang.c $(CONFIG_H) $(JAVA_TREE_H) java/jcf.h input.h \
+  toplev.h $(SYSTEM_H) $(RTL_H) $(EXPR_H) diagnostic.h langhooks.h \
+  $(LANGHOOKS_DEF_H) gt-java-lang.h
+java/mangle.o: java/mangle.c $(CONFIG_H) java/jcf.h $(JAVA_TREE_H) $(SYSTEM_H) \
+  toplev.h $(GGC_H) gt-java-mangle.h
+java/mangle_name.o: java/mangle_name.c $(CONFIG_H) java/jcf.h $(JAVA_TREE_H) \
+  $(SYSTEM_H) toplev.h $(GGC_H)
+java/parse-scan.o: $(CONFIG_H) $(SYSTEM_H) toplev.h $(JAVA_LEX_C) java/parse.h \
+  java/lex.h
+java/typeck.o: java/typeck.c $(CONFIG_H) $(JAVA_TREE_H) java/jcf.h \
+  java/convert.h toplev.h $(SYSTEM_H) $(GGC_H) real.h
+java/verify.o: java/verify.c $(CONFIG_H) $(JAVA_TREE_H) java/jcf.h \
+  java/javaop.h java/java-opcodes.h java/java-except.h toplev.h $(SYSTEM_H)
+java/xref.o: java/xref.c java/xref.h $(CONFIG_H) $(JAVA_TREE_H) toplev.h \
+  $(SYSTEM_H)
+java/zextract.o: java/zextract.c $(CONFIG_H) $(SYSTEM_H) java/zipfile.h
+
+# jcf-io.o needs $(ZLIBINC) added to cflags.
+java/jcf-io.o: java/jcf-io.c $(CONFIG_H) $(SYSTEM_H) $(JAVA_TREE_H)
+	$(CC) -c $(ALL_CFLAGS) $(ALL_CPPFLAGS) $(INCLUDES) $(ZLIBINC) \
+		$(srcdir)/java/jcf-io.c $(OUTPUT_OPTION)
+
+# jcf-path.o needs a -D.
+java/jcf-path.o: java/jcf-path.c $(CONFIG_H) $(SYSTEM_H) java/jcf.h
+	$(CC) -c $(ALL_CFLAGS) $(ALL_CPPFLAGS) $(INCLUDES) \
+	  -DLIBGCJ_ZIP_FILE='"$(datadir)/java/libgcj-$(version).jar"' \
+	  -DDEFAULT_TARGET_VERSION=\"$(version)\" \
+	  $(srcdir)/java/jcf-path.c $(OUTPUT_OPTION)
+
+# Documentation
+$(srcdir)/java/gcj.info: $(srcdir)/java/gcj.texi \
+	 $(srcdir)/doc/include/fdl.texi $(srcdir)/doc/include/gpl.texi \
+	 $(srcdir)/doc/include/gcc-common.texi
+	if test "x$(BUILD_INFO)" = xinfo; then \
+	  rm -f $(srcdir)/java/gcc.info*; \
+	  cd $(srcdir)/java && $(MAKEINFO) -I../doc/include -o gcj.info gcj.texi; \
+	else true; fi
+
+java/gcj.dvi: $(srcdir)/java/gcj.texi $(srcdir)/doc/include/fdl.texi \
+	 $(srcdir)/doc/include/gpl.texi $(srcdir)/doc/include/gcc-common.texi
+	s=`cd $(srcdir); ${PWD_COMMAND}`; export s; \
+	cd java && $(TEXI2DVI) -I $$s/doc/include $$s/java/gcj.texi
+
+$(srcdir)/java/gcj.1: $(srcdir)/java/gcj.texi
+	-$(TEXI2POD) -D gcj < $(srcdir)/java/gcj.texi > java/gcj.pod
+	-($(POD2MAN) --section=1 java/gcj.pod > java/gcj.1.T$$$$ && \
+		mv -f java/gcj.1.T$$$$ $(srcdir)/java/gcj.1) || \
+		(rm -f java/gcj.1.T$$$$ && exit 1)
+	-rm -f java/gcj.pod
+
+$(srcdir)/java/gcjh.1: $(srcdir)/java/gcj.texi
+	-$(TEXI2POD) -D gcjh < $(srcdir)/java/gcj.texi > java/gcjh.pod
+	-($(POD2MAN) --section=1 java/gcjh.pod > java/gcjh.1.T$$$$ && \
+		mv -f java/gcjh.1.T$$$$ $(srcdir)/java/gcjh.1) || \
+		(rm -f java/gcjh.1.T$$$$ && exit 1)
+	-rm -f java/gcjh.pod
+
+$(srcdir)/java/jv-scan.1: $(srcdir)/java/gcj.texi
+	-$(TEXI2POD) -D jv-scan < $(srcdir)/java/gcj.texi > java/jv-scan.pod
+	-($(POD2MAN) --section=1 java/jv-scan.pod > java/jv-scan.1.T$$$$ && \
+		mv -f java/jv-scan.1.T$$$$ $(srcdir)/java/jv-scan.1) || \
+		(rm -f java/jv-scan.1.T$$$$ && exit 1)
+	-rm -f java/jv-scan.pod
+
+$(srcdir)/java/jcf-dump.1: $(srcdir)/java/gcj.texi
+	-$(TEXI2POD) -D jcf-dump < $(srcdir)/java/gcj.texi > java/jcf-dump.pod
+	-($(POD2MAN) --section=1 java/jcf-dump.pod > java/jcf-dump.1.T$$$$ && \
+		mv -f java/jcf-dump.1.T$$$$ $(srcdir)/java/jcf-dump.1) || \
+		(rm -f java/jcf-dump.1.T$$$$ && exit 1)
+	-rm -f java/jcf-dump.pod
+
+$(srcdir)/java/gij.1: $(srcdir)/java/gcj.texi
+	-$(TEXI2POD) -D gij < $(srcdir)/java/gcj.texi > java/gij.pod
+	-($(POD2MAN) --section=1 java/gij.pod > java/gij.1.T$$$$ && \
+		mv -f java/gij.1.T$$$$ $(srcdir)/java/gij.1) || \
+		(rm -f java/gij.1.T$$$$ && exit 1)
+	-rm -f java/gij.pod
+
+$(srcdir)/java/jv-convert.1: $(srcdir)/java/gcj.texi
+	-$(TEXI2POD) -D jv-convert < $(srcdir)/java/gcj.texi > java/jv-convert.pod
+	-($(POD2MAN) --section=1 java/jv-convert.pod > java/jv-convert.1.T$$$$ && \
+		mv -f java/jv-convert.1.T$$$$ $(srcdir)/java/jv-convert.1) || \
+		(rm -f java/jv-convert.1.T$$$$ && exit 1)
+	-rm -f java/jv-convert.pod
+
+$(srcdir)/java/rmic.1: $(srcdir)/java/gcj.texi
+	-$(TEXI2POD) -D rmic < $(srcdir)/java/gcj.texi > java/rmic.pod
+	-($(POD2MAN) --section=1 java/rmic.pod > java/rmic.1.T$$$$ && \
+		mv -f java/rmic.1.T$$$$ $(srcdir)/java/rmic.1) || \
+		(rm -f java/rmic.1.T$$$$ && exit 1)
+	-rm -f java/rmic.pod
+
+$(srcdir)/java/rmiregistry.1: $(srcdir)/java/gcj.texi
+	-$(TEXI2POD) -D rmiregistry < $(srcdir)/java/gcj.texi > java/rmiregistry.pod
+	-($(POD2MAN) --section=1 java/rmiregistry.pod > java/rmiregistry.1.T$$$$ && \
+		mv -f java/rmiregistry.1.T$$$$ $(srcdir)/java/rmiregistry.1) || \
+		(rm -f java/rmiregistry.1.T$$$$ && exit 1)
+	-rm -f java/rmiregistry.pod
+
+# Install the man pages.
+java.install-man: installdirs $(GENERATED_JAVA_MANPAGES)
+	-if [ -f $(GCJ)$(exeext) ]; then \
+	  if [ -f $(GCJ)-cross$(exeext) ]; then \
+	    rm -f $(DESTDIR)$(man1dir)/$(JAVA_CROSS_NAME)$(man1ext); \
+	    $(INSTALL_DATA) $(srcdir)/java/gcj.1 $(DESTDIR)$(man1dir)/$(JAVA_CROSS_NAME)$(man1ext); \
+	    chmod a-x $(DESTDIR)$(man1dir)/$(JAVA_CROSS_NAME)$(man1ext); \
+	  else \
+	    rm -f $(DESTDIR)$(man1dir)/$(JAVA_INSTALL_NAME)$(man1ext); \
+	    $(INSTALL_DATA) $(srcdir)/java/gcj.1 $(DESTDIR)$(man1dir)/$(JAVA_INSTALL_NAME)$(man1ext); \
+	    chmod a-x $(DESTDIR)$(man1dir)/$(JAVA_INSTALL_NAME)$(man1ext); \
+	  fi ; \
+	fi
+	-rm -f $(DESTDIR)$(man1dir)/gcjh$(man1ext)
+	-$(INSTALL_DATA) $(srcdir)/java/gcjh.1 $(DESTDIR)$(man1dir)/gcjh$(man1ext)
+	-chmod a-x $(DESTDIR)$(man1dir)/gcjh$(man1ext)
+	-rm -f $(DESTDIR)$(man1dir)/jv-scan$(man1ext)
+	-$(INSTALL_DATA) $(srcdir)/java/jv-scan.1 $(DESTDIR)$(man1dir)/jv-scan$(man1ext)
+	-chmod a-x $(DESTDIR)$(man1dir)/jv-scan$(man1ext)
+	-rm -f $(DESTDIR)$(man1dir)/jcf-dump$(man1ext)
+	-$(INSTALL_DATA) $(srcdir)/java/jcf-dump.1 $(DESTDIR)$(man1dir)/jcf-dump$(man1ext)
+	-chmod a-x $(DESTDIR)$(man1dir)/jcf-dump$(man1ext)
+	-rm -f $(DESTDIR)$(man1dir)/gij$(man1ext)
+	-$(INSTALL_DATA) $(srcdir)/java/gij.1 $(DESTDIR)$(man1dir)/gij$(man1ext)
+	-chmod a-x $(DESTDIR)$(man1dir)/gij$(man1ext)
+	-rm -f $(DESTDIR)$(man1dir)/jv-convert$(man1ext)
+	-$(INSTALL_DATA) $(srcdir)/java/jv-convert.1 $(DESTDIR)$(man1dir)/jv-convert$(man1ext)
+	-chmod a-x $(DESTDIR)$(man1dir)/jv-convert$(man1ext)
+	-rm -f $(DESTDIR)$(man1dir)/rmic$(man1ext)
+	-$(INSTALL_DATA) $(srcdir)/java/rmic.1 $(DESTDIR)$(man1dir)/rmic$(man1ext)
+	-chmod a-x $(DESTDIR)$(man1dir)/rmic$(man1ext)
+	-rm -f $(DESTDIR)$(man1dir)/rmiregistry$(man1ext)
+	-$(INSTALL_DATA) $(srcdir)/java/rmiregistry.1 $(DESTDIR)$(man1dir)/rmiregistry$(man1ext)
+	-chmod a-x $(DESTDIR)$(man1dir)/rmiregistry$(man1ext)

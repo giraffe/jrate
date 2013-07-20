@@ -1,0 +1,193 @@
+/* jRate-config.h.in.  Generated from configure.ac by autoheader.  */
+
+/* Generated from configure.ac Revision: 685  */
+
+#ifndef __JRATE_AUTOCONF_CONFIG_H
+#define __JRATE_AUTOCONF_CONFIG_H
+
+/* Processor clock frequency (in MHz) */
+#undef CLOCK_FREQUENCY
+
+/* Define to 1 if you have the `clock_getres' function. */
+#undef HAVE_CLOCK_GETRES
+
+/* Define to 1 if you have the `clock_get_attributes' function. */
+#undef HAVE_CLOCK_GET_ATTRIBUTES
+
+/* Define to 1 if you have the `clock_get_time' function. */
+#undef HAVE_CLOCK_GET_TIME
+
+/* Define to 1 if you have the <dlfcn.h> header file. */
+#undef HAVE_DLFCN_H
+
+/* Define to 1 if you have the <fcntl.h> header file. */
+#undef HAVE_FCNTL_H
+
+/* Define to 1 if you have the `getpagesize' function. */
+#undef HAVE_GETPAGESIZE
+
+/* Define to 1 if you have the `gettimeofday' function. */
+#undef HAVE_GETTIMEOFDAY
+
+/* Define to 1 if you have the <inttypes.h> header file. */
+#undef HAVE_INTTYPES_H
+
+/* Define to 1 if you have the `pthread' library (-lpthread). */
+#undef HAVE_LIBPTHREAD
+
+/* Define to 1 if your system has a GNU libc compatible `malloc' function, and
+   to 0 otherwise. */
+#undef HAVE_MALLOC
+
+/* Define to 1 if you have the <memory.h> header file. */
+#undef HAVE_MEMORY_H
+
+/* Define to 1 if you have the `memset' function. */
+#undef HAVE_MEMSET
+
+/* Define to 1 if you have a working `mmap' system call. */
+#undef HAVE_MMAP
+
+/* Define to 1 if you have the `munmap' function. */
+#undef HAVE_MUNMAP
+
+/* Define to 1 if you have the `nanosleep' function. */
+#undef HAVE_NANOSLEEP
+
+/* Define to 1 if the system has the type `ptrdiff_t'. */
+#undef HAVE_PTRDIFF_T
+
+/* Define to 1 if you have the `sched_setscheduler' function. */
+#undef HAVE_SCHED_SETSCHEDULER
+
+/* Define to 1 if stdbool.h conforms to C99. */
+#undef HAVE_STDBOOL_H
+
+/* Define to 1 if you have the <stddef.h> header file. */
+#undef HAVE_STDDEF_H
+
+/* Define to 1 if you have the <stdint.h> header file. */
+#undef HAVE_STDINT_H
+
+/* Define to 1 if you have the <stdlib.h> header file. */
+#undef HAVE_STDLIB_H
+
+/* Define to 1 if you have the <strings.h> header file. */
+#undef HAVE_STRINGS_H
+
+/* Define to 1 if you have the <string.h> header file. */
+#undef HAVE_STRING_H
+
+/* Define to 1 if you have the <sys/stat.h> header file. */
+#undef HAVE_SYS_STAT_H
+
+/* Define to 1 if you have the <sys/time.h> header file. */
+#undef HAVE_SYS_TIME_H
+
+/* Define to 1 if you have the <sys/types.h> header file. */
+#undef HAVE_SYS_TYPES_H
+
+/* Define to 1 if you have the <unistd.h> header file. */
+#undef HAVE_UNISTD_H
+
+/* Define to 1 if the system has the type `_Bool'. */
+#undef HAVE__BOOL
+
+/* Define to 1 to enable debugging. */
+#undef JRATE_DEBUG
+
+/* Define to 1 for SMP support */
+#undef JRATE_HAS_SMP
+
+/* Default size of heap memory (in megabytes) */
+#undef JRATE_HEAP_MEMORY_SIZE
+
+/* Default size of immortal memory (in megabytes) */
+#undef JRATE_IMMORTAL_MEMORY_SIZE
+
+/* Default size of method area memory (in megabytes) */
+#undef JRATE_METHOD_AREA_MEMORY_SIZE
+
+/* Number of processors on target machine */
+#undef JRATE_NCPU
+
+/* Page size (in bytes) */
+#undef JRATE_PAGE_SIZE
+
+/* Default size of scopes arena (in megabytes) */
+#undef JRATE_SCOPES_ARENA_SIZE
+
+/* Define to 1 if jRate should use a real-time scheduler */
+#undef JRATE_SHOULD_USE_RT_SCHEDULER
+
+/* Maximum number of threads on target machine (or -1 for unlimited) */
+#undef JRATE_THREADMAX
+
+/* Name of package; guarded so it doesn't override libjava */
+#ifndef PACKAGE
+#undef PACKAGE
+#endif /* PACKAGE */
+
+/* Define to the address where bug reports for this package should be sent. */
+#undef PACKAGE_BUGREPORT
+
+/* Define to the full name of this package. */
+#ifndef PACKAGE_NAME
+#undef PACKAGE_NAME
+#endif /* PACKAGE_NAME */
+
+/* Define to the full name and version of this package. */
+#ifndef PACKAGE_STRING
+#undef PACKAGE_STRING
+#endif /* PACKAGE_STRING */
+
+/* Define to the one symbol short name of this package. */
+#ifndef PACKAGE_TARNAME
+#undef PACKAGE_TARNAME
+#endif /* PACKAGE_TARNAME */
+
+/* Define to the version of this package. */
+#ifndef PACKAGE_VERSION
+#undef PACKAGE_VERSION
+#endif /* PACKAGE_VERSION */
+
+/* Define as the return type of signal handlers (`int' or `void'). */
+#undef RETSIGTYPE
+
+/* Define to 1 if you have the ANSI C header files. */
+#undef STDC_HEADERS
+
+/* Define to 1 if you can safely include both <sys/time.h> and <time.h>. */
+#undef TIME_WITH_SYS_TIME
+
+/* Define to 1 if your <sys/time.h> declares `struct tm'. */
+#undef TM_IN_SYS_TIME
+
+/* Version number of package; guarded so it doesn't override libjava */
+#ifndef VERSION
+#undef VERSION
+#endif /* VERSION */
+
+/* Define to empty if `const' does not conform to ANSI C. */
+#undef const
+
+/* Define to `__inline__' or `__inline' if that's what the C compiler
+   calls it, or to nothing if 'inline' is not supported under any name.  */
+#ifndef __cplusplus
+#undef inline
+#endif
+
+/* Define to rpl_malloc if the replacement function should be used. */
+#undef malloc
+
+/* Define to `int' if <sys/types.h> does not define. */
+#undef pid_t
+
+/* Define to `unsigned' if <sys/types.h> does not define. */
+#undef size_t
+
+/* Define to empty if the keyword `volatile' does not work. Warning: valid
+   code using `volatile' can become incorrect without. Disable with care. */
+#undef volatile
+
+#endif /* __JRATE_AUTOCONF_CONFIG_H */

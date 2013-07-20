@@ -1,0 +1,5 @@
+ISignalHandler.lo ISignalHandler.o:  \
+ /home/yanxin/git/jrate/gcc/libjRateCore/sys/ISignalHandler.cc \
+  /home/yanxin/git/jrate/src/native/src/jrate/sys/ISignalHandler.h
+
+/home/yanxin/git/jrate/src/native/src/jrate/sys/ISignalHandler.h:

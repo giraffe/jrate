@@ -1,0 +1,5 @@
+Config.lo Config.o:  \
+ /home/yanxin/git/jrate/gcc/libjRateCore/sys/Config.cc \
+  /home/yanxin/git/jrate/gcc/libjRateCore/sys/Config.h
+
+/home/yanxin/git/jrate/gcc/libjRateCore/sys/Config.h:

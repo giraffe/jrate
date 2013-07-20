@@ -1,0 +1,5 @@
+PriorityParameters.lo PriorityParameters.o:  \
+ /home/yanxin/git/jrate/gcc/libjRateCore/sched/PriorityParameters.cc \
+  /home/yanxin/git/jrate/src/native/src/jrate/sched/PriorityParameters.h
+
+/home/yanxin/git/jrate/src/native/src/jrate/sched/PriorityParameters.h:

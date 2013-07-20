@@ -1,0 +1,102 @@
+// Object.java - The root of all evil.
+
+/* Copyright (C) 1998, 1999, 2000  Free Software Foundation
+
+   This file is part of libgcj.
+
+This software is copyrighted work licensed under the terms of the
+Libgcj License.  Please consult the file "LIBGCJ_LICENSE" for
+details.  */
+
+package java.lang;
+
+/**
+ * @author Tom Tromey <tromey@cygnus.com>
+ * @date September 30, 1998 
+ */
+
+/* Written using "Java Class Libraries", 2nd edition, ISBN 0-201-31002-3
+ * "The Java Language Specification", ISBN 0-201-63451-1
+ * plus online API docs for JDK 1.2 beta from http://www.javasoft.com.
+ * plus gcj compiler sources (to determine object layout)
+ * Status:  Complete to version 1.1
+ */
+
+public class Object
+{
+  // This must come first.  See _JvObjectPrefix in Object.h.
+  protected void finalize () throws Throwable
+  {
+  }
+
+  public final native Class getClass ();
+  public native int hashCode ();
+  public final native void notify ();
+  public final native void notifyAll ();
+  public final native void wait (long timeout, int nanos)
+    throws InterruptedException;
+
+  public boolean equals (Object obj)
+  {
+    return this == obj;
+  }
+
+  public Object ()
+  {
+  }
+
+  public String toString ()
+  {
+      String str = getClass().getName() + '@' + Integer.toHexString(hashCode());
+      return str;
+  }
+
+  public final void wait () throws InterruptedException
+  {
+    wait (0, 0);
+  }
+
+  public final void wait (long timeout) throws InterruptedException
+  {
+    wait (timeout, 0);
+  }
+
+    final native Object __incRefCount();
+
+    final native static Object __incRefCount(Object obj);
+    final native static void __decRefCount(Object obj);
+
+    final native static boolean __returnValue(boolean b);
+    final native static char __returnValue(char ch);
+    final native static byte __returnValue(byte ch);
+    final native static int __returnValue(int i);
+    final native static short __returnValue(short i);
+    final native static long __returnValue(long l);
+    final native static float __returnValue(float f);
+    final native static double __returnValue(double d); 
+    final native static Object __returnValue(Object o);
+
+    final native static boolean __passValue(boolean b);
+    final native static byte __passValue(byte b);
+    final native static char __passValue(char ch);
+    final native static short __passValue(short i);
+    final native static int __passValue(int i);
+    final native static long __passValue(long l);
+    final native static float __passValue(float f);
+    final native static double __passValue(float d);
+    final native static Object __passValue(Object o);
+    
+    public final native static Object __jRateAlloc(Object o, Class c);
+    public final native static Object __jRateAlloc(Object o, Class c, Class[] types, Object[] args);
+    public final native static Object __jRateAllocArray(Object o, Class c, int n);
+    public final native static Object __jRateRealloc(Object from, Object to);
+
+  protected native Object clone () throws CloneNotSupportedException;
+
+  // This initializes the sync_info member.  It is here for
+  // completeness (some day we'll be able to auto-generate Object.h).
+  final native void sync_init ();
+
+  // Note that we don't mention the sync_info field here.  If we do,
+  // jc1 will not work correctly.
+}

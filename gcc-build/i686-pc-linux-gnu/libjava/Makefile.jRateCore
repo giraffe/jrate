@@ -1,0 +1,3 @@
+-include ../libjava/Makefile
+.PHONY: jRateCore-deps
+jRateCore-deps: $(all_java_class_files) $(nat_headers) $(x_nat_headers)

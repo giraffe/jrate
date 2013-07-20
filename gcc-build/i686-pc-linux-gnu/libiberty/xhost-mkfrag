@@ -1,0 +1,4 @@
+# Warning: this fragment is automatically generated
+# Following fragment copied from /home/yanxin/git/jrate/gcc/libiberty/../config/mh-x86pic
+PICFLAG=-fpic
+enable_shared = yes

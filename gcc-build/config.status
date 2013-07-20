@@ -1,0 +1,5 @@
+#!/bin/sh
+# This file was generated automatically by configure.  Do not edit.
+# This directory was configured as follows:
+/home/yanxin/git/jrate/gcc/configure --with-gcc-version-trigger=/home/yanxin/git/jrate/gcc/gcc/version.c --host=i686-pc-linux-gnu --build=i686-pc-linux-gnu --target=i686-pc-linux-gnu --disable-jvmpi --enable-java-gc=jRate --enable-threads=posix --enable-languages=c,c++,java --prefix=/usr/local --program-prefix=jRate- --disable-interpreter --disable-hash-synchronization --disable-pthread-self-cache --enable-shared --enable-static --norecursion 
+#  using "mt-frag"

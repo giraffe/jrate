@@ -1,0 +1,119 @@
+This file contains any messages produced by compilers while
+running configure, to aid debugging if configure makes a mistake.
+
+configure:572: checking for a BSD compatible install
+configure:625: checking whether build environment is sane
+configure:682: checking whether make sets ${MAKE}
+configure:728: checking for working aclocal
+configure:741: checking for working autoconf
+configure:754: checking for working automake
+configure:767: checking for working autoheader
+configure:780: checking for working makeinfo
+configure:800: checking for gcc
+configure:913: checking whether the C compiler (gcc -g -O2 ) works
+configure:929: gcc -o conftest -g -O2   conftest.c  1>&5
+configure:955: checking whether the C compiler (gcc -g -O2 ) is a cross-compiler
+configure:960: checking whether we are using GNU C
+configure:988: checking whether gcc accepts -g
+configure:1031: checking for a BSD compatible install
+configure:1086: checking for rm
+configure:1122: checking for cp
+configure:1158: checking for strip
+configure:1194: checking for chmod
+configure:1228: checking for Cygwin environment
+configure:1244: gcc -c -g -O2  conftest.c 1>&5
+configure: In function `main':
+configure:1240: error: `__CYGWIN32__' undeclared (first use in this function)
+configure:1240: error: (Each undeclared identifier is reported only once
+configure:1240: error: for each function it appears in.)
+configure: failed program was:
+#line 1233 "configure"
+#include "confdefs.h"
+
+int main() {
+
+#ifndef __CYGWIN__
+#define __CYGWIN__ __CYGWIN32__
+#endif
+return __CYGWIN__;
+; return 0; }
+configure:1261: checking for mingw32 environment
+configure:1273: gcc -c -g -O2  conftest.c 1>&5
+configure: In function `main':
+configure:1269: error: `__MINGW32__' undeclared (first use in this function)
+configure:1269: error: (Each undeclared identifier is reported only once
+configure:1269: error: for each function it appears in.)
+configure: failed program was:
+#line 1266 "configure"
+#include "confdefs.h"
+
+int main() {
+return __MINGW32__;
+; return 0; }
+configure:1292: checking for executable suffix
+configure:1302: gcc -o conftest -g -O2   conftest.c  1>&5
+configure:1324: checking whether to enable maintainer-specific portions of Makefiles
+configure:1357: checking for dirent.h that defines DIR
+configure:1370: gcc -c -g -O2  conftest.c 1>&5
+configure:1395: checking for opendir in -ldir
+configure:1414: gcc -o conftest -g -O2   conftest.c -ldir   1>&5
+/usr/bin/ld: cannot find -ldir
+collect2: ld returned 1 exit status
+configure: failed program was:
+#line 1403 "configure"
+#include "confdefs.h"
+/* Override any gcc2 internal prototype to avoid an error.  */
+/* We use char because int might match the return type of a gcc2
+    builtin and then its argument prototype would still apply.  */
+char opendir();
+
+int main() {
+opendir()
+; return 0; }
+configure:1478: checking how to run the C preprocessor
+configure:1558: checking for ANSI C header files
+configure:1662: checking whether struct tm is in sys/time.h or time.h
+configure:1675: gcc -c -g -O2  conftest.c 1>&5
+configure:1699: checking for fcntl.h
+configure:1699: checking for unistd.h
+configure:1699: checking for sys/param.h
+configure:1699: checking for stdlib.h
+configure:1699: checking for limits.h
+configure:1737: checking for off_t
+configure:1770: checking whether struct tm is in sys/time.h or time.h
+configure:1806: checking if mkdir takes one argument
+configure:1850: checking size of char
+configure:1866: gcc -c -g -O2  conftest.c 1>&5
+configure: In function `main':
+configure:1862: error: duplicate case value
+configure:1862: error: previously used here
+configure: failed program was:
+#line 1856 "configure"
+#include "confdefs.h"
+#include "confdefs.h"
+#include <sys/types.h>
+
+
+int main() {
+switch (0) case 0: case (sizeof (char) == 4):;
+; return 0; }
+configure:1866: gcc -c -g -O2  conftest.c 1>&5
+configure: In function `main':
+configure:1862: error: duplicate case value
+configure:1862: error: previously used here
+configure: failed program was:
+#line 1856 "configure"
+#include "confdefs.h"
+#include "confdefs.h"
+#include <sys/types.h>
+
+
+int main() {
+switch (0) case 0: case (sizeof (char) == 8):;
+; return 0; }
+configure:1866: gcc -c -g -O2  conftest.c 1>&5
+configure:1889: checking size of short
+configure:1928: checking size of int
+configure:1967: checking size of long
+configure:2006: checking size of long long
+configure:2046: checking byte ordering

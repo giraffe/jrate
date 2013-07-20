@@ -1,0 +1,61 @@
+#!/bin/sh
+
+#
+# This script computes the various flags needed to run GNU C++ testsuites
+# (compiler specific as well as library specific). 
+#
+# Written by Benjamin Kosnik <bkoz@redhat.com>
+#            Gabriel Dos Reis <gdr@codesourcery.com>
+#
+
+# Print a message saying how this script is intended to be invoked
+print_usage() {
+    cat <<EOF
+Usage: 
+    testsuite_flags --install-includes
+		    --build-includes
+		    --build-cxx
+		    --install-cxx
+		    --cxxflags
+EOF
+}
+
+# Establish configure-generated directory structure.
+BUILD_DIR=/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3
+SRC_DIR=/home/yanxin/git/jrate/gcc/libstdc++-v3
+PREFIX_DIR=/usr/local
+query=$1
+
+case ${query} in
+    --install-includes)
+      INCLUDES="-I${SRC_DIR}/testsuite"
+      echo ${INCLUDES}
+      ;;
+    --build-includes)
+      INCLUDES="-nostdinc++ -I/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include/i686-pc-linux-gnu -I/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/include
+	        -I${SRC_DIR}/libsupc++ -I${SRC_DIR}/libio 
+		-I${SRC_DIR}/include/backward 
+		-I${SRC_DIR}/testsuite"
+      echo ${INCLUDES}
+      ;;
+    --install-cxx)
+      CXX=${PREFIX_DIR}/bin/g++
+      echo ${CXX}
+      ;;
+    --build-cxx)
+      CXX_build="/home/yanxin/git/jrate/gcc-build/gcc/xgcc -shared-libgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -nostdinc++  -L/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/src -L/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/src/.libs -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include ${PCHFLAGS}"
+      CXX=`echo "$CXX_build" | sed 's,gcc/xgcc ,gcc/g++ ,'`
+      echo ${CXX}
+      ;;
+    --cxxflags)
+      CXXFLAGS=' -g -ffunction-sections -fdata-sections 
+		 -fmessage-length=0 
+		 -DDEBUG_ASSERT  -DLOCALEDIR="/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libstdc++-v3/po/share/locale" '
+      echo ${CXXFLAGS}
+      ;;
+    *)
+      print_usage
+      ;;
+esac
+
+exit 0

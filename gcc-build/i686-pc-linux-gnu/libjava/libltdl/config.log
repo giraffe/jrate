@@ -1,0 +1,149 @@
+This file contains any messages produced by compilers while
+running configure, to aid debugging if configure makes a mistake.
+
+configure:557: checking for Cygwin environment
+configure:590: checking for mingw32 environment
+configure:694: checking for a BSD compatible install
+configure:747: checking whether build environment is sane
+configure:804: checking whether make sets ${MAKE}
+configure:843: checking for working aclocal
+configure:856: checking for working autoconf
+configure:869: checking for working automake
+configure:882: checking for working autoheader
+configure:895: checking for working makeinfo
+configure:912: checking whether to enable maintainer-specific portions of Makefiles
+configure:938: checking for gcc
+configure:1051: checking whether the C compiler (/home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -O2 -g -O2 ) works
+configure:1067: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  1>&5
+configure:1093: checking whether the C compiler (/home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -O2 -g -O2 ) is a cross-compiler
+configure:1098: checking whether we are using GNU C
+configure:1126: checking whether /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include accepts -g
+configure:1158: checking for working const
+configure:1233: checking for inline
+configure:1350: checking host system type
+configure:1371: checking build system type
+configure:1400: checking for ld used by GCC
+configure:1468: checking if the linker (ld) is GNU ld
+GNU ld (GNU Binutils for Ubuntu) 2.22
+configure:1485: checking for ld option to reload object files
+configure:1497: checking for BSD-compatible nm
+configure:1535: checking whether ln -s works
+configure:1556: checking how to recognise dependant libraries
+configure:1699: checking for object suffix
+configure:1725: checking for executable suffix
+configure:1901: checking for ranlib
+configure:1968: checking for strip
+ltconfig:678:checking for /home/yanxin/git/jrate/gcc-build/gcc/xgcc option to produce PIC
+ltconfig:687:checking that /home/yanxin/git/jrate/gcc-build/gcc/xgcc PIC flag  -fPIC -DPIC works.
+ltconfig:749: checking if /home/yanxin/git/jrate/gcc-build/gcc/xgcc static flag -static works
+ltconfig:780: finding the maximum length of command line arguments
+ltconfig:@lineno@: result: 49153
+ltconfig:887: checking if /home/yanxin/git/jrate/gcc-build/gcc/xgcc supports -fno-rtti -fno-exceptions
+ltconfig:888: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -O2 -g -O2 -fno-rtti -fno-exceptions -c conftest.c  conftest.c 1>&5
+ltconfig:1431: checking if global_symbol_pipe works
+ltconfig:1432: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -O2 -g -O2  conftest.c 1>&5
+ltconfig:1435: eval "nm conftest.o | sed -n -e 's/^.*[ 	]\([ABCDGISTW][ABCDGISTW]*\)[ 	][ 	]*\(\)\([_A-Za-z][_A-Za-z0-9]*\)$/  /p' > conftest.nm"
+ltconfig:1487: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2 -fno-builtin   conftest.c conftstm.o 1>&5
+configure:2499: checking for garbage collector to use
+configure:2522: checking how to run the C preprocessor
+configure:2609: checking command to parse nm output
+configure:2672: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -c -O2 -g -O2  conftest.c 1>&5
+configure:2676: nm conftest.o | sed -n -e 's/^.* \([ABCDGISTW]\) *\(\)\([_A-Za-z][_A-Za-z0-9]*\)$/  /p' > conftest.nm
+configure:2728: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2 -fno-builtin   conftest.c conftstm.o 1>&5
+configure:2774: checking for ANSI C header files
+configure:2904: checking which extension is used for shared libraries
+configure:2931: checking which variable specifies run-time library path
+configure:2947: checking for the default library search path
+configure:2975: checking for objdir
+configure:3002: checking whether libtool supports -dlopen/-dlpreopen
+configure:3024: checking for dlopen in -ldl
+configure:3162: checking for shl_load
+configure:3190: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  1>&5
+/tmp/ccxxYikZ.o: In function `main':
+/home/yanxin/git/jrate/gcc-build/i686-pc-linux-gnu/libjava/libltdl/configure:3184: undefined reference to `shl_load'
+collect2: ld returned 1 exit status
+configure: failed program was:
+#line 3167 "configure"
+#include "confdefs.h"
+/* System header to define __stub macros and hopefully few prototypes,
+    which can conflict with char shl_load(); below.  */
+#include <assert.h>
+/* Override any gcc2 internal prototype to avoid an error.  */
+/* We use char because int might match the return type of a gcc2
+    builtin and then its argument prototype would still apply.  */
+char shl_load();
+
+int main() {
+
+/* The GNU C library defines this for functions which it implements
+    to always fail with ENOSYS.  Some functions are actually named
+    something starting with __ and the normal name is an alias.  */
+#if defined (__stub_shl_load) || defined (__stub___shl_load)
+choke me
+#else
+shl_load();
+#endif
+
+; return 0; }
+configure:3211: checking for shl_load in -ldld
+configure:3230: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c -ldld   1>&5
+/usr/bin/ld: cannot find -ldld
+collect2: ld returned 1 exit status
+configure: failed program was:
+#line 3219 "configure"
+#include "confdefs.h"
+/* Override any gcc2 internal prototype to avoid an error.  */
+/* We use char because int might match the return type of a gcc2
+    builtin and then its argument prototype would still apply.  */
+char shl_load();
+
+int main() {
+shl_load()
+; return 0; }
+configure:3258: checking for dld_link in -ldld
+configure:3277: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c -ldld   1>&5
+/usr/bin/ld: cannot find -ldld
+collect2: ld returned 1 exit status
+configure: failed program was:
+#line 3266 "configure"
+#include "confdefs.h"
+/* Override any gcc2 internal prototype to avoid an error.  */
+/* We use char because int might match the return type of a gcc2
+    builtin and then its argument prototype would still apply.  */
+char dld_link();
+
+int main() {
+dld_link()
+; return 0; }
+configure:3308: checking for dlerror
+configure:3336: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  -ldl 1>&5
+configure:3364: checking for _ prefix in compiled symbols
+configure:3491: checking for malloc.h
+configure:3491: checking for memory.h
+configure:3501: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -E  conftest.c >/dev/null 2>conftest.out
+configure:3491: checking for stdlib.h
+configure:3491: checking for stdio.h
+configure:3501: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -E  conftest.c >/dev/null 2>conftest.out
+configure:3491: checking for ctype.h
+configure:3501: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -E  conftest.c >/dev/null 2>conftest.out
+configure:3491: checking for dlfcn.h
+configure:3491: checking for dl.h
+configure:3501: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -E  conftest.c >/dev/null 2>conftest.out
+configure:3497:16: dl.h: No such file or directory
+configure: failed program was:
+#line 3496 "configure"
+#include "confdefs.h"
+#include <dl.h>
+configure:3491: checking for dld.h
+configure:3501: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -E  conftest.c >/dev/null 2>conftest.out
+configure:3497:17: dld.h: No such file or directory
+configure: failed program was:
+#line 3496 "configure"
+#include "confdefs.h"
+#include <dld.h>
+configure:3531: checking for string.h
+configure:3570: checking for strchr
+configure:3625: checking for strrchr
+configure:3680: checking for strcmp
+configure:3708: /home/yanxin/git/jrate/gcc-build/gcc/xgcc -B/home/yanxin/git/jrate/gcc-build/gcc/ -B/usr/local/i686-pc-linux-gnu/bin/ -B/usr/local/i686-pc-linux-gnu/lib/ -isystem /usr/local/i686-pc-linux-gnu/include -o conftest -O2 -g -O2   conftest.c  1>&5
+configure:3692: warning: conflicting types for built-in function `strcmp'
