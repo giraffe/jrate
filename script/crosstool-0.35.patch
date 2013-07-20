@@ -1,0 +1,296 @@
+diff -Nur crosstool-0.35/all.sh crosstool-0.35-jrate/all.sh
+--- crosstool-0.35/all.sh	2005-05-08 00:50:54.000000000 -0500
++++ crosstool-0.35-jrate/all.sh	2005-08-04 19:21:57.233344381 -0500
+@@ -37,7 +37,11 @@
+ 
+ set -ex
+ 
+-TOOLCOMBO=$GCC_DIR-$GLIBC_DIR
++if test -z "$JRATE_DIR"; then
++  TOOLCOMBO=$GCC_DIR-$GLIBC_DIR
++else
++  TOOLCOMBO=$JRATE_DIR-$GLIBC_DIR
++fi
+ BUILD_DIR=`pwd`/build/$TARGET/$TOOLCOMBO
+ 
+ TOP_DIR=`pwd`
+diff -Nur crosstool-0.35/crosstool-cygwin.sh crosstool-0.35-jrate/crosstool-cygwin.sh
+--- crosstool-0.35/crosstool-cygwin.sh	2005-03-07 18:34:34.000000000 -0600
++++ crosstool-0.35-jrate/crosstool-cygwin.sh	2005-08-04 19:21:57.237344000 -0500
+@@ -35,13 +35,19 @@
+ # Fourteen are optional
+ # Stevep: Nine for cygwin targets:
+ test -z "${BINUTILS_EXTRA_CONFIG}" && echo "BINUTILS_EXTRA_CONFIG not set, so not passing any extra options to binutils' configure script"
++test -z "${JRATE_EXTRA_CONFIG}"    && echo "JRATE_EXTRA_CONFIG not set, so not passing any extra options to jrate's configure script (if building jrate)"
+ test -z "${GCC_EXTRA_CONFIG}"      && echo "GCC_EXTRA_CONFIG not set, so not passing any extra options to gcc's configure script"
+ test -z "${USE_SYSROOT}"           && echo "USE_SYSROOT not set, so not configuring with --with-sysroot"
+ test -z "${GCC_BUILD}"             && echo "GCC_BUILD not set, assuming BUILD=output of config.guess"
+ test -z "${GCC_HOST}"              && echo "GCC_HOST not set, assuming HOST=BUILD"
+ test -z "${SHARED_MODE}" && SHARED_MODE="--enable-shared" && echo "SHARED_MODE not set, so defaulting to --enable-shared"
+-test -z "${GCC_LANGUAGES}"         && echo "GCC_LANGUAGES not set, assuming c,c++"
+-GCC_LANGUAGES=${GCC_LANGUAGES-"c,c++"}
++if test -z "${JRATE_DIR}"; then
++   test -z "${GCC_LANGUAGES}"      && echo "GCC_LANGUAGES not set, assuming c,c++"
++   GCC_LANGUAGES=${GCC_LANGUAGES-"c,c++"}
++else
++   test -z "${GCC_LANGUAGES}"      && echo "GCC_LANGUAGES not set, assuming c,c++,java (for jrate)"
++   GCC_LANGUAGES=${GCC_LANGUAGES-"c,c++,java"}
++fi
+ TOP_DIR=${TOP_DIR-`pwd`}
+ BUILD=${GCC_BUILD-`$TOP_DIR/config.guess`}
+ 
+@@ -105,6 +111,7 @@
+ SRC_DIR=`cd $SRC_DIR; pwd`
+ BINUTILS_DIR=`cd ${SRC_DIR}/${BINUTILS_DIR}; pwd`
+ GCC_DIR=`cd ${SRC_DIR}/${GCC_DIR}; pwd`
++JRATE_DIR=${JRATE_DIR+`cd ${SRC_DIR}/${JRATE_DIR}; pwd`}
+ CYGWIN_DIR=`cd ${SRC_DIR}/${CYGWIN_DIR}; pwd`
+ 
+ # If user isn't doing a canadian cross, add the target compiler's bin to
+@@ -182,6 +189,34 @@
+ cd ${BUILD_DIR}
+ 
+ #---------------------------------------------------------
++# Configure jrate and patch gcc sources
++
++JRATE_MAKE_GCC_FLAGS=
++if test "x${JRATE_DIR}" != x; then
++    echo Configure jrate and patch gcc sources
++
++    mkdir -p build-jrate; cd build-jrate
++
++    ln -s ${GCC_DIR} gcc
++    ln -s ${BUILD_DIR}/build-gcc gcc-build
++    ${JRATE_DIR}/configure $CANADIAN_BUILD --target=$TARGET --host=$GCC_HOST --prefix=$PREFIX \
++	${JRATE_EXTRA_CONFIG}
++    make $PARALLELMFLAGS gcc.setup-stamp
++
++    cd ..
++
++    test -f build-jrate/gcc.setup-stamp || abort Build failed during jrate-patch
++
++    # jrate patches a few gcc Makefiles to refer to these values in figuring
++    # include paths, etc.
++    JRATE_MAKE_GCC_FLAGS="JRATE_SRC_DIR=$JRATE_DIR"
++    JRATE_MAKE_GCC_FLAGS="$JRATE_MAKE_GCC_FLAGS JRATE_BUILD_DIR=`cd build-jrate; pwd`"
++    JRATE_MAKE_GCC_FLAGS="$JRATE_MAKE_GCC_FLAGS JRATE_GCC_SRC_DIR=$GCC_DIR"
++    JRATE_MAKE_GCC_FLAGS="$JRATE_MAKE_GCC_FLAGS JRATE_GCC_BUILD_DIR=`pwd`/build-gcc"
++    JRATE_LIBGCJ_LDFLAGS=$(eval $(grep '^LIBS = ' build-jrate/Makefile | sed "s, = ,=',g"; echo \'); echo $LIBS)
++fi
++
++#---------------------------------------------------------
+ echo "Build gcc-core (just enough to build glibc)"
+ 
+ mkdir -p build-gcc-core; cd build-gcc-core
+@@ -248,8 +283,8 @@
+ fi
+ 
+ test "$CANADIAN_BUILD" = "" || make $PARALLELMFLAGS all-build-libiberty || true
+-make $PARALLELMFLAGS all 
+-make install 
++make $PARALLELMFLAGS all ${JRATE_MAKE_GCC_FLAGS} JRATE_LIBGCJ_LDFLAGS="$JRATE_LIBGCJ_LDFLAGS"
++make install ${JRATE_MAKE_GCC_FLAGS} JRATE_LIBGCJ_LDFLAGS="$JRATE_LIBGCJ_LDFLAGS"
+ 
+ # FIXME: shouldn't people who want this just --disable-multilib in final gcc and be done with it?
+ echo "kludge: If the chip does not have a floating point unit "
+@@ -270,6 +305,26 @@
+ 
+ test -x ${PREFIX}/bin/${TARGET}-gcc || Build failed during final gcc 
+ 
++#---------------------------------------------------------
++# Build jrate extras
++
++if test "x${JRATE_DIR}" != x; then
++    echo Build jrate extras
++
++    cd build-jrate
++
++    # fool jrate build process into not rebuilding gcc
++    echo timestamp > gcc.configure-stamp
++    echo timestamp > gcc.build-stamp
++
++    make $PARALLELMFLAGS all MAKE_GCC_FLAGS="${JRATE_MAKE_GCC_FLAGS}"
++    make install MAKE_GCC_FLAGS="${JRATE_MAKE_GCC_FLAGS}"
++
++    cd ..
++
++#   test -f ${PREFIX}/${TARGET}/lib/libjRate.so || abort Build failed during jrate extras
++fi
++
+ # Set up to let user install individual shared libraries in /etc/ld.so.conf easily
+ cd $TOP_DIR
+ sh mkoverride.sh
+diff -Nur crosstool-0.35/crosstool.sh crosstool-0.35-jrate/crosstool.sh
+--- crosstool-0.35/crosstool.sh	2005-05-20 01:43:47.000000000 -0500
++++ crosstool-0.35-jrate/crosstool.sh	2005-08-04 19:21:57.241343619 -0500
+@@ -42,6 +42,7 @@
+     GCC_CORE_DIR="${GCC_DIR}"
+ fi
+ test -z "${BINUTILS_EXTRA_CONFIG}" && echo "BINUTILS_EXTRA_CONFIG not set, so not passing any extra options to binutils' configure script"
++test -z "${JRATE_EXTRA_CONFIG}"    && echo "JRATE_EXTRA_CONFIG not set, so not passing any extra options to jrate's configure script (if building jrate)"
+ test -z "${GCC_EXTRA_CONFIG}"      && echo "GCC_EXTRA_CONFIG not set, so not passing any extra options to gcc's configure script"
+ test -z "${GLIBC_EXTRA_CONFIG}"    && echo "GLIBC_EXTRA_CONFIG not set, so not passing any extra options to glibc's configure script"
+ test -z "${GLIBC_EXTRA_ENV}"       && echo "GLIBC_EXTRA_ENV not set, so not passing any extra environment variables to glibc's configure script"
+@@ -53,8 +54,13 @@
+ test -z "${KERNELCONFIG}" && test ! -f ${LINUX_DIR}/.config  && echo  "KERNELCONFIG not set, and no .config file found, so not configuring linux kernel"
+ test -z "${KERNELCONFIG}" || test -r "${KERNELCONFIG}"  || abort  "Can't read file KERNELCONFIG = $KERNELCONFIG, please fix."
+ test -z "${SHARED_MODE}" && SHARED_MODE="--enable-shared" && echo "SHARED_MODE not set, so defaulting to --enable-shared"
+-test -z "${GCC_LANGUAGES}"         && echo "GCC_LANGUAGES not set, assuming c,c++"
+-GCC_LANGUAGES=${GCC_LANGUAGES-"c,c++"}
++if test -z "${JRATE_DIR}"; then
++   test -z "${GCC_LANGUAGES}"      && echo "GCC_LANGUAGES not set, assuming c,c++"
++   GCC_LANGUAGES=${GCC_LANGUAGES-"c,c++"}
++else
++   test -z "${GCC_LANGUAGES}"      && echo "GCC_LANGUAGES not set, assuming c,c++,java (for jrate)"
++   GCC_LANGUAGES=${GCC_LANGUAGES-"c,c++,java"}
++fi
+ TOP_DIR=${TOP_DIR-`pwd`}
+ BUILD=${GCC_BUILD-`$TOP_DIR/config.guess`}
+ 
+@@ -154,6 +160,7 @@
+ BINUTILS_DIR=`cd ${SRC_DIR}/${BINUTILS_DIR}; pwd`
+ GCC_DIR=`cd ${SRC_DIR}/${GCC_DIR}; pwd`
+ GCC_CORE_DIR=`cd ${SRC_DIR}/${GCC_CORE_DIR}; pwd`
++JRATE_DIR=${JRATE_DIR+`cd ${SRC_DIR}/${JRATE_DIR}; pwd`}
+ LINUX_HEADER_DIR=`cd ${SRC_DIR}/${LINUX_HEADER_DIR}; pwd`
+ GLIBC_DIR=`cd ${SRC_DIR}/${GLIBC_DIR}; pwd`
+ 
+@@ -356,6 +363,34 @@
+ fi
+ 
+ #---------------------------------------------------------
++# Configure jrate and patch gcc sources
++
++JRATE_MAKE_GCC_FLAGS=
++if test "x${JRATE_DIR}" != x; then
++    echo Configure jrate and patch gcc sources
++
++    mkdir -p build-jrate; cd build-jrate
++
++    ln -s ${GCC_DIR} gcc
++    ln -s ${BUILD_DIR}/build-gcc gcc-build
++    ${JRATE_DIR}/configure $CANADIAN_BUILD --target=$TARGET --host=$GCC_HOST --prefix=$PREFIX \
++	${JRATE_EXTRA_CONFIG}
++    make $PARALLELMFLAGS gcc.setup-stamp
++
++    cd ..
++
++    test -f build-jrate/gcc.setup-stamp || abort Build failed during jrate-patch
++
++    # jrate patches a few gcc Makefiles to refer to these values in figuring
++    # include paths, etc.
++    JRATE_MAKE_GCC_FLAGS="JRATE_SRC_DIR=$JRATE_DIR"
++    JRATE_MAKE_GCC_FLAGS="$JRATE_MAKE_GCC_FLAGS JRATE_BUILD_DIR=`cd build-jrate; pwd`"
++    JRATE_MAKE_GCC_FLAGS="$JRATE_MAKE_GCC_FLAGS JRATE_GCC_SRC_DIR=$GCC_DIR"
++    JRATE_MAKE_GCC_FLAGS="$JRATE_MAKE_GCC_FLAGS JRATE_GCC_BUILD_DIR=`pwd`/build-gcc"
++    JRATE_LIBGCJ_LDFLAGS=$(eval $(grep '^LIBS = ' build-jrate/Makefile | sed "s, = ,=',g"; echo \'); echo $LIBS)
++fi
++
++#---------------------------------------------------------
+ echo "Build gcc-core (just enough to build glibc)"
+ 
+ mkdir -p build-gcc-core; cd build-gcc-core
+@@ -528,8 +563,8 @@
+     ;;
+ esac
+ 
+-make $PARALLELMFLAGS all 
+-make install 
++make $PARALLELMFLAGS all ${JRATE_MAKE_GCC_FLAGS} JRATE_LIBGCJ_LDFLAGS="$JRATE_LIBGCJ_LDFLAGS"
++make install ${JRATE_MAKE_GCC_FLAGS} JRATE_LIBGCJ_LDFLAGS="$JRATE_LIBGCJ_LDFLAGS"
+ 
+ # FIXME: shouldn't people who want this just --disable-multilib in final gcc and be done with it?
+ echo "kludge: If the chip does not have a floating point unit "
+@@ -550,6 +585,26 @@
+ 
+ test -x ${PREFIX}/bin/${TARGET}-gcc${EXEEXT} || Build failed during final gcc 
+ 
++#---------------------------------------------------------
++# Build jrate extras
++
++if test "x${JRATE_DIR}" != x; then
++    echo Build jrate extras
++
++    cd build-jrate
++
++    # fool jrate build process into not rebuilding gcc
++    echo timestamp > gcc.configure-stamp
++    echo timestamp > gcc.build-stamp
++
++    make $PARALLELMFLAGS all MAKE_GCC_FLAGS="${JRATE_MAKE_GCC_FLAGS}"
++    make install MAKE_GCC_FLAGS="${JRATE_MAKE_GCC_FLAGS}"
++
++    cd ..
++
++#   test -f ${PREFIX}/${TARGET}/lib/libjRate.so || abort Build failed during jrate extras
++fi
++
+ # Finally, build and install glibc programs, now that libeh (if any) is installed
+ # Don't do this unless needed, 'cause it causes glibc-2.{1.3,2.2} to fail here with
+ # .../gcc-3.4.1-glibc-2.1.3/build-glibc/libc.so.6: undefined reference to `__deregister_frame_info'
+diff -Nur crosstool-0.35/demo-ppc-unknown.sh crosstool-0.35-jrate/demo-ppc-unknown.sh
+--- crosstool-0.35/demo-ppc-unknown.sh	1969-12-31 18:00:00.000000000 -0600
++++ crosstool-0.35-jrate/demo-ppc-unknown.sh	2005-08-04 19:21:57.243343428 -0500
+@@ -0,0 +1,20 @@
++#!/bin/sh
++set -ex
++TARBALLS_DIR=$HOME/downloads
++RESULT_TOP=/opt/crosstool
++export TARBALLS_DIR RESULT_TOP
++GCC_LANGUAGES="c,c++"
++export GCC_LANGUAGES
++
++# Really, you should do the mkdir before running this,
++# and chown /opt/crosstool to yourself so you don't need to run as root.
++mkdir -p $RESULT_TOP
++
++# Build the toolchain.  Takes a couple hours and a couple gigabytes.
++#eval `cat powerpc-unknown.dat gcc-3.3.2-glibc-2.3.2.dat` sh all.sh --notest
++#eval `cat powerpc-unknown.dat gcc-3.3.3-glibc-2.3.2.dat` sh all.sh --notest
++#eval `cat powerpc-unknown.dat gcc-3.4.0-glibc-2.3.2.dat` sh all.sh --notest
++ eval `cat powerpc-unknown.dat gcc-3.4.1-glibc-2.3.3.dat`  sh all.sh --notest
++#eval `cat powerpc-unknown.dat gcc-3.4.1-glibc-20040827.dat` sh all.sh --notest
++
++echo Done.
+diff -Nur crosstool-0.35/getandpatch.sh crosstool-0.35-jrate/getandpatch.sh
+--- crosstool-0.35/getandpatch.sh	2005-05-19 12:58:29.000000000 -0500
++++ crosstool-0.35-jrate/getandpatch.sh	2005-08-04 19:21:57.246343142 -0500
+@@ -231,6 +231,20 @@
+  esac
+ done
+ 
++case $JRATE_DIR in
++   jrate-0.3.[7-9]*|jrate-0.[4-9]*|jrate-[1-9]*)
++      getUnpackAndPatch http://voxel.dl.sourceforge.net/sourceforge/jrate/$JRATE_DIR.tar.gz ;;
++   jrate-cvs-*)
++      test -d ${SRC_DIR}/$JRATE_DIR \
++	 || test -f ${SRC_DIR}/$JRATE_DIR.tar.gz \
++	 || test -f ${SRC_DIR}/$JRATE_DIR.tgz \
++	 || test -f ${SRC_DIR}/$JRATE_DIR.tar.bz2 \
++	 || abort "cannot auto-fetch jRate-cvs versions, please put tarball in ${SRC_DIR} for me"
++      getUnpackAndPatch $JRATE_DIR.tar.gz $JRATE_DIR.tgz $JRATE_DIR.tar.bz2 ;;
++   *)
++      test -z "$JRATE_DIR" || abort "jRate version $JRATE_DIR is unsupported." ;;
++esac
++
+ # Linux and glibc addons not needed if building a cygwin target.
+ if test "${CYGWIN_DIR}" = ""; then
+   case $LINUX_DIR in
+diff -Nur crosstool-0.35/jrate-0.3.7.2-3.3.3-glibc-2.3.3.dat crosstool-0.35-jrate/jrate-0.3.7.2-3.3.3-glibc-2.3.3.dat
+--- crosstool-0.35/jrate-0.3.7.2-3.3.3-glibc-2.3.3.dat	1969-12-31 18:00:00.000000000 -0600
++++ crosstool-0.35-jrate/jrate-0.3.7.2-3.3.3-glibc-2.3.3.dat	2005-08-04 19:22:09.211202786 -0500
+@@ -0,0 +1,7 @@
++BINUTILS_DIR=binutils-2.15
++GCC_DIR=gcc-3.3.3
++JRATE_DIR=jrate-0.3.7.2-3.3.3
++GLIBC_DIR=glibc-2.3.3
++LINUX_DIR=linux-2.6.7
++GLIBCTHREADS_FILENAME=glibc-linuxthreads-2.3.3
++GCC_EXTRA_CONFIG="--enable-java-gc=jRate $GCC_EXTRA_CONFIG"
+diff -Nur crosstool-0.35/powerpc-unknown.dat crosstool-0.35-jrate/powerpc-unknown.dat
+--- crosstool-0.35/powerpc-unknown.dat	1969-12-31 18:00:00.000000000 -0600
++++ crosstool-0.35-jrate/powerpc-unknown.dat	2005-08-04 19:21:57.000000000 -0500
+@@ -0,0 +1,3 @@
++TARGET=powerpc-unknown-linux-gnu
++TARGET_CFLAGS="-O"
++GCC_EXTRA_CONFIG="--with-cpu=powerpc --enable-cxx-flags=-mcpu=powerpc"

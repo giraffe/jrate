@@ -1,0 +1,71 @@
+
+                                jRate
+
+              Copyright (C) 2001-2005 by Angelo Corsaro.
+                        <corsaro@cse.wustl.edu>
+                         All Rights Reserved.
+
+
+     _________________________________________________________________
+     _________________________________________________________________
+
+
+
+   Copyright and Licensing Information for jRate(TM) 
+  
+   [1]jRate are  copyrighted   by   [2]Angelo Corsaro   Copyright  (c)
+   2001-2005,  all rights reserved.   Since  jRate is [3]open  source,
+   [4]free  software, you are free  to use, modify, and distribute the
+   jRate source code and object code produced from the source, as long
+   as you include this copyright statement along with code built using
+   jRate.
+   
+   In particular,  you can use  jRate in proprietary  software and are
+   under no obligation to redistribute any of your source code that is
+   built using jRate. Note, however,  that you may  not do anything to
+   the  jRate   code, such  as  copyrighting  it yourself  or claiming
+   authorship of  the jRate code, that will  prevent  jRate from being
+   distributed freely using an open source development model.
+   
+   jRate is provided  as is with no warranties  of any kind, including
+   the   warranties   of design, merchantability   and   fitness for a
+   particular purpose,  non-infringement, or arising  from a course of
+   dealing, usage or trade  practice. Moreover, jRate is provided with
+   no  support and without  any  obligations.
+      
+   The jRate  web  site is  maintained  by   Angelo  Corsaro for   the
+   development of open source  software as part  of the [3]open source
+   software community. By submitting comments, suggestions, code, code
+   snippets, techniques  (including that  of  usage), and  algorithms,
+   submitters acknowledge that they have the right to  do so, that any
+   such submissions  are given freely  and unreservedly, and that they
+   waive any claims to copyright or ownership. In addition, submitters
+   acknowledge   that  any such submission might   become  part of the
+   copyright  maintained on the overall body  of code, which comprises
+   the jRate software.  By  making a  submission,  submitter agree  to
+   these  terms.    Furthermore,   submitters  acknowledge    that the
+   incorporation  or modification of such   submissions is entirely at
+   the discretion of the moderators  of the open source jRate projects
+   or their designates.
+   
+   The names jRate(TM), may not be used to endorse or promote products
+   or  services derived from    this source  without express   written
+   permission  from the author.  Further, products or services derived
+   from this source   may not be called  jRate(TM).
+   
+   If  you have  any  suggestions, additions, comments, or  questions,
+   please let me know[5].
+
+
+   Angelo Corsaro
+
+     _________________________________________________________________
+   
+
+References
+
+   1. http://tao.doc.wustl.edu/~corsaro/jRate
+   2. http://www.cs.wustl.edu/~corsaro
+   3. http://www.opensource.org/
+   4. http://www.gnu.org/
+   5. mailto:corsaro@cse.wustl.edu

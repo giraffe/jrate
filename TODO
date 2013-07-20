@@ -1,0 +1,68 @@
+TODO items for jRate
+====================
+
+* gettextize jrate libs
+
+* autoconf: clean up my stamps on make clean
+
+* autoconf: redo patches to support JRATE_SHOULD_USE_RT_SCHEDULER
+
+* autoconf: figure out better stamping scheme, like stamping
+  *inside* gcc srcdir and builddir ?  And put stamp files in patches
+  so it's clear if they've been applied.  (And check for its existence
+  after patching, for sanity's sake.)
+
+* autoconf: redefined symbols in jRate-config.h when building libjava!!
+  PACKAGE and VERSION only, apparently..  (FIXED?)
+
+* autoconf: search patches for removed FreeBSD (and other) stuff.
+
+* autoconf: ensure all standard targets supported in all subpackages
+  (like install-exec, install-data, uninstall*, install-info ?)
+
+* should change version stamp in GCC so that it tags its binaries,
+  libgcj.jar, etc., correctly and doesn't overwrite non-jRate gcc
+  installations.
+
+* fix Class.forName() uglyness in Thread.setPriority()
+
+* check class file translation for safe_expr ?
+
+* allocators don't seem to note outofmemory conditions and just segfault
+
+* stackoverflowerror?
+
+* what to do with filling in singleton exception traces when in a
+  non-heap area?
+
+* aconst_null (and source equiv.) needs no write barrier -- check that
+  it isn't done! -- also where a field is set == this or equivalent
+  (e.g. foo.f = foo)
+
+* ensure that interned strings are immortal
+
+* even FASTER write barriers, if you maintain the invariant that a
+  thread can't manufacture a dangling pointer.  witness: a reference
+  can never be attempted across scope stacks, because a thread has to
+  be IN two scopes to attempt a reference between them; therefore, a
+  depth check is enough, don't need a display.
+
+* newInstance() on a scope you aren't in?
+
+* __jRate* routines public in Object.java?
+
+* dual ref check on array store ?  See _Jv_CheckArrayStore
+
+* should we be able to allocate our thread in an area, start it, have
+  it executeInArea() -- it manufactures a cross-pointer!! (also
+  consider using an anonymous runnable for cross-pointer manufacture)
+
+* ScopeStack initialMAIndex_ useless?
+
+* ScopeStack - decr old scopes in operator=() ?
+
+* _Jv_OnMethodExit on abnormal exit?
+
+* Modify gcc's version.c *-jRate
+
+-- Morgan Deters <mdeters@morgandeters.com>  Fri Jul  8 16:05:12 CDT 2005

@@ -1,0 +1,10 @@
+The allocation_instrumentation diff is meant to be the same as the
+main jRate diff, but with (most) Object and array allocation sites
+instrumented.  Expect *A LOT* of output along stderr in any programs
+you link with an allocation_instrumentation-patched libgcj!
+
+If you use shared libraries, you can build an allocation-instrumented
+libgcj and a non-allocation-instrumented libgcj and choose which to
+use at runtime.
+
+-- Morgan Deters <mdeters@cs.wustl.edu>  Sun Feb 13 23:02:29 CST 2005

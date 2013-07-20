@@ -1,0 +1,178 @@
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>
+jRate : A Real-Time Java ahead-of-time compiler
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<style type="text/css">
+body { background-color:white; color:black; }
+</style>
+<style type="text/css">
+@import url(jrate.css);
+</style>
+<link rel="stylesheet" type="text/css" media="print" href="print.css" />
+</head>
+
+<body>
+
+<!-- BEGIN top table -->
+<div class="toptable">
+<!-- "Menubar" -->
+  <table cellspacing="0" cellpadding="0" border="0" width="100%">
+  <tr class="menurow">
+    <td class="menucellleft">
+      <a href="http://jrate.sourceforge.net/FAQ.php" class="menulink">FAQ</a> |
+      <a href="http://jrate.sourceforge.net/Download.php" class="menulink">Download</a> |
+      <a href="http://jrate.sourceforge.net/News.php" class="menulink">News</a>
+    </td>
+    <td class="menucellright">
+      <a href="mailto:jrate-devel@lists.sourceforge.net" class="menulink">Contact Us</a>
+    </td>
+  </tr>
+  </table>
+
+<!-- Images -->
+  <div class="header">
+    <a href="index.html"><img border="0" alt="jRate" src="http://jrate.sourceforge.net/images/jRateHeader.gif" width="426" height="181" /></a>
+  </div>
+
+<!-- Current location -->
+  <div class="page"> 
+<!-- Home -->
+  </div>
+</div>
+
+<!-- START MAIN BOTTOM table -->
+<table id="maintab">
+<tr valign="top">
+
+<!-- Links Table -->
+<td class="nav">
+  <table id="lefttab">
+  <tr><td>
+
+  <div class="logo">
+    <a href="index.html"><img border="0" alt="jRate logo (a chameleon on a branch)" src="http://jrate.sourceforge.net/images/ChameleonLogo.gif" width="107" height="140" /></a>
+  </div>
+
+  <!-- Main Links -->
+  <div class="navbar">
+    <div class="section"><a class="headerlink" href="index.html">[Home]</a>
+       <a href="http://jrate.sourceforge.net/News.php">Recent News</a>
+       <a href="http://jrate.sourceforge.net/FAQ.php">FAQ</a>
+       <a href="http://jrate.sourceforge.net/Documentation.php">Documentation</a>
+       <span><a href="http://jrate.sourceforge.net/api/">API</a> [<a href="http://jrate.sourceforge.net/api/stable/">stable</a>] [<a href="http://jrate.sourceforge.net/api/cvs/">CVS</a>]</span>
+       <a href="http://sourceforge.net/project/memberlist.php?group_id=126338">People</a>
+       <a href="http://jrate.sourceforge.net/bugs">Bug Reports</a>
+       <a href="http://jrate.sourceforge.net/contrib/">Contrib</a>
+       <a href="http://jrate.sourceforge.net/involved/">Get Involved!</a>
+    </div>
+
+    <div class="section">[Download]<!--#config errmsg="stable"-->
+       <span class="noopt"><a href="http://jrate.sourceforge.net/Download.php">jRate</a></span>
+       <a href="http://jrate.sourceforge.net/Download.php#others">RTJPerf</a>
+       <a href="http://jrate.sourceforge.net/Download.php#others">jTools</a>
+    </div>
+
+    <div class="section">[Developers]
+       <a href="http://jrate.sourceforge.net/project">Project: jRate</a>
+       <a href="http://jrate.sourceforge.net/involved/">Join jRate!</a>
+       <span><a href="http://sourceforge.net/cvs/?group_id=126338">CVS</a> [<a href="http://cvs.sourceforge.net/viewcvs.py/jrate/jRate/">browse</a>]</span>
+    </div>
+
+    <div class="section">[Contact]
+       <a href="mailto:jrate-devel@lists.sourceforge.net">Contact Us</a>
+       <a href="http://jrate.sourceforge.net/MailingLists.php">Mailing Lists</a>
+       <a href="mailto:jrate-devel@lists.sourceforge.net">Helping Out</a>
+    </div>
+
+    <div class="section">[Links]
+       <a href="http://www.rtj.org">Real-Time Java</a>
+       <a href="http://gcc.gnu.org">GCC Home Page</a>
+    </div>
+
+    <div class="section">[Our gracious host]
+    <div class="sourceforge">
+      <a href="http://sourceforge.net">SourceForge.net</a>
+    </div>
+    </div>
+
+    <!-- SiteSearch Google -->
+    <form method="get" action="http://www.google.com/search">
+    <input type="hidden" name="ie" value="UTF-8" />
+    <input type="hidden" name="oe" value="UTF-8" />
+    <table class="google"><tr><td>
+    <a href="http://www.google.com/">
+    <img src="http://www.google.com/logos/Logo_40wht.gif" width="128" height="53" border="0" alt="Google" /></a>
+    </td></tr>
+    <tr><td>
+    <input type="text" name="q" size="28" maxlength="255" value="" /><br />
+    <input type="submit" name="btnG" value="Google Search" />
+    <font size="-1">
+    <input type="hidden" name="domains" value="jrate.sourceforge.net" /><br />
+    <input type="radio" name="sitesearch" value="" /> WWW<br />
+    <input type="radio" name="sitesearch" value="jrate.sourceforge.net" checked="checked" /> jrate.sourceforge.net<br />
+    </font>
+    </td></tr></table>
+    </form>
+    <!-- SiteSearch Google -->
+
+  </div>
+
+  </td></tr>
+  </table>
+
+</td>
+
+<!-- Main Body Cell -->
+<td>
+<!-- BEGIN CONTENT -->
+
+<div class="main">
+
+<p>
+<b>jRate</b>&nbsp;(<b>J</b>ava
+<b>R</b>e<b>a</b>l-<b>T</b>ime <b>E</b>xtension) is an
+extension of the GNU&nbsp;<a href="http://gcc.gnu.org/java">GCJ</a> compiler
+front-end and runtime system which adds support for most of the
+features required by the Real-Time Specification for Java&nbsp;(<b><a
+href="http://www.rtj.org">RTSJ</a></b>). Many portions of <b>jRate</b>
+are being developed using <b>Generative Programming</b> techniques.
+One of the goals of the project is that of providing users with the
+ability of &quot;generating&quot; the version of <b>jRate</b> that better
+fits their target system and use cases.  We are also interested
+in providing advanced scheduling services and a higher-level
+programming model.  For any information regarding <b>jRate</b>'s status
+and/or future plans,
+<a href="mailto:jrate-devel@lists.sourceforge.net">please contact the
+development team</a>.
+</p>
+
+<div class="titlebar">Getting started</div>
+
+<p>
+Additional documentation and information about jRate and the jRate project
+can be found online at the <a href="http://jrate.sourceforge.net">jRate
+web site</a>.
+</p>
+
+<p>
+If you're looking for API documentation, you can find it
+<a href="http://jrate.sourceforge.net/api/0.3.7-3.3.3/">online</a>
+and also <a href="api/index.html">locally</a> (if you built it).
+</p>
+
+</div>
+<!-- END CONTENT -->
+</td></tr>
+</table>
+
+<div class="rcsid">Last modified 08 Jul 2005</div>
+
+</body>
+
+</html>

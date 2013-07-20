@@ -1,0 +1,87 @@
+<!-- $Id: OutOfMemoryDemo.html 325 2003-05-26 03:43:18Z corsaro $ -->
+
+<html version="4.0">
+<head>
+	<title> jRate's OutOfMemory Demo </title>
+</head>
+
+<body>
+<font face="Trebuchet MS">
+<h1 align="center"> jRate's OutOfMemory Demo</h1>
+<p>
+	<h2>Description</h2>
+	<p>
+		This demo shows what is the suggested programming model to check
+		whether or not a ScopedMemory runs out of memory while a logic is
+		running within it. As show in this demo, the preferred way is to
+		check for the <code>OutOfMemoryError</code> around the
+		<code>MemoryArea.enter</code> method.
+	</p>
+	<h2> Running the demo </h2>
+	In order to run the demo you simply need to type the following:
+	<p>
+		<pre>
+$ ./outOfMemoryDemo
+    	</pre>
+	</p>
+	The output that you'll see should be similar to the following:
+	<p>
+		<pre>
+>> Trying to alloc: 8192
+---------------------------------------------------------------------------
+java.lang.OutOfMemoryError
+   at jrate.binding.java.OutOfMemoryHandler.init() (/home/angelo/Devel/jRate/lib/libjRateMem.so.0.0.0)
+   at _Jv_RunMain(java.lang.Class, byte const, int, byte const, boolean) (/home/angelo/Tools/jRate-gcc/lib/libgcj.so.4.0.0)
+   at JvRunMain (/home/angelo/Tools/jRate-gcc/lib/libgcj.so.4.0.0)
+   at main (/tmp/ccLctE8C.i:12)
+   at __libc_start_main (/lib/i686/libc-2.3.2.so)
+   at _start (Unknown Source)
+---------------------------------------------------------------------------
+>> Trying to alloc: 7168
+---------------------------------------------------------------------------
+java.lang.OutOfMemoryError
+   at jrate.binding.java.OutOfMemoryHandler.init() (/home/angelo/Devel/jRate/lib/libjRateMem.so.0.0.0)
+   at _Jv_RunMain(java.lang.Class, byte const, int, byte const, boolean) (/home/angelo/Tools/jRate-gcc/lib/libgcj.so.4.0.0)
+   at JvRunMain (/home/angelo/Tools/jRate-gcc/lib/libgcj.so.4.0.0)
+   at main (/tmp/ccLctE8C.i:12)
+   at __libc_start_main (/lib/i686/libc-2.3.2.so)
+   at _start (Unknown Source)
+---------------------------------------------------------------------------
+>> Trying to alloc: 6144
+---------------------------------------------------------------------------
+java.lang.OutOfMemoryError
+   at jrate.binding.java.OutOfMemoryHandler.init() (/home/angelo/Devel/jRate/lib/libjRateMem.so.0.0.0)
+   at _Jv_RunMain(java.lang.Class, byte const, int, byte const, boolean) (/home/angelo/Tools/jRate-gcc/lib/libgcj.so.4.0.0)
+   at JvRunMain (/home/angelo/Tools/jRate-gcc/lib/libgcj.so.4.0.0)
+   at main (/tmp/ccLctE8C.i:12)
+   at __libc_start_main (/lib/i686/libc-2.3.2.so)
+   at _start (Unknown Source)
+---------------------------------------------------------------------------
+>> Trying to alloc: 5120
+---------------------------------------------------------------------------
+java.lang.OutOfMemoryError
+   at jrate.binding.java.OutOfMemoryHandler.init() (/home/angelo/Devel/jRate/lib/libjRateMem.so.0.0.0)
+   at _Jv_RunMain(java.lang.Class, byte const, int, byte const, boolean) (/home/angelo/Tools/jRate-gcc/lib/libgcj.so.4.0.0)
+   at JvRunMain (/home/angelo/Tools/jRate-gcc/lib/libgcj.so.4.0.0)
+   at main (/tmp/ccLctE8C.i:12)
+   at __libc_start_main (/lib/i686/libc-2.3.2.so)
+   at _start (Unknown Source)
+---------------------------------------------------------------------------
+>> Trying to alloc: 4096
+---------------------------------------------------------------------------
+java.lang.OutOfMemoryError
+   at jrate.binding.java.OutOfMemoryHandler.init() (/home/angelo/Devel/jRate/lib/libjRateMem.so.0.0.0)
+   at _Jv_RunMain(java.lang.Class, byte const, int, byte const, boolean) (/home/angelo/Tools/jRate-gcc/lib/libgcj.so.4.0.0)
+   at JvRunMain (/home/angelo/Tools/jRate-gcc/lib/libgcj.so.4.0.0)
+   at main (/tmp/ccLctE8C.i:12)
+   at __libc_start_main (/lib/i686/libc-2.3.2.so)
+   at _start (Unknown Source)
+---------------------------------------------------------------------------
+>> Trying to alloc: 3072
+>> Allocated: 3072       In: javax.realtime.CTMemory@47710018
+		</pre>
+	</p>
+</p>
+</font>
+</body>
+</html>

@@ -1,0 +1,52 @@
+
+
+                jRate The GCJ Real-Time Java Extension
+
+
+  1. General
+  2. Supported Platforms
+  3. Installation
+  4. Contact Us
+  5. Licensing
+
+
+
+[1. General]
+
+jRate is a Real-Time Java library implementation meant to be used
+together with GCJ (see http://gcc.gnu.org/java). For more information
+on jRate, its design and its performance refer to the documentation
+online at:  http://jrate.sourceforge.net
+
+For user-visible changes, refer to the NEWS file in the distribution.
+
+
+[2. Supported Platforms]
+
+Right now the only platforms on which jRate intentionally works are:
+
+      - Linux/x86 (Red Hat 9, FC2, Debian/unstable, others...)
+      - TimeSys RTLinux/x86 (http://www.timesys.com)
+      - Linux/ppc (Gentoo, others...)
+      - TimeSys Linux BSP/ppc
+
+jRate may work on other platforms as well, but has not been tested.
+
+
+[3. Installation]
+
+Please refer to the INSTALL file in the jRate distribution for
+configuration, build, and installation help.
+
+
+[4. Contact Us]
+
+For any questions, suggestions, or to contribute to the jRate project,
+please contact the jRate development team at
+<jrate-devel@lists.sourceforge.net>.
+
+
+[5. Licensing]
+
+jRate open-source licensing terms and conditions are reported in the
+LICENSING file contained in the jRate installation directory.

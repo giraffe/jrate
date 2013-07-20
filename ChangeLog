@@ -1,0 +1,4129 @@
+Sun Sep  3 04:32:49 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* config/jrate.m4:
+
+	  Fix configure script to get around bash 3.1.x apparent parsing bug.
+
+	* configure.ac:
+	* NEWS:
+	* INSTALL:
+	* script/crosstool-0.28-rc37.patch:
+	* script/crosstool-0.35.patch:
+
+	  Prepare and cut release 0.3.7.2-3.3.3.
+
+	* configure.ac:
+	* VERSION-beta.ac
+	* VERSION-snapshot.ac
+	* VERSION-unstable.ac
+	* VERSION.ac
+
+	  Minor fixes to support the new SVN repo.
+
+	* INSTALL:
+
+	  Documentation fix.
+
+Sun Sep  3 04:31:06 2006  Morgan Deters  <mdeters@morgandeters.com>
+
+	* config/jrate.m4:
+
+	  Fix configure script to get around bash 3.1.x apparent parsing bug.
+
+	* configure.ac:
+	* NEWS:
+	* INSTALL:
+	* script/crosstool-0.35.patch:
+
+	  Prepare and cut release 0.3.8.2beta-3.3.3.
+	  
+	* configure.ac:
+
+	  Minor fixes to support the new SVN repo.
+
+Sat Aug  6 14:53:41 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* NEWS:
+
+	  Spacing fix.
+
+Sat Aug  6 14:32:49 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* demos/Makefile.am:
+
+	  Fix EXTRA_DIST.
+
+Sat Aug  6 06:39:00 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* src/javax/realtime/RealtimeThread.java:
+	
+	  Revert original eligibilityParam fix.
+
+	* demos/Makefile.am:
+
+	  Include some forgotten but necessary files in distribution.
+
+	* NEWS:
+
+	  Note demos/ dir fixes.
+
+Sat Aug  6 04:53:53 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* src/native/gcj-patches/diff/jRate-patch.diff:
+	* src/native/gcj-patches/diff/jRate-patch.allocation_instrumentation.diff:
+
+	  Fix compile error.
+
+Fri Aug  5 22:46:57 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* configure.ac:
+
+	  Change stable release date.
+
+Fri Aug  5 22:39:53 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* src/native/gcj-patches/diff/jRate-patch.diff:
+	* src/native/gcj-patches/diff/jRate-patch.allocation_instrumentation.diff:
+
+	  Support for broken NPTL which doesn't honor attr argument to
+	  pthread_create().
+
+	* NEWS:
+
+	  Update for NPTL fix.
+
+Thu Aug  4 19:35:33 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* Makefile.am:
+	* NEWS:
+
+	  Fix distribution.  Demos were previously distributed under jrate/.
+
+Thu Aug  4 19:24:44 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* src/javax/realtime/RealtimeThread.java:
+
+	  Fix for priority problem.
+
+	* configure.ac:
+	* NEWS:
+	* INSTALL:
+	* script/crosstool-0.35.patch:
+
+	  Prepare for 0.3.8.1beta release.
+
+==============================================================================
+Above this line is 0.3.8beta branch development.
+Below is 0.3.8beta release.
+==============================================================================
+
+Sat Jul 23 15:59:10 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* src/javax/realtime/PriorityQueue.java:
+
+	  Cleanup and implement PriorityQueue.clear().
+
+	* src/javax/realtime/RealtimeThread.java:
+
+	  ->fire() deadline miss and cost overrun events (rather than
+	  synchronously calling ->handleNextEvent() on the handlers).
+
+	* NEWS:
+
+	  Note about under-construction demos build process.
+
+	* TODO:
+
+	  Add item about privilege separation mechanism.
+
+	* INSTALL:
+
+	  Rework demos section.
+
+Sat Jul 23 06:31:42 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* NEWS:
+	* configure.ac:
+
+	  Prepare for beta release 0.3.8beta-3.3.3.
+
+	* src/javax/realtime/RealtimeThread.java:
+	* src/javax/realtime/AsyncEvent.java:
+
+	  Javadoc fixes.
+
+	* VERSION.ac:
+	* VERSION-beta.ac:
+	* VERSION-snapshot.ac:
+	* VERSION-unstable.ac:
+
+	  Consistency and wording fixes.
+
+Sat Jul 23 06:11:15 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* src/javax/realtime/RealtimeThread.java:
+
+	  Fix to deadline miss handling.
+
+Fri Jul 22 16:51:20 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* demos/DeadlineMissHandler/DeadlineMissHandlerDemo.java:
+
+	  Updated to use new static RealtimeThread.waitForNextPeriod().
+
+	* src/javax/realtime/RealtimeThread.java:
+
+	  RealtimeThread.waitForNextPeriod() is now static, according to
+	  spec; also re-implement schedulePeriodic() and
+	  deschedulePeriodic().
+
+	* src/native/src/jrate/binding/java/OutOfMemoryHandler.cc:
+
+	  Diagnostic output to stderr if we're out of memory in a scope
+	  but get another exception trying to fill the stack trace.
+
+	* demos/DeadlineMissHandler/DeadlineMissHandlerLogic.java:
+	* demos/EventHandling/SimpleEventHandlingDemo.java:
+	* demos/EventHandling/EventHandlingDemo.java:
+
+	  Cleanup.
+
+	* src/javax/realtime/AsyncEventHandler.java:
+
+	  Threads created to handle AEs are now daemons.
+
+	* TODO:
+
+	  We should perhaps make AEH use a pool of threads.
+
+	* RTSJ-questions:
+
+	  A file noting questions about the latest version of the spec
+	  that need to be ironed out for jRate.  Where
+	  implementation-dependent things need to be decided upon, they
+	  should be listed in TODO.
+
+	* RTSJ-notes:
+
+	  Relevant design documentation for jRate where the RTSJ leaves
+	  things implementation-dependent.
+
+	* NEWS:
+
+	  Notes about the cost overrun implementation.
+
+Fri Jul 22 15:15:55 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* src/javax/realtime/RealtimeThread.java:
+	* demos/EventHandling/SimpleEventHandlingDemo.java:
+	* demos/EventHandling/EventHandlingDemo.java:
+	* NEWS:
+
+	  Assorted cleanup.
+
+Fri Jul 22 14:46:40 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* src/javax/realtime/AsyncEventHandler.java:
+
+	  Fix embarrassing logic error.  Bound and non-bound AEHs should
+	  dispatch correctly now.
+
+	* NEWS:
+
+	  Notes on the upcoming beta.
+
+Fri Jul 22 14:10:24 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* src/native/src/jrate/sched/ScopeStack.h:
+
+	  Cleanup.
+
+	* src/javax/realtime/RealtimeThread.java:
+
+	  Fix for compile error.
+
+	* src/native/gcj-patches/diff/jRate-patch.allocation_instrumentation.diff:
+	* src/native/gcj-patches/diff/jRate-patch.diff:
+
+	  Fixes to posix-threads.cc's really_start() so that regular Java
+	  threads start in correct memory area (which is heap or immortal
+	  or method area, depending on where the Thread object was
+	  allocated).
+
+Fri Jul 22 00:52:34 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* src/javax/realtime/util/Executor.java:
+	* src/javax/realtime/util/PooledExecutor.java:
+	* src/javax/realtime/util/ThreadBoundExecutor.java:
+	* src/javax/realtime/AsyncEventHandler.java:
+	* src/javax/realtime/RealtimeThread.java:
+	* src/javax/realtime/Timed.java:
+	* src/native/gcj-patches/diff/jRate-patch.allocation_instrumentation.diff:
+	* src/native/gcj-patches/diff/jRate-patch.diff:
+	* src/native/gcj-patches/jRate-gc.cc:
+	* src/native/gcj-patches/jRate-gc.h:
+	* demos/DeadlineMissHandler/DeadlineMissHandlerDemo.java:
+	* demos/EventHandling/EventHandlingDemo.java:
+	* demos/EventHandling/SimpleEventHandlingDemo.java:
+	* NEWS:
+
+	  Minor fixes and cleanups.  Some compile errors fixed.
+
+Thu Jul 21 22:34:56 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* src/javax/Makefile.am:
+
+	  Remove ThreadedAsyncEventHandler.
+
+Thu Jul 21 22:02:53 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* TODO:
+
+	  Remove "proper deadline miss handler" from TODO list; add
+	  updateable (and shared) thread parameters.
+
+	* src/javax/realtime/AperiodicParameters.java:
+	* src/javax/realtime/NoHeapRealtimeThread.java:
+	* src/javax/realtime/PriorityScheduler.java:
+	* src/javax/realtime/RealtimeSystem.java:
+	* src/javax/realtime/RealtimeThread.java:
+	* src/javax/realtime/ReleaseParameters.java:
+	* src/javax/realtime/Schedulable.java:
+	* src/javax/realtime/SchedulingParameters.java:
+	* src/native/src/javax/realtime/AsyncEventHandler.cc:
+	* src/native/src/javax/realtime/RealtimeThread.cc:
+
+	  Various fixes and clean-ups.
+
+	* src/javax/realtime/AsyncEvent.java:
+	* src/javax/realtime/AsyncEventHandler.java:
+	* src/javax/realtime/BoundAsyncEventHandler.java:
+
+	  Overhaul of AEH system.  Now is more spec-compliant (though not
+	  fully implemented).
+
+	* src/javax/realtime/ThreadedAsyncEventHandler.java:
+
+	  Removed.  (Off-spec and has the same functionality as the
+	  new implementation of AsyncEventHandler.)
+
+	* NEWS:
+
+	  Note overhaul of AsyncEventHandlers.
+
+Thu Jul 21 18:30:59 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* NEWS:
+
+	  Note a few new things.
+
+	  Also remove old (erroneous) mention of an implementation of cost
+	  overrun handling [thanks to Damien Masson].
+
+	* src/native/src/javax/realtime/RealtimeThread.cc:
+
+	  Fix thread release and cost overrun signal handling.
+
+	* src/javax/realtime/WaitFreeReadQueue.java:
+
+	  Fix constructor w.r.t. exceptions.
+
+	* src/javax/realtime/AsyncEventHandler.java:
+	* src/javax/realtime/BoundAsyncEventHandler.java:
+
+	  Cleanup.
+
+Thu Jul 21 16:10:39 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* src/javax/realtime/PeriodicParameters.java:
+
+	  Null pointer check in constructor.
+
+	* src/javax/realtime/RealtimeClockOneShotTimerImpl.java:
+
+	  Specifies a dummy period (nonpositive period is illegal).
+
+	* src/native/src/javax/realtime/RealtimeThread.cc:
+	* src/javax/realtime/RealtimeThread.java:
+	* src/javax/realtime/RealtimeClockPeriodicTimerImpl.java:
+	* src/javax/realtime/WaitFreeReadQueue.java:
+
+	  Fixes and cleanups.
+
+Thu Jul 21 15:04:54 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* src/native/src/javax/realtime/RealtimeThread.cc:
+	* src/javax/realtime/RealtimeThread.java:
+	* src/native/src/jrate/mem/Allocator.h:
+
+	  Fixes.
+
+	* TODO:
+
+	  Note that we need a thread system overhaul.
+
+Thu Jul 21 12:57:19 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* src/javax/realtime/HighResolutionTime.java:
+	* src/javax/realtime/PeriodicParameters.java:
+	* src/javax/realtime/PriorityParameters.java:
+	* src/javax/realtime/ReleaseParameters.java:
+	* src/javax/realtime/SchedulingParameters.java:
+	* src/native/src/javax/realtime/RealtimeThread.cc:
+	* src/native/src/javax/realtime/jRateSystem.cc:
+	* src/native/src/jrate/mem/Allocator.h:
+	* src/native/src/jrate/mem/StackAllocator.h:
+
+	  Various fixes.
+
+Thu Jul 21 12:24:19 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* src/javax/realtime/HighResolutionTime.java:
+	* src/javax/realtime/PeriodicParameters.java:
+	* src/javax/realtime/RationalTime.java:
+	* src/javax/realtime/RealtimeThread.java:
+	* src/javax/realtime/ReleaseParameters.java:
+	* src/native/src/javax/realtime/RealtimeThread.cc:
+	* src/native/gcj-patches/diff/jRate-patch.allocation_instrumentation.diff:
+	* src/native/gcj-patches/diff/jRate-patch.diff:
+
+	  Implement cost-overrun handling and preemptive deadline-miss
+	  handling.  Also manually handle releases by resetting timers
+	  each time.  Using itimerval's it_interval field in setitimer()
+	  leads to drift on vanilla Linux.  Also some minor fixes.
+
+Sun Jul 17 16:32:18 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* src/native/gcj-patches/diff/jRate-patch.allocation_instrumentation.diff:
+	* src/native/gcj-patches/diff/jRate-patch.diff:
+
+	  Fix syntax error in expr.c.
+
+Sun Jul 17 16:24:05 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* src/native/gcj-patches/diff/jRate-patch.allocation_instrumentation.diff:
+	* src/native/gcj-patches/diff/jRate-patch.diff:
+
+	  Fix syntax error in java-tree.h.
+
+Sun Jul 17 16:10:38 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* src/native/gcj-patches/diff/jRate-patch.allocation_instrumentation.diff:
+	* src/native/gcj-patches/diff/jRate-patch.diff:
+
+	  Add some stuff to support interruptible method prefaces and
+	  epilogues (for AIE implementation).
+
+	* NEWS:
+
+	  Note some ongoing work.
+
+	* TODO:
+
+	  Add a note about AIE implementation (what to do with
+	  synchronized interruptible methods?).
+
+Sat Jul 16 13:19:48 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* src/demos/Makefile.am:
+	* src/demos/NoHeap/NoHeap.java:
+
+	  Added new demo, NoHeap.
+
+	* src/native/gcj-patches/diff/jRate-patch.allocation_instrumentation.diff:
+	* src/native/gcj-patches/diff/jRate-patch.diff:
+
+	  Cleanup; also disable heap check when compiling from source (for
+	  now).  It needs work.
+
+Thu Jul 14 22:14:32 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* src/javax/Makefile.am:
+	* src/native/src/Makefile.am:
+
+	  Add some sources to the dist.  These were left out before.
+
+	* demos/configure.ac:
+
+	  Turn some checks off (for now).
+
+	* src/javax/realtime/NoHeapRealtimeThread.java:
+
+	  Fixes to implementation.  Now checks if HeapMemory.instance() was
+	  passed as the memory area to run in.  (Duh.)
+
+	* src/javax/realtime/RealtimeThread.java:
+
+	  Spacing adjustment.
+
+	* src/native/gcj-patches/diff/jRate-patch.allocation_instrumentation.diff:
+	* src/native/gcj-patches/diff/jRate-patch.diff:
+
+	  Heap-check implementation fixes/enhancements.
+
+Tue Jul 12 20:19:01 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* src/native/gcj-patches/diff/jRate-patch.allocation_instrumentation.diff:
+	* src/native/gcj-patches/diff/jRate-patch.diff:
+
+	  Fixes to the heap-check implementation along the .class->.o path.
+
+Tue Jul 12 19:53:01 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* TODO:
+
+	  More TODO items.
+
+	* src/javax/realtime/RealtimeSystem.java:
+	* src/native/src/javax/realtime/RealtimeSystem.cc:
+
+	  Implemented host endian detection.  Added native implementation
+	  file.
+
+	* src/native/gcj-patches/diff/jRate-patch.allocation_instrumentation.diff:
+	* src/native/gcj-patches/diff/jRate-patch.diff:
+
+	  Regenerated patch to build natRealtimeSystem.cc.  Also, minor
+	  compile problem fixed.
+
+	* src/native/src/javax/realtime/RealtimeClock.cc:
+
+	  Removed unnecessary #include <stdio.h>.
+
+Tue Jul 12 19:18:54 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* src/native/gcj-patches/diff/jRate-patch.allocation_instrumentation.diff:
+	* src/native/gcj-patches/diff/jRate-patch.diff:
+
+	  Fix a few more compile warnings & errors.
+
+	* BUGS:
+	* TODO:
+
+	  List a few issues.
+
+	* src/native/gcj-patches/jRate-gc.h:
+
+	  #include <javax/realtime/MemoryAccessError.h>.
+
+Tue Jul 12 18:20:34 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* src/native/gcj-patches/diff/jRate-patch.allocation_instrumentation.diff:
+	* src/native/gcj-patches/diff/jRate-patch.diff:
+
+	  Fix a few compile warnings & errors.
+
+Tue Jul 12 17:35:35 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* src/native/gcj-patches/diff/jRate-patch.allocation_instrumentation.diff:
+	* src/native/gcj-patches/diff/jRate-patch.diff:
+
+	  Prototype fix for build_array_heap_check().
+
+Tue Jul 12 16:49:51 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* NEWS:
+
+	  Add note about NoHeapRealtimeThread implementation and
+	  -fno-heap-check.
+
+	* src/native/gcj-patches/diff/jRate-patch.diff:
+	* src/native/gcj-patches/diff/jRate-patch.allocation_instrumentation.diff:
+
+	  Regenerate patches to support heap checks.
+
+	* src/javax/realtime/NoHeapRealtimeThread.java:
+	* src/javax/realtime/RealtimeThread.java:
+
+	  Add canTouchHeap flag.
+
+	* src/native/gcj-patches/jRate-gc.cc:
+	* src/native/gcj-patches/jRate-gc.h:
+
+	  Add a global MemoryAccessError.
+
+Tue Jul 12 07:11:07 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* src/native/src/javax/realtime/NoHeapRealtimeThread.cc:
+
+	  Implementation fixups.
+
+Tue Jul 12 06:14:12 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* src/native/src/javax/realtime/NoHeapRealtimeThread.cc:
+
+	  Add native implementation for NoHeapRealtimeThread.
+
+	* NEWS:
+
+	  User-visible change updates.
+
+	* src/native/gcj-patches/diff/jRate-patch.diff:
+	* src/native/gcj-patches/diff/jRate-patch.allocation_instrumentation.diff:
+
+	  Add natNoHeapRealtimeThread.cc source.
+
+	* src/javax/realtime/NoHeapRealtimeThread.java:
+	* src/javax/realtime/RealtimeThread.java:
+
+	  Cleanup.
+
+Tue Jul 12 04:31:25 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* src/native/src/javax/realtime/RealtimeThread.cc:
+
+	  Another realtime thread fix.  This one ensures that a null
+	  start doesn't cause an abort() due to a conversion to
+	  RelativeTime.
+
+Tue Jul 12 04:10:06 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* src/native/src/javax/realtime/RealtimeThread.cc:
+
+	  Don't crash on null start value (assume start immediately).
+	  Also another stupid bug-due-to-a-typo fixed.
+
+	* src/native/gcj-patches/diff/jRate-patch.diff:
+	* src/native/gcj-patches/diff/jRate-patch.allocation_instrumentation.diff:
+
+	  Only do periodic setup for periodic RealtimeThreads.
+	  This should remove a crash condition or two.
+
+	* src/javax/realtime/AsynchronouslyInterruptedException.java
+
+	  Still unimplemented, but now has detailed comments about a
+	  possible implementation (which includes compiler hackery).
+
+Tue Jul 12 00:51:04 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* src/native/src/javax/realtime/RealtimeThread.cc:
+
+	  Accept and treat specially *signed* values (instead of
+	  converting to unsigned) for setitimer arguments.
+
+	* src/javax/realtime/RealtimeClockOneShotTimerImpl.java:
+
+	  Remove waitForNextPeriod() call.  (There is none for one-shot.)
+
+	* src/javax/realtime/RealtimeClockPeriodicTimerImpl.java:
+
+	  Move waitForNextPeriod() call until *after* the logic.
+
+Mon Jul 11 21:14:58 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* src/native/src/javax/realtime/RealtimeThread.cc:
+
+	  Make sure to check return values for syscalls that can fail.
+
+	* src/javax/realtime/ArrivalTimeQueueOverflowException.java
+
+	  New RTSJ class.
+
+Mon Jul 11 20:05:14 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* src/javax/realtime/WaitFreeReadQueue.java:
+
+	  I'm great at making stupid *%@*@(!^ typos and having to go back
+	  and correct them.  Grrr..
+
+	* demos/configure.ac:
+
+	  Final fixup for now, I hope.
+
+Mon Jul 11 19:33:02 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* src/native/gcj-patches/diff/jRate-patch.diff:
+	* src/native/gcj-patches/diff/jRate-patch.allocation_instrumentation.diff:
+
+	  Regenerate patches to fix realtime thread release problem.
+
+	* src/javax/realtime/PhysicalMemoryManager.java:
+	* src/javax/realtime/RawMemoryAccess.java:
+	* src/javax/realtime/Timed.java:
+	* src/javax/realtime/WaitFreeReadQueue.java:
+
+	  Fix some dumb typos that caused the compile to fail.
+
+	* Makefile.am:
+	* demos/configure.ac:
+
+	  More fixes regarding demos.
+
+Mon Jul 11 19:24:19 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* demos/configure.ac:
+	* demos/Makefile.am:
+	* demos/DeadlineMissHandler/Makefile.am:
+	* demos/PeriodicTimer/Makefile.am:
+
+	  Fix a few things regarding the demo building and installation.
+
+Mon Jul 11 17:17:12 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* src/javax/realtime/ImmortalPhysicalMemory.java:
+	* src/javax/realtime/LTPhysicalMemory.java:
+	* src/javax/realtime/VTPhysicalMemory.java:
+
+	  More fixes.
+
+	* src/native/src/javax/realtime/RealtimeThread.cc:
+
+	  Small logic fix that hopefully fixes the RT thread-starting
+	  problem.
+
+Mon Jul 11 16:42:05 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* src/javax/realtime/ImmortalPhysicalMemory.java:
+	* src/javax/realtime/LTPhysicalMemory.java:
+	* src/javax/realtime/VTPhysicalMemory.java:
+
+	  Fix constructor calls; also spacing fixes.
+
+Mon Jul 11 16:24:22 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* src/javax/realtime/MemoryArea.java:
+
+	  Give init() and fini() empty bodies (they are now non-abstract and
+	  need them).
+
+Mon Jul 11 15:36:03 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* src/javax/realtime/ResourceLimitError.java:
+
+	  Add @since 0.3.8.
+
+Mon Jul 11 15:30:18 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* demos/configure.ac:
+	* demos/Makefile.am:
+	* demos/DeadlineMissHandler/Makefile.am:
+	* demos/PeriodicTimer/Makefile.am:
+
+	  Adjustments/cleanups to demos build process.
+
+Mon Jul 11 15:18:14 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* demos/InvalidReference/HeapToScope.java:
+	* demos/InvalidReference/InvalidFieldSet.java:
+	* demos/InvalidReference/StaticToScope.java:
+	* demos/OutOfMemory/OutOfMemoryDemo.java:
+	* demos/Threads/RealTimeRunner.java:
+	* demos/Threads/Runner.java:
+	* src/native/gcj-patches/jRate-gc.cc:
+	* src/native/gcj-patches/jRate-gc.h:
+	* src/native/gcj-patches/memory-areas.h:
+	* src/native/gcj-patches/rtjavaprims.h:
+	* src/native/src/javax/realtime/Arena.cc:
+	* src/native/src/javax/realtime/ArenaFactory.cc:
+	* src/native/src/javax/realtime/AsyncEventHandler.cc:
+	* src/native/src/javax/realtime/CTMemory.cc:
+	* src/native/src/javax/realtime/CTPrivateMemory.cc:
+	* src/native/src/javax/realtime/HeapMemory.cc:
+	* src/native/src/javax/realtime/HighResolutionClock.cc:
+	* src/native/src/javax/realtime/HighResolutionTime.cc:
+	* src/native/src/javax/realtime/ImmortalMemory.cc:
+	* src/native/src/javax/realtime/LTMemory.cc:
+	* src/native/src/javax/realtime/LTPrivateMemory.cc:
+	* src/native/src/javax/realtime/MemoryArea.cc:
+	* src/native/src/javax/realtime/MethodAreaMemory.cc:
+	* src/native/src/javax/realtime/POSIXSignalHandler.cc:
+	* src/native/src/javax/realtime/PriorityScheduler.cc:
+	* src/native/src/javax/realtime/RealtimeClock.cc:
+	* src/native/src/javax/realtime/RealtimeThread.cc:
+	* src/native/src/javax/realtime/RefCountedArena.cc:
+	* src/native/src/javax/realtime/ScopedMemory.cc:
+	* src/native/src/javax/realtime/SizeEstimator.cc:
+	* src/native/src/javax/realtime/VTMemory.cc:
+	* src/native/src/javax/realtime/jRateSystem.cc:
+	* src/native/src/jrate/Config.h:
+	* src/native/src/jrate/Defaults.h:
+	* src/native/src/jrate/Macros.h:
+	* src/native/src/jrate/jRate.h:
+	* src/native/src/jrate/binding/java/CTAllocator.h:
+	* src/native/src/jrate/binding/java/CTMemory.h:
+	* src/native/src/jrate/binding/java/CTPrivateAllocator.h:
+	* src/native/src/jrate/binding/java/CTPrivateMemory.h:
+	* src/native/src/jrate/binding/java/Finalizer.h:
+	* src/native/src/jrate/binding/java/GCJBoehmAllocator.h:
+	* src/native/src/jrate/binding/java/HAllocator.h:
+	* src/native/src/jrate/binding/java/Heap.h:
+	* src/native/src/jrate/binding/java/IMAllocator.h:
+	* src/native/src/jrate/binding/java/IMemoryArea.cc:
+	* src/native/src/jrate/binding/java/IMemoryArea.h:
+	* src/native/src/jrate/binding/java/ImmortalMemory.h:
+	* src/native/src/jrate/binding/java/LTAllocator.h:
+	* src/native/src/jrate/binding/java/LTMemory.h:
+	* src/native/src/jrate/binding/java/LTPrivateAllocator.h:
+	* src/native/src/jrate/binding/java/LTPrivateMemory.h:
+	* src/native/src/jrate/binding/java/MAAllocator.h:
+	* src/native/src/jrate/binding/java/MemoryArea.h:
+	* src/native/src/jrate/binding/java/MemoryAreaBufferProvider.cc:
+	* src/native/src/jrate/binding/java/MemoryAreaBufferProvider.h:
+	* src/native/src/jrate/binding/java/MemoryAreaScope.h:
+	* src/native/src/jrate/binding/java/MethodArea.h:
+	* src/native/src/jrate/binding/java/ObjectInitializer.h:
+	* src/native/src/jrate/binding/java/OutOfMemoryHandler.cc:
+	* src/native/src/jrate/binding/java/OutOfMemoryHandler.h:
+	* src/native/src/jrate/binding/java/RefCountedArena.h:
+	* src/native/src/jrate/binding/java/RefCountedArenaAllocator.h:
+	* src/native/src/jrate/binding/java/Runtime.h:
+	* src/native/src/jrate/binding/java/ScopeStack.h:
+	* src/native/src/jrate/binding/java/Types.h:
+	* src/native/src/jrate/binding/java/VTAllocator.h:
+	* src/native/src/jrate/binding/java/VTMemory.h:
+	* src/native/src/jrate/mem/Allocator.h:
+	* src/native/src/jrate/mem/BoehmAllocator.h:
+	* src/native/src/jrate/mem/Buffer.cc:
+	* src/native/src/jrate/mem/Buffer.h:
+	* src/native/src/jrate/mem/Buffer.inl:
+	* src/native/src/jrate/mem/BufferProvider.h:
+	* src/native/src/jrate/mem/DisplayRefChecker.cc:
+	* src/native/src/jrate/mem/DisplayRefChecker.h:
+	* src/native/src/jrate/mem/Finalizer.h:
+	* src/native/src/jrate/mem/IMemoryArea.h:
+	* src/native/src/jrate/mem/MMapBufferProvider.h:
+	* src/native/src/jrate/mem/MallocAllocator.h:
+	* src/native/src/jrate/mem/MallocBufferProvider.h:
+	* src/native/src/jrate/mem/MemLockingPolicy.h:
+	* src/native/src/jrate/mem/MemoryArea.h:
+	* src/native/src/jrate/mem/ObjectInitializer.h:
+	* src/native/src/jrate/mem/SegregatedBufferProvider.h:
+	* src/native/src/jrate/mem/StackAllocator.h:
+	* src/native/src/jrate/mem/StaticTypeSizeAligner.h:
+	* src/native/src/jrate/meta/IF.h:
+	* src/native/src/jrate/sched/Channel.h:
+	* src/native/src/jrate/sched/Config.h:
+	* src/native/src/jrate/sched/Executor.h:
+	* src/native/src/jrate/sched/IChannel.h:
+	* src/native/src/jrate/sched/IExecutor.h:
+	* src/native/src/jrate/sched/Init.cc:
+	* src/native/src/jrate/sched/PooledExecutor.h:
+	* src/native/src/jrate/sched/PriorityParameters.cc:
+	* src/native/src/jrate/sched/PriorityParameters.h:
+	* src/native/src/jrate/sched/PriorityScheduler.cc:
+	* src/native/src/jrate/sched/PriorityScheduler.h:
+	* src/native/src/jrate/sched/Runnable.cc:
+	* src/native/src/jrate/sched/Runnable.h:
+	* src/native/src/jrate/sched/Schedulable.h:
+	* src/native/src/jrate/sched/ScopeStack.h:
+	* src/native/src/jrate/sched/SingleThreadedExecutor.h:
+	* src/native/src/jrate/sched/TSS.h:
+	* src/native/src/jrate/sched/TSSScope.h:
+	* src/native/src/jrate/sched/Thread.cc:
+	* src/native/src/jrate/sched/Thread.h:
+	* src/native/src/jrate/sched/Types.cc:
+	* src/native/src/jrate/sched/Types.h:
+	* src/native/src/jrate/synch/Atomic.h:
+	* src/native/src/jrate/synch/AtomicCounter.h:
+	* src/native/src/jrate/synch/Config.h:
+	* src/native/src/jrate/synch/EventVariable.cc:
+	* src/native/src/jrate/synch/EventVariable.h:
+	* src/native/src/jrate/synch/Guard.h:
+	* src/native/src/jrate/synch/Mutex.cc:
+	* src/native/src/jrate/synch/Mutex.h:
+	* src/native/src/jrate/synch/Semaphore.cc:
+	* src/native/src/jrate/synch/Semaphore.h:
+	* src/native/src/jrate/synch/Synchronizer.h:
+	* src/native/src/jrate/sys/Command.h:
+	* src/native/src/jrate/sys/Config.cc:
+	* src/native/src/jrate/sys/Config.h:
+	* src/native/src/jrate/sys/ISignalHandler.cc:
+	* src/native/src/jrate/sys/ISignalHandler.h:
+	* src/native/src/jrate/sys/Platform.h:
+	* src/native/src/jrate/sys/Runtime.h:
+	* src/native/src/jrate/sys/SignalManager.cc:
+	* src/native/src/jrate/sys/SignalManager.h:
+	* src/native/src/jrate/sys/SignalSet.cc:
+	* src/native/src/jrate/sys/SignalSet.h:
+	* src/native/src/jrate/sys/TimeValue.cc:
+	* src/native/src/jrate/sys/TimeValue.h:
+	* src/native/src/jrate/sys/Timer.cc:
+	* src/native/src/jrate/sys/Timer.h:
+	* src/native/src/jrate/sys/TimerManager.cc:
+	* src/native/src/jrate/sys/TimerManager.h:
+	* src/native/src/jrate/utils/Assertions.h:
+	* src/native/src/jrate/utils/TypeWrapper.h:
+	* src/native/src/jrate/utils/Units.h:
+	* src/native/src/test/Allocator/test1.cc:
+	* src/native/src/test/Allocator/test2.cc:
+	* src/native/src/test/Thread/test1.cc:
+
+	  Added/fixed boilerplate jRate copyright headers.
+
+Mon Jul 11 15:07:01 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* Makefile.am:
+
+	  api target now builds with -protected rather than -public.
+
+	* demos/DeadlineMissHandler/DeadlineMissHandlerDemo.java:
+	* demos/DeadlineMissHandler/DeadlineMissHandlerLogic.java:
+	* demos/Echo/EchoClient.java:
+	* demos/Echo/EchoServer.java:
+	* demos/EventHandling/EventHandlingDemo.java:
+	* demos/EventHandling/SimpleEventHandlingDemo.java:
+	* demos/ExecuteInArea/ExecuteInAreaDemo.java:
+	* demos/HelloWorld/HelloWorld.java:
+	* demos/MemoryArea/MemoryAreaDemo.java:
+	* demos/OutOfScopeException/OutOfScopeException.java:
+	* demos/PeriodicParameters/PeriodicParametersDemo.java:
+	* demos/PeriodicThread/PeriodicThreadDemo.java:
+	* demos/PeriodicTimer/PeriodicTimerDemo.java:
+	* demos/PeriodicTimer/TimeoutHandler.java:
+	* demos/ScopedMemoryCycle/ScopedMemoryCycle.java:
+	* demos/ScopedPortal/ScopedPortal.java:
+	* src/javax/realtime/AbsoluteTime.java:
+	* src/javax/realtime/AccessViolationError.java:
+	* src/javax/realtime/AperiodicParameters.java:
+	* src/javax/realtime/Arena.java:
+	* src/javax/realtime/ArenaFactory.java:
+	* src/javax/realtime/AsyncEvent.java:
+	* src/javax/realtime/AsyncEventHandler.java:
+	* src/javax/realtime/AsynchronouslyInterruptedException.java:
+	* src/javax/realtime/BoundAsyncEventHandler.java:
+	* src/javax/realtime/CTMemory.java:
+	* src/javax/realtime/CTPrivateMemory.java:
+	* src/javax/realtime/Clock.java:
+	* src/javax/realtime/DuplicateFilterException.java:
+	* src/javax/realtime/ExecutionEligibilityParameters.java:
+	* src/javax/realtime/GarbageCollector.java:
+	* src/javax/realtime/HeapMemory.java:
+	* src/javax/realtime/HighResolutionClock.java:
+	* src/javax/realtime/HighResolutionTime.java:
+	* src/javax/realtime/HighResolutionTimer.java:
+	* src/javax/realtime/IllegalAssignmentError.java:
+	* src/javax/realtime/ImmortalMemory.java:
+	* src/javax/realtime/ImmortalPhysicalMemory.java:
+	* src/javax/realtime/ImportanceParameters.java:
+	* src/javax/realtime/InaccessibleAreaException.java:
+	* src/javax/realtime/Interruptible.java:
+	* src/javax/realtime/LTMemory.java:
+	* src/javax/realtime/LTPhysicalMemory.java:
+	* src/javax/realtime/LTPrivateMemory.java:
+	* src/javax/realtime/MITViolationException.java:
+	* src/javax/realtime/MemoryAccessError.java:
+	* src/javax/realtime/MemoryArea.java:
+	* src/javax/realtime/MemoryInUseException.java:
+	* src/javax/realtime/MemoryParameters.java:
+	* src/javax/realtime/MemoryScopeException.java:
+	* src/javax/realtime/MemoryTypeConflictException.java:
+	* src/javax/realtime/MethodAreaMemory.java:
+	* src/javax/realtime/MonitorControl.java:
+	* src/javax/realtime/NoGarbageCollector.java:
+	* src/javax/realtime/NoHeapRealtimeThread.java:
+	* src/javax/realtime/OffsetOutOfBoundsException.java:
+	* src/javax/realtime/OneShotTimer.java:
+	* src/javax/realtime/OneShotTimerImpl.java:
+	* src/javax/realtime/OneShotTimerServer.java:
+	* src/javax/realtime/POSIXSignalHandler.java:
+	* src/javax/realtime/PeriodicParameters.java:
+	* src/javax/realtime/PeriodicTimer.java:
+	* src/javax/realtime/PeriodicTimerImpl.java:
+	* src/javax/realtime/PeriodicTimerServer.java:
+	* src/javax/realtime/PhysicalMemoryManager.java:
+	* src/javax/realtime/PhysicalMemoryTypeFilter.java:
+	* src/javax/realtime/PooledAsyncEventHandler.java:
+	* src/javax/realtime/PrimordialMemory.java:
+	* src/javax/realtime/PriorityCeilingEmulation.java:
+	* src/javax/realtime/PriorityInheritance.java:
+	* src/javax/realtime/PriorityParameters.java:
+	* src/javax/realtime/PriorityQueue.java:
+	* src/javax/realtime/PriorityScheduler.java:
+	* src/javax/realtime/PrivateScopedMemory.java:
+	* src/javax/realtime/ProcessingGroupParameters.java:
+	* src/javax/realtime/RationalTime.java:
+	* src/javax/realtime/RawMemoryAccess.java:
+	* src/javax/realtime/RawMemoryFloatAccess.java:
+	* src/javax/realtime/RealtimeClock.java:
+	* src/javax/realtime/RealtimeClockOneShotTimerImpl.java:
+	* src/javax/realtime/RealtimeClockPeriodicTimerImpl.java:
+	* src/javax/realtime/RealtimeSecurity.java:
+	* src/javax/realtime/RealtimeSystem.java:
+	* src/javax/realtime/RealtimeThread.java:
+	* src/javax/realtime/RefCountedArena.java:
+	* src/javax/realtime/RelativeTime.java:
+	* src/javax/realtime/ReleaseParameters.java:
+	* src/javax/realtime/ResourceLimitError.java:
+	* src/javax/realtime/Schedulable.java:
+	* src/javax/realtime/Scheduler.java:
+	* src/javax/realtime/SchedulingParameters.java:
+	* src/javax/realtime/ScopedCycleException.java:
+	* src/javax/realtime/ScopedMemory.java:
+	* src/javax/realtime/SizeEstimator.java:
+	* src/javax/realtime/SizeOutOfBoundsException.java:
+	* src/javax/realtime/SporadicParameters.java:
+	* src/javax/realtime/ThreadedAsyncEventHandler.java:
+	* src/javax/realtime/ThrowBoundaryError.java:
+	* src/javax/realtime/Timed.java:
+	* src/javax/realtime/Timer.java:
+	* src/javax/realtime/TimerImpl.java:
+	* src/javax/realtime/UnimplementedFeatureError.java:
+	* src/javax/realtime/UnknownHappeningException.java:
+	* src/javax/realtime/UnsupportedPhysicalMemoryException.java:
+	* src/javax/realtime/VTMemory.java:
+	* src/javax/realtime/VTPhysicalMemory.java:
+	* src/javax/realtime/WaitFreeDequeue.java:
+	* src/javax/realtime/WaitFreeReadQueue.java:
+	* src/javax/realtime/WaitFreeWriteQueue.java:
+	* src/javax/realtime/jRateSystem.java:
+	* src/javax/realtime/util/CountableEventVariable.java:
+	* src/javax/realtime/util/EventVariable.java:
+	* src/javax/realtime/util/Executor.java:
+	* src/javax/realtime/util/PooledExecutor.java:
+	* src/javax/realtime/util/ShutdownExecutorException.java:
+	* src/javax/realtime/util/ThreadBoundExecutor.java:
+	* src/javax/realtime/util/ThreadedExecutor.java:
+	* src/native/gcj-patches/jRate-gc.cc:
+	* src/native/gcj-patches/jRate-gc.h:
+
+	  Updated copyright notices to read (C) 2001-2005.
+
+Mon Jul 11 14:23:22 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* DuplicateFilterException.java:
+	* GarbageCollector.java:
+	* ImmortalPhysicalMemory.java:
+	* Interruptible.java:
+	* LTPhysicalMemory.java:
+	* MITViolationException.java:
+	* MemoryInUseException.java:
+	* MemoryScopeException.java:
+	* MemoryTypeConflictException.java:
+	* MonitorControl.java:
+	* NoGarbageCollector.java:
+	* OffsetOutOfBoundsException.java:
+	* PhysicalMemoryManager.java:
+	* PhysicalMemoryTypeFilter.java:
+	* PriorityCeilingEmulation.java:
+	* PriorityInheritance.java:
+	* RawMemoryAccess.java:
+	* RawMemoryFloatAccess.java:
+	* RealtimeSecurity.java:
+	* RealtimeSystem.java:
+	* SizeOutOfBoundsException.java:
+	* Timed.java:
+	* UnsupportedPhysicalMemoryException.java:
+	* VTPhysicalMemory.java:
+	* WaitFreeDequeue.java:
+	* WaitFreeReadQueue.java:
+	* WaitFreeWriteQueue.java:
+
+	  Add @since 0.3.8 tag.
+
+	* MemoryArea.java:
+
+	  Some minor cleanup; also remove "abstract" from some method
+	  signatures (to make more spec-compliant).
+
+Mon Jul 11 05:56:08 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* configure.ac:
+
+	  Remove src/native/include/Makefile from list of outputs.
+
+	* src/javax/realtime/DuplicateFilterException.java:
+	* src/javax/realtime/GarbageCollector.java:
+	* src/javax/realtime/ImmortalPhysicalMemory.java:
+	* src/javax/realtime/Interruptible.java:
+	* src/javax/realtime/LTPhysicalMemory.java:
+	* src/javax/realtime/MemoryInUseException.java:
+	* src/javax/realtime/MemoryScopeException.java:
+	* src/javax/realtime/MemoryTypeConflictException.java:
+	* src/javax/realtime/MonitorControl.java:
+	* src/javax/realtime/OffsetOutOfBoundsException.java:
+	* src/javax/realtime/PhysicalMemoryManager.java:
+	* src/javax/realtime/PhysicalMemoryTypeFilter.java:
+	* src/javax/realtime/PriorityCeilingEmulation.java:
+	* src/javax/realtime/PriorityInheritance.java:
+	* src/javax/realtime/RawMemoryAccess.java:
+	* src/javax/realtime/RawMemoryFloatAccess.java:
+	* src/javax/realtime/RealtimeSecurity.java:
+	* src/javax/realtime/RealtimeSystem.java:
+	* src/javax/realtime/SizeOutOfBoundsException.java:
+	* src/javax/realtime/Timed.java:
+	* src/javax/realtime/UnsupportedPhysicalMemoryException.java:
+	* src/javax/realtime/VTPhysicalMemory.java:
+	* src/javax/realtime/WaitFreeDequeue.java:
+	* src/javax/realtime/WaitFreeReadQueue.java:
+	* src/javax/realtime/WaitFreeWriteQueue.java:
+
+	  Added RTSJ-specified classes.  Most are still unimplemented but
+	  have the appropriate structure for the class.
+
+	* src/javax/realtime/NoGarbageCollector.java:
+
+	  Describe jRate's current (no-op) garbage collector.
+
+	* src/javax/realtime/AsynchronouslyInterruptedException.java:
+
+	  Added javadoc and (unimplemented) methods.
+
+	* src/javax/realtime/MITViolationException.java:
+	* src/javax/realtime/UnknownHappeningException.java:
+
+	  Minor cleanup.
+
+	* src/javax/Makefile.am:
+
+	  Add all the new classes; also some cleanup.
+
+	* src/native/gcj-patches/diff/jRate-patch.diff:
+	* src/native/gcj-patches/diff/jRate-patch.allocation_instrumentation.diff:
+
+	  Add all the new classes to libgcj.
+
+Sun Jul 10 21:54:10 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* NEWS:
+
+	  Log a few user-visible changes since 0.3.7-3.3.3.
+
+	* Makefile.am:
+
+	  Include $(gcc_srcdir)/libjava on -sourcepath to javadoc.
+
+	* src/javax/Makefile.am:
+
+	  Remove java-building stuff (since we now copy this dir into
+	  $(gcc_srcdir)/libjava).
+
+	* src/javax/realtime/MITViolationException.java:
+	* src/javax/realtime/ResourceLimitError.java:
+
+	  Added RTSJ-specified classes (also removes Javadoc warnings
+	  when processing SporadicParameters).
+
+	* src/javax/realtime/MemoryAccessError.java:
+
+	  Fix javadoc @{link}.
+
+	* src/native/include/Makefile.am:
+
+	  The include/ directory is no longer needed for the build process.
+	  Makefile.am removed.
+
+	* src/native/Makefile.am:
+
+	  Exclude defunct include/ directory.
+
+	* src/javax/realtime/HEADER:
+
+	  Removed.
+
+Sun Jul 10 18:48:17 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* src/javax/realtime/AbsoluteTime.java:
+	* src/javax/realtime/RelativeTime.java:
+
+	  Remove duplicate methods.
+
+Sun Jul 10 18:12:15 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* demos/configure.ac:
+
+	  Use AM_PROG_GCJ so that automake doesn't get all cranky about
+	  Java program targets.
+
+	* configure.ac:
+
+	  Wording change on output.
+
+	* src/javax/realtime/RealtimeClockPeriodicTimerImpl.java:
+
+	  Clean up; fix some minor interface bugs.
+
+	* src/javax/realtime/RealtimeClock.java:
+
+	  Implement one shot timer factory methods.
+
+	* src/javax/realtime/RealtimeClockOneShotTimerImpl.java:
+
+	  Implement one shot timers.  (New file.)
+
+	* src/javax/realtime/PeriodicTimer.java:
+	* src/javax/realtime/OneShotTimer.java:
+
+	  Fix constructor signatures to be RTSJ-compliant.
+
+	* src/javax/realtime/Clock.java:
+	* src/javax/realtime/RealtimeClock.java:
+	* src/javax/realtime/HighResolutionClock.java:
+
+	  Various adjustments to create*Timer() methods to support new
+	  RTSJ-compliant Timer constructors.
+
+	* src/native/src/javax/realtime/RealtimeThread.cc:
+
+	  Fix up RealtimeThread start mechanism so that the first release
+	  is dealt with correctly.
+
+	* src/native/gcj-patches/diff/jRate-patch.diff:
+	* src/native/gcj-patches/diff/jRate-patch.allocation_instrumentation.diff:
+
+	  Regenerate patches to add new RealtimeClockOneShotTimerImpl class
+	  to libgcj; also fix up posix-threads.cc to properly release realtime
+	  threads the first time.
+
+	* NEWS:
+
+	  Add note about one shot timers and thread release fix.
+
+	* src/javax/realtime/HighResolutionTime.java:
+	* src/javax/realtime/AbsoluteTime.java:
+	* src/javax/realtime/RelativeTime.java:
+
+	  Add RTSJ-compliant conversion methods between absolute
+	  and relative time.
+
+	* src/javax/realtime/PeriodicParameters.java:
+	* src/javax/realtime/Timer.java:
+
+	  Minor code cleanup pass.
+
+Sat Jul  9 16:43:16 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* Makefile.am:
+
+	  Do a check to make sure we "make dist" under fakeroot when
+	  disting stable releases.  (Otherwise the ownership of files
+	  in the tarball is messy.)
+
+	* configure.ac:
+
+	  Require automake 1.9.
+
+	* src/native/src/jrate/configure.ac:
+
+	  Require automake 1.9.
+
+	* demos/Makefile.cvs:
+	* demos/configure.ac:
+
+	  demos/ dir is now an unconfigured subpackage.
+
+	* demos/Makefile.am:
+	* demos/DeadlineMissHandler/Makefile.am:
+	* demos/PeriodicTimer/Makefile.am:
+
+	  Build demos again.  (Support not yet complete.)
+
+	* Makefile.cvs:
+
+	  Call into demos/ dir.
+
+	* script/crosstool-0.35.patch:
+
+	  Fix bug in crosstool: pass GLIBC_EXTRA_ENV to glibc configure
+	  calls.
+
+Sat Jul  9 14:20:59 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* configure.ac:
+
+	  This tree is now version cvs-pre0.3.8-3.3.3.
+
+	* NEWS:
+
+	  Include cvs-pre0.3.8-3.3.3 version number so that make dist works.
+
+	* INSTALL:
+
+	  Set up documentation for next stable version (0.3.8-3.3.3).
+
+	* script/Makefile.am:
+
+	  No longer distribute crosstool-0.28-rc37.patch.
+
+	* script/crosstool-0.28-rc37.patch:
+
+	  No longer supported; removed.
+
+	* script/crosstool-0.35.patch:
+
+	  Set up for next stable version (0.3.8-3.3.3).
+
+Fri Jul  8 16:17:02 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* NEWS:
+
+	  Cut new release 0.3.7-3.3.3.
+
+	* configure.ac:
+
+	  Cut new release 0.3.7-3.3.3.
+
+	  Static libs on my default.  Also, remove gcc-static and
+	  gcc-shared stuff (now tied to toplevel enable-static and
+	  enable-shared settings).
+
+	  Also remove JRATE* ARG_VARs that used to be used for stage 3.
+
+	* INSTALL:
+
+	  Perl is no longer required (I think).
+
+	  Also some wording fixes.
+
+	  Also remove bits about gcc-static (now just use toplevel
+	  --enable-static setting since all jRate lib stuff is built in
+	  gcc tree anyway).
+
+	* AUTHORS:
+	* LICENSING:
+	* README:
+	* TODO:
+
+	  Minor updates.
+
+	* demos/Makefile.am:
+	* demos/DeadlineMissHandler/Makefile.am:
+	* demos/PeriodicTimer/Makefile.am:
+
+	  Add to EXTRA_DIST so that the stuff is actually distributed
+	  despite not being built.
+
+	* docs/Makefile.am:
+
+	  Make sure to install docs without eXecute bit.
+
+Fri Jul  8 13:58:57 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* demos/Makefile.am:
+	* demos/DeadlineMissHandler/Makefile.am:
+	* demos/PeriodicTimer/Makefile.am:
+
+	  Comment out noinst_PROGRAMS so they aren't built.
+
+Fri Jul  8 03:38:55 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* demos/Makefile.am:
+	* demos/DeadlineMissHandler/Makefile.am:
+	* demos/PeriodicTimer/Makefile.am:
+
+	  Turn *_JAVA automake bits into *_DATA so that they aren't built
+	  into classfiles.
+
+Fri Jul  8 03:26:48 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* INSTALL:
+
+	  Fix formatting.
+
+Fri Jul  8 03:20:23 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* INSTALL:
+
+	  Fix description of how to build and run demos.
+
+	* docs/index.html:
+	* docs/api/index.html:
+
+	  Fix a few things in installed documentation.
+
+Fri Jul  8 03:11:32 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* demos/DeadlineMissHandler/Makefile.am:
+	* demos/PeriodicTimer/Makefile.am:
+
+	  Fix silly automake Java target issue.
+
+Fri Jul  8 02:28:34 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* script/Makefile.am:
+
+	  Do not distribute fix-libtool script (no longer needed).
+
+	* configure.ac:
+
+	  Remove libtool hackery and "mkdir classes".
+
+	* TODO:
+
+	  Adjust todo list.
+
+Fri Jul  8 02:11:39 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* Makefile.am:
+
+	  Descend into demos dir when installing.
+
+Fri Jul  8 02:09:39 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* demos/Makefile.am:
+	* demos/DeadlineMissHandler/Makefile.am:
+	* demos/PeriodicTimer/Makefile.am:
+
+	  Install demo sources and docs into DATADIR/doc/jrate/demos.
+
+Fri Jul  8 02:05:14 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* docs/Makefile.am:
+
+	  Support for installing local API docs (if "make api" is done in
+	  top-level).
+
+Thu Jul  7 21:52:48 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* NEWS:
+
+	  Duh, *fix* the cvs-pre versioning number.
+
+Thu Jul  7 21:31:18 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* NEWS:
+
+	  Add cvs-pre versioning so we can make dist in the meantime.
+
+	* INSTALL:
+
+	  Add a Gotcha about building local API docs.
+
+Thu Jul  7 21:25:43 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* docs/index.html:
+
+	  Fixed (local) api link.
+
+Thu Jul  7 21:23:43 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* docs/Template.html:
+	* docs/design.html:
+	* docs/docs.html:
+	* docs/extension.html:
+	* docs/history.html:
+	* docs/jrate.webprj:
+	* docs/memoryAreaFramework.html:
+	* docs/notes.html:
+	* docs/performances.html:
+	* docs/policydesign.html:
+	* docs/status.html:
+	* docs/todo.html:
+	* docs/Performance/jRate-RI-AAT.png:
+	* docs/Performance/jRate-RI-AEH-DD.png:
+	* docs/Performance/jRate-RI-DDPD.png:
+	* docs/Performance/jRate-RI-PTStats.png:
+	* docs/model/jrate.cpp.xmi:
+	* docs/model/jrate.java.xmi:
+
+	  Wholesale reworking of the docs/ directory.  Remove most of
+	  the documentation that came with the distribution, and instead
+	  point users to the online stuff.
+
+	* docs/Makefile.am:
+	* docs/index.html:
+
+	  Adjusted for the new way of things.
+
+	* docs/jrate.css:
+	* docs/print.css:
+	* docs/images/clocks.png:
+	* docs/api/index.html:
+
+	  Added for the new way of things.
+
+Thu Jul  7 01:18:44 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* configure.ac:
+
+	  No longer hack libtool.
+
+Wed Jul  6 07:53:38 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* INSTALL:
+	* Makefile.am:
+
+	  Don't build demos automatically.
+
+	* configure.ac:
+
+	  Update version.
+
+Tue Jul  5 11:01:34 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* configure.ac:
+
+	  Make this tree into jRate stable release 0.3.7-3.3.3.
+
+	  No longer require that source and build directories be
+	  different.
+
+	* config/libjrate-version:
+	* config/libjratert-version:
+
+	  No longer used; removed from tree.
+
+	* BUGS:
+	* TODO:
+
+	  Update BUGS and TODO lists.  Also split BUGS and TODO.
+
+	* INSTALL:
+
+	  Documentation updates.
+
+	* demos/Makefile.am:
+	* demos/DeadlineMissHandler/Makefile.am:
+	* demos/PeriodicTimer/Makefile.am:
+
+	  Remove linking against (now) non-existent libs libjRate.la and
+	  libjRateRT.la.
+
+	* README.cvs:
+
+	  automake 1.9 across the board now.
+
+	* NEWS:
+
+	  Updates for 0.3.7-3.3.3.
+
+	* Makefile.am:
+
+	  Updates to comments in Makefile.
+
+	* Makefile.cvs:
+
+	  Use automake 1.9 to match src/native/src/jrate/Makefile.cvs.
+
+	* src/native/src/Makefile.am:
+
+	  Fix to dist-hook target.
+
+Tue Jul  5 00:35:19 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* script/Makefile.am:
+
+	  Add crosstoool-0.35.patch to EXTRA_DIST.
+
+Tue Jul  5 00:35:19 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* script/crosstool-0.35.patch:
+	* INSTALL:
+
+	  Add a crosstool patch for the latest crosstool version.  Update
+	  INSTALL documentation to reflect new version.
+
+Tue Jul  5 00:22:20 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* script/crosstool-0.28-rc37.patch:
+
+	  Some fixes for the new build stuff.
+
+Fri Jul  1 14:39:30 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* configure.ac:
+	* Makefile.am:
+	* src/native/src/jrate/configure.ac:
+	* src/native/src/jrate/Makefile.am:
+	* src/javax/Makefile.am:
+	* script/crosstool-0.28-rc37.patch:
+	* src/native/gcj-patches/diff/jRate-patch.diff:
+	* src/native/gcj-patches/diff/jRate-patch.allocation_instrumentation.diff:
+
+	  Remove stage 3 of build process; instead put javax/realtime stuff
+	  under $(gcc_srcdir)/libjava/javax/realtime and patch libjava's
+	  Makefile.am to include these files in libgcj library.
+
+	  Also change natObject.cc in patches to make _Jv_ScopeAware*
+	  functions non-pointers (since those functions are now part of
+	  libgcj).
+
+	  Also set up JRATE_LIBGCJ_LDFLAGS to pass through to libgcj
+	  linking.
+
+	* src/native/src/javax/realtime/jRateSystem.cc:
+
+	  _Jv_ScopeAware* functions are now functions, not pointers
+	  (since the functions are now part of libgcj).
+
+Fri Jul  1 01:29:26 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* script/crosstool-0.28-rc37.patch:
+
+	  Remove DESTDIR from jRate stage3 make install.
+
+	  Also look for libjRate.so in ${TARGET}/lib/ rather than lib/.
+
+	* configure.ac:
+	* src/javax/Makefile.am:
+	* src/native/src/Makefile.am:
+	* src/native/src/jrate/Makefile.am:
+
+	  Install libraries in toolexeclib dir rather than lib dir.
+	  This should place libjRate*.so* in the same dir as libgcj*.so*,
+	  regardless of platform/sysroot/cross-building/building a cross,
+	  etc.
+
+Thu Jun 30 23:09:55 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* src/native/src/jrate/Makefile.am:
+
+	  Obscure multilib bugs arose due to various problems.  Fixed.
+
+	  Also change all-recursive etc. rules to all-am etc.  This
+	  will hopefully fix a problem where multilib versions of
+	  jRateCore aren't built.
+
+	  Also make sure to build javax/realtime classfiles only once,
+	  before recursing into libjRateCore multilib dirs (otherwise
+	  parallel builds can get really confused).
+
+	* BUGS:
+
+	  Update comments regarding support for multilibs, hash
+	  synchronization, and building jRate as a cross compiler.
+
+	* src/native/src/jrate/configure.ac:
+
+	  Ensure libjava/javax dir exists before creating symlink when
+	  configuring in multilibs.  Also fix multilib path issue.
+
+	* script/crosstool-0.28-rc37.patch:
+
+	  Change quoting of JRATE_MAKE_GCC_FLAGS.  Now things should work,
+	  but paths with embedded spaces in them might not work.  :-(
+
+	  Also change location where libjRate.so is looked for (as an abort
+	  condition in script).
+
+	* src/native/src/jrate/Makefile.cvs:
+
+	  Use automake-1.9 instead of automake-1.7.  Necessary because
+	  of nasty bugs and shortcomings in 1.7.
+
+	* README.cvs:
+
+	  Document new requirement on automake 1.9.
+
+	* src/native/gcj-patches/diff/jRate-patch.diff:
+	* src/native/gcj-patches/diff/jRate-patch.allocation_instrumentation.diff:
+
+	  Added -ldl to libgcj link.  Rebuild patches.
+
+	* configure.ac:
+
+	  Remove JRATE_NO_CROSS_COMPILING_ALLOWED macro call.
+	  (For the new build system, we now want to permit it.)
+
+	* INSTALL:
+
+	  Update comments on building jRate as a cross compiler.
+
+	* VERSION.ac:
+	* VERSION-unstable.ac:
+
+	  Wording changes.
+
+	* VERSION-snapshot.ac:
+	* VERSION-beta.ac:
+
+	  New VERSION file versions for snapshot and beta releases.
+
+	* Makefile.cvs:
+
+	  Now reports version number and status (stable, snapshot, beta,
+	  development) when you make -f Makefile.cvs.
+
+	* configure.ac:
+
+	  Support for beta/snapshot releases, also now auto-adorns the base
+	  version number with beta tag or snapshot date (or "cvs" for
+	  development versions).
+
+	* README.cvs:
+
+	  Some updates to documentation.
+
+Sun Apr 24 12:21:39 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* Makefile.am:
+
+	  Fix "api" target.
+
+Fri Apr  1 15:24:43 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	ALL MERGED FROM AUTOMAKE_EXPERIMENTAL BRANCH:
+
+	* Wholesale restructuring of jRate build process.  All Makefiles
+	  removed, replaced with Makefile.am's and configure.ac.  Other
+	  files deemed no longer relevant.
+
+	* src/native/gcj-patches/diff/jRate-patch.allocation_instrumentation.diff:
+	* src/native/gcj-patches/diff/jRate-patch.diff:
+
+	  Tell libjava/Makefiles where libjRateCore is nowadays.
+
+	  Adjustments to libjava's Makefile to pull in correct includes.
+
+	  Fixes to make libtool happy.
+
+	  Fixes to libgcj linking that succeeded normally but failed on
+	  relink(?!), causing libgcj.so to be absent from installation.
+
+	  Fixes to GCC's top-level config-ml.in.  This fixes GCC bug#11526
+	  and gets multilib support working with target libs using
+	  autoconf 2.5.x (...like libjRateCore!).
+
+	  Build process fixes (build libjRateCore as a subdir, more
+	  -I include flags, etc.).
+
+	  Re-enable HASH_SYNCHRONIZATION code.  All of it is #ifdefed, so
+	  should be no different from before if you
+	  --disable-hash-synchronization.
+
+	  Also, allocation_instrumentation patch was missing the config-ml
+	  patch for multilib support for autoconf-2.5 target lib dirs.
+	  Fixed.
+
+	  Re-enabled JVMPI and HASH_SYNCHRONIZATION stuff, among other
+	  things.  Guard a few things with HAVE_JRATE_GC.  Add
+	  --enable-pthread-self-cache option to libgcj's configure so that
+	  we can turn it off along with hash synchronization.
+
+	* BUGS:
+
+	  Add other notes.
+
+	* src/javax/realtime/PriorityParameters.java:
+
+	  Spacing fixes in javadoc comments.
+
+	* src/native/src/jrate/mem/Finalizer.h:
+	* src/native/src/jrate/mem/IMemoryArea.h:
+	* src/native/src/jrate/mem/MallocAllocator.h:
+
+	  Spacing and typo fixes.
+
+	* src/native/gcj-patches/jRate-gc.cc
+
+	  Add a few methods so that libgcj links when building with hash
+	  synchronization; also fix spacing.
+
+	* src/native/gcj-patches/jRate-gc.h:
+
+	  Add a (silly) definition of GC_finalization_proc.
+	  Should consider #ifdef-guarding uses of this type instead.
+
+	* src/native/gcj-patches/diff/jRate-patch.allocation_instrumentation.desc
+
+	  Description of allocation_instrumentation patch.
+
+	* src/native/gcj-patches/diff/README.allocation_instrumentation:
+
+	  Updated notes for allocation instrumentation patch.
+
+	* INSTALL:
+
+	  Futher clarification:  You must use GNU Make!  There is no 0ther!
+
+	  Description of how to build jRate as a cross-compiler, and
+	  why you *can't* build jRate *with* a cross-compiler.
+
+	* src/native/src/jrate/mem/Finalizer.h:
+
+	  Fix printf format warning.
+
+	* src/native/src/javax/realtime/HighResolutionTime.cc:
+
+	  Make hashCodeImpl() respect the authoritah of 64-bit!
+
+	* NEWS:
+
+	  Add a few lines to make automake's "check-news" happy.
+
+	* src/native/src/javax/realtime/HighResolutionClock.cc:
+
+	  Make hashCodeImpl() respect the authoritah of 64-bit!
+
+	  Clean up arch-alternate preprocessor conditionals, also make
+	  alpha, sparc, and x86_64 complain about being unimplemented.
+
+	* src/native/src/jrate/synch/Atomic.h:
+
+	  First crack at alpha, sparc, and x86_64 support.
+
+	* script/crosstool-0.28-rc37.patch:
+
+	  Distribute a patch to Dan Kegel's crosstool (kegel.com/crosstool/)
+	  to make it support jRate.
+
+	* demos/DeadlineMissHandler/DeadlineMissHandlerDemo.java:
+	* demos/PeriodicParameters/PeriodicParametersDemo.java:
+	* demos/PeriodicThread/PeriodicThreadDemo.java:
+	* demos/OutOfMemory/OutOfMemoryDemo.java:
+
+	  Missing imports.
+
+	* src/native/src/javax/realtime/RealtimeThread.cc:
+
+	  Needed an #include.
+
+Wed Mar 30 13:29:55 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* src/native/gcj-patches/diff/jRate-patch.allocation_instrumentation.diff:
+	* src/native/gcj-patches/diff/jRate-patch.diff:
+
+	  Support for meaningful Thread.setPriority() on RealtimeThreads.
+	  Ugly.  Real ugly.  See:
+	      http://www.rtsj.org/specjavadoc/AlteredStdJava.html
+
+	* BUGS:
+
+	  Add a note about the fact that thread parameters can't be
+	  shared presently.
+
+Sun Jan 30 20:33:15 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* BUGS:
+
+	  Refactor BUGS items (separate BUGS and TODO) and add a bunch.
+
+Tue Jan 25 18:02:49 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* README:
+	* NEWS:
+
+	  Add NEWS file of user-visible changes between versions.
+
+	* BUGS:
+
+	  Add a few TODO items.
+
+	* ChangeLog:
+
+	  One more spacing fix.
+
+Tue Jan 25 17:58:26 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* ChangeLog:
+
+	  Fix spacing and other ChangeLog formatting for previous
+	  entries.  Add 'Local Variables:' for emacs's benefit.
+
+Mon Jan 24 05:48:32 2005  Morgan Deters  <mdeters@cse.wustl.edu>
+
+	* src/native/include/mmake.py:
+
+	  Fix stupid typo that REALLY broke things.
+
+Mon Jan 24 05:42:57 2005  Morgan Deters  <mdeters@cse.wustl.edu>
+
+	* src/native/include/mmake.py:
+
+	  Fix Makefile-making script so that it doesn't include
+	  hidden files (dot files), like those that CVS sometimes
+	  leaves laying around, or ~-backup files, like those that
+	  emacs sometimes leaves laying around.
+
+Mon Jan 24 05:22:03 2005  Morgan Deters  <mdeters@cse.wustl.edu>
+
+	* BUGS:
+
+	  Remove erroneous "pcesdemo" tag from BUGS list.
+
+Mon Jan 24 05:16:34 2005  Morgan Deters  <mdeters@cse.wustl.edu>
+
+	* INSTALL:
+
+	  Spelling fix; add note about common libtool build problems.
+
+	* script/libtool-hack/libtool:
+
+	  Wrapper script for libtool to remove --tag arguments.
+	  Necessary for building jRate with older libtools.
+
+Mon Jan 24 03:41:15 2005  Morgan Deters  <mdeters@cse.wustl.edu>
+
+	ALL MERGED FROM PCESDEMO BRANCH:
+
+	* src/native/gcj-patches/diff/README.allocation_instrumentation:
+	* src/native/gcj-patches/diff/jRate-patch.allocation_instrumentation.diff:
+
+	  Add allocation_instrumentation alternative patch to get
+	  an allocation log out.
+
+	* BUGS:
+
+	  Added file to list known bugs in jRate.
+
+	* demos/ScopedPortal/ScopedPortal.java:
+
+	  Re-added previous functionality (had been commented out).
+	  This test hangs, due to a finalization bug (documented in
+	  BUGS).
+
+	* script/jRate-env.sh:
+	* src/native/gcj-patches/make-jRateGCC.sh:
+
+	  Add (commented) config option for SMP targets.
+
+	  Make build process cleaner for building with/without debugging
+	  symbols/optimization/etc.
+
+	  Build process fixes for building jRate on Linux/PowerPC.
+
+	  Added JRATE_BOOTSTRAP_LEAN envariable for build process.
+	  Especially useful for situations like the SourceForge compile
+	  farm where we should limit disk usage to a few hundred
+	  megabytes.
+
+	  Added JRATE_DONT_BOOTSTRAP envariable for build process.
+
+	  Make build process cleaner for building with/without debugging
+	  symbols/optimization/etc.
+
+	* Makefile:
+
+	  Make build process cleaner for building with/without debugging
+	  symbols/optimization/etc.
+
+	* Makefile:
+	* script/checkgcc.sh:
+
+	  Added support for checking gcc source version.
+
+	* src/native/src/Makefile.javax:
+	* src/native/src/Makefile.jrate:
+	* src/native/src/Makefile.jratecpp:
+	* src/native/gcj-patches/make-jRateGCC.sh:
+
+	  Propagate -DJRATE_HAS_SMP=1 where necessary.
+
+	* Makefile:
+	* src/native/src/jrate/sys/genSysInfo.py:
+
+	  Build process fixes for building jRate on Linux/PowerPC.
+
+	* src/native/src/Makefile.jrate:
+
+	  Added a missing --tag=CXX, necessary for the libtool on
+	  Debian/unstable.
+
+	  Documentation/clarification/spelling fixes.
+
+	* src/native/gcj-patches/jRate-gc.cc:
+
+	  Allow environment variable JRATE_METHOD_MEMORY_SIZE to
+	  determine method area size.
+
+	  16MB default on MethodAreaMemory rather than 2MB.
+
+	* src/native/src/jrate/binding/java/MemoryAreaBufferProvider.cc:
+
+	  Allow environment variable JRATE_SCOPES_ARENA_SIZE to
+	  determine scopes arena size.
+
+	  Now #include <jrate/Config.h>
+
+	* src/native/src/jrate/jRate.h:
+
+	  Add missing JRATE_SCOPES_ARENA_SIZE_ENV_VAR #define (oops)
+
+	* src/native/src/jrate/binding/java/OutOfMemoryHandler.cc:
+
+	  Better reporting when an OutOfMemoryError occurs in a
+	  primordial region.
+
+	* src/native/src/javax/realtime/HighResolutionClock.cc:
+
+	  PowerPC builds should now compile + link OK.
+
+	* src/native/gcj-patches/diff/jRate-patch.diff:
+
+	  Regenerated patch.
+
+	  Added general support for Java class library allocating
+	  memory in a scope-aware fashion through _Jv_ScopeAwareNew(),
+	  _Jv_ScopeAwareNewArray(), _Jv_ScopeAwareRealloc(), and
+	  Java-visible calls in java.lang.Object.
+
+	  Scope-aware fixes included for java.lang.ThreadLocal,
+	  java.lang.InheritableThreadLocal, java.lang.Runtime,
+	  java.lang.String, java.lang.StringBuffer, and (partially)
+	  java.util.WeakHashMap.
+
+	  Fixed gcj bug where it didn't deal properly with looking up
+	  superclass methods marked synthetic in bytecode.  The fix
+	  already appears in gcc's CVS HEAD.
+
+	  Removed _Jv_Throw()'s check for exceptions escaping their
+	  scopes (now handled by ThrowBoundaryError).
+
+	  Added StringBuffer.append(StringBuffer).  Doesn't
+	  functionally add anything beyond StringBuffer.append(Object),
+	  but useful to have when compiling .class files compiled
+	  against 1.4 Java libs.
+
+	* src/javax/realtime/Timer.java:
+	* src/javax/realtime/Clock.java:
+	* src/javax/realtime/HighResolutionClock.java:
+	* src/javax/realtime/PeriodicTimer.java:
+	* src/javax/realtime/RealtimeClock.java:
+	* src/javax/realtime/RealtimeClockPeriodicTimerImpl.java:
+
+	  Spec compliance fixes to Timer and Clock APIs.  Some
+	  functionality may yet be missing (e.g. creating timers with
+	  an AbsoluteTime start time argument), but the APIs match what
+	  the spec says.
+
+	* demos/Makefile:
+
+	  Take account of new JRATE_MAKE_FLAGS setting from script/jRate-env.sh
+
+	* src/native/src/jrate/binding/java/LTAllocator.h:
+	* src/native/src/jrate/binding/java/VTAllocator.h:
+
+	  Fix incorrect #includes.
+
+	* src/javax/realtime/RealtimeThread.java:
+
+	  Add scope cycle check when creating a new RealtimeThread
+	  with an explicit MemoryArea to run in.
+
+	  Documentation/clarification/spelling fixes.
+
+	* src/native/src/jrate/mem/IMemoryArea.h:
+
+	  Documentation/clarification/spelling fixes.
+
+	* src/native/src/javax/realtime/RealtimeThread.cc:
+
+	  Add InaccessibleAreaException check.  Thrown if you try to
+	  call executeInArea() for a MemoryArea not on your scope stack.
+
+	* src/native/src/javax/realtime/ScopedMemory.cc:
+
+	  Add check on getPortal() to ensure you're in the area whose
+	  portal you are trying to get.
+
+	* src/native/src/jrate/sched/ScopeStack.h:
+
+	  Fix two ref counting bugs: one where a memory area didn't
+	  get its reference count incremented (and thus could be
+	  collected while still active), and another where primordial
+	  areas were getting reference counted unnecessarily.
+
+	* src/javax/realtime/MemoryAccessError.java:
+	* src/javax/realtime/src.lst:
+
+	  Added MemoryAccessError class; spec says this is thrown
+	  if a no heap thread touches a heap, etc.  Right now, jRate
+	  just throws it if you call ->newInstance() or ->newArray()
+	  on a scope you haven't entered.
+
+	* src/javax/realtime/MemoryArea.java:
+
+	  Added new unchecked versions of newInstance() and newArray().
+
+	* src/native/src/javax/realtime/MemoryArea.cc
+
+	  Implement the checks and throw MemoryAccessError as
+	  necessary.
+
+	* src/native/src/javax/realtime/jRateSystem.cc:
+
+	  Added _Jv_ScopeAwareNew, _Jv_ScopeAwareNewArray,
+	  _Jv_ScopeAwareRealloc implementations.
+
+Wed Dec 22 16:43:13 2004  Morgan Deters  <mdeters@cse.wustl.edu>
+
+	* script/Makefile.api
+
+	  Links at bottom now open up in _top (rather than javadoc frame).
+
+Wed Dec 22 16:16:03 2004  Morgan Deters  <mdeters@cse.wustl.edu>
+
+	* script/Makefile.api
+
+	  Remove extra quotes.
+
+Wed Dec 22 16:09:12 2004  Morgan Deters  <mdeters@cse.wustl.edu>
+
+	* script/Makefile.api
+	* src/javax/realtime/SporadicParameters.java
+	* src/javax/realtime/Timer.java
+
+	  More javadoc fix-ups.
+
+	* ChangeLog:
+
+	  Fixed old ChangeLog entries that were incorrectly-formatted
+	  (missing year, etc.).
+
+Wed Dec 22 15:53:33 2004  Morgan Deters  <mdeters@cse.wustl.edu>
+
+	* src/javax/realtime/AperiodicParameters.java:
+	* src/javax/realtime/AsynchronouslyInterruptedException.java:
+	* src/javax/realtime/BoundAsyncEventHandler.java:
+	* src/javax/realtime/MemoryArea.java:
+	* src/javax/realtime/POSIXSignalHandler.java:
+	* src/javax/realtime/PeriodicParameters.java:
+	* src/javax/realtime/PooledAsyncEventHandler.java:
+	* src/javax/realtime/PriorityScheduler.java:
+	* src/javax/realtime/ProcessingGroupParameters.java:
+	* src/javax/realtime/RealtimeThread.java:
+	* src/javax/realtime/Scheduler.java:
+	* src/javax/realtime/ThreadedAsyncEventHandler.java:
+	* src/javax/realtime/ThrowBoundaryError.java:
+	* src/javax/realtime/Timer.java:
+	* src/javax/realtime/util/PooledExecutor.java:
+	* src/javax/realtime/util/ThreadBoundExecutor.java:
+	* src/javax/realtime/util/ThreadedExecutor.java:
+	* script/Makefile.api
+
+	  Fix javadoc errors and warnings.
+
+Wed Dec 22 05:17:47 2004  Morgan Deters  <mdeters@cse.wustl.edu>
+
+	* docs/docs.html:
+
+	  Fix jRate home page URL.
+
+	* script/Makefile.api:
+
+	  Add a -link option to javadoc and clean-up some stuff in
+	  the script.
+
+Mon Dec 20 15:47:08 2004  Morgan Deters  <mdeters@cse.wustl.edu>
+
+	* AUTHORS:
+
+	  Credit recent contributors.
+
+Sun Oct 31 14:57:30 2004  Morgan Deters  <mdeters@cse.wustl.edu>
+
+	* src/native/src/jrate/synch/Atomic.h:
+	* src/javax/realtime/HighResolutionClock.java:
+
+	  First crack at PowerPC port.  Guarded x86 code with
+	  __i386__ and added __powerpc__ sections with appropriate
+	  code for PowerPC.  HighResolutionClock not yet implemented
+	  for ppc.
+
+	* src/native/gcj-patches/diff/jRate-patch.diff:
+
+	  Regenerated patch.  Fixed weird, sporadic dual-call problem
+	  with write barriers by wrapping RHS of write-barriered exprs
+	  with SAFE_EXPR to ensure side-effects are only executed
+	  once.  TODO: Convince self that this doesn't also need to
+	  be done for .class->.o translation in gcc/java/expr.c.
+
+	* src/native/src/jrate/jRate.h:
+
+	  More (safety parens) in #define macros
+
+	* src/native/src/javax/realtime/PriorityScheduler.cc:
+
+	  Removed unused 'myFreakingInt' global.
+
+Wed Oct 27 15:57:15 2004  Morgan Deters  <mdeters@cse.wustl.edu>
+
+	* src/native/gcj-patches/diff/jRate-patch.diff:
+
+	  Regenerated patch.  Added -fno-scope-check option
+	  (and associated flags, etc.) to jRate-gcj to
+	  omit the scope write barriers on user request.
+	  Also fixed build_static_field_write_barrier() in
+	  expr.c to stop jc1 segfaulting on some .class files.
+
+	* src/native/src/javax/realtime/ScopedMemory.cc:
+
+	  Added notes about RTSJ spec and jRate compliance.
+
+Tue Oct 26 16:25:03 2004  Morgan Deters  <mdeters@cse.wustl.edu>
+
+	* demos/Makefile:
+
+	  Added link to new OutOfScopeException demo so it gets built.
+
+Tue Oct 26 11:57:17 2004  Morgan Deters  <mdeters@cse.wustl.edu>
+
+	* src/javax/realtime/ThrowBoundaryError.java:
+	* src/javax/realtime/src.lst:
+
+	  New javax.realtime class, as per the online RTSJ API pages, to
+	  handle out-of-scope exception propagation.
+
+	* src/native/src/javax/realtime/MemoryArea.cc:
+
+	  Added MemoryArea::guardedRun() to check for exception objects
+	  that attempt to propagate beyond their allocating scope.  Throws
+	  a ThrowBoundaryError in such cases.
+
+	* src/javax/realtime/PrivateScopedMemory.java:
+	* src/javax/realtime/ScopedMemory.java:
+	* src/javax/realtime/MemoryArea.java:
+
+	  Added calls to the the new guardedRun() methods (instead
+	  of logic.run()).
+
+	* demos/OutOfScopeException/OutOfScopeException.java:
+	* demos/OutOfScopeException/Makefile:
+
+	  New demo to test jRate behavior when exceptions are propagated
+	  beyond their own scope (verify that a ThrowBoundaryError is
+	  thrown).
+
+	* src/native/src/jrate/mem/IMemoryArea.h:
+
+	  Fixed IMemoryArea<>::checkReferenceFrom() documentation,
+	  which was backwards.
+
+Mon Oct 25 18:16:16 2004  Morgan Deters  <mdeters@cse.wustl.edu>
+
+	* src/native/src/jrate/jRate.h:
+
+	  Added safety parentheses for macro arguments.
+
+	* src/native/gcj-patches/diff/jRate-patch.diff:
+
+	  Another patch regeneration.  Fixed expand_java_field_op()
+	  to handle static as well as non-static fields (in compiling
+	  from Java bytecode).
+
+Sun Oct 24 16:32:02 2004  James Brodman  <jcb1@cse.wustl.edu>
+
+	* src/native/gcj-patches/diff/jRate-patch.diff:
+	* script/getgcc.sh
+
+	  Regenerated patch.  Axed decoder cache for BytesToUnicode.
+	  Fixed getgcc.sh to get the 3.3.3 sources.
+
+Sat Oct 23 19:05:35 2004  Morgan Deters  <mdeters@cse.wustl.edu>
+
+	* src/native/gcj-patches/diff/jRate-patch.diff:
+
+	  Regenerated patch.  Fixed compilation from Java bytecode.
+	  Specifically, disable injection of _Jv_OnMethodEnter and
+	  _Jv_OnMethodExit calls around methods compiled from bytecode
+	  in decl.c (they don't appear to do anything at present anyway).
+
+Sat Oct 23 17:58:31 2004  Morgan Deters  <mdeters@cse.wustl.edu>
+
+	* src/native/gcj-patches/copy-sources.sh
+	* script/compile.sh
+	* script/compile-no-patch.sh
+
+	  Build process fixes: spelling fixes, and made build process
+	  bomb out early if something fails (e.g. if the patch fails
+	  it won't go on and try to build---makes it easier to find
+	  build problems).
+
+Thu Oct 21 12:43:31 2004  Morgan Deters  <mdeters@cse.wustl.edu>
+
+	* src/native/src/javax/realtime/RealtimeThread.cc
+
+	  General clean up from yesterday's commit.
+
+Wed Oct 20 21:15:38 2004  Morgan Deters  <mdeters@cse.wustl.edu>
+
+	* src/native/src/javax/realtime/RealtimeThread.cc
+
+	  Fixed a problem where (client) exceptions would propagate
+	  through RealtimeThread::executeInMemoryArea() and cause
+	  the ScopeStack for the thread not to be properly
+	  re-established.  Added ScopeStackGuard guard class.
+	  Clean up forthcoming.
+
+Mon Oct 18 10:11:11 2004  James Brodman  <jcb1@cse.wustl.edu>
+
+	* src/native/src/javax/realtime/MemoryArea.cc
+
+	  Added support for prims for newArray
+
+Thu Sep 16 22:43:27 2004  Angelo Corsaro  <corsaro@cse.wustl.edu>
+
+	* demos/HelloWorld/Makefile:
+	* demos/HelloWorld/HelloWorld.java:
+
+	  Hello World Demo.
+
+Wed Sep 15 22:20:21 2004  Angelo Corsaro  <corsaro@cse.wustl.edu>
+
+	* src/native/src/jrate/utils/Units.h:
+
+	  Added more units fomr the International System.
+
+	* src/native/src/jrate/utils/TypeWrapper.h:
+
+	  A type wrapper.
+
+	* src/native/src/jrate/utils/Assertions.h:
+	* src/native/src/jrate/utils/Assertions.h:
+
+	  Added support for compile time assertions.
+
+	* src/native/src/jrate/sys/TimerManager.h:
+	* src/native/src/jrate/sys/Timer.h:
+	* src/native/src/jrate/sys/TimeValue.h:
+
+	  Timer management improvements.
+
+	* src/native/src/jrate/sys/SignalSet.h:
+	* src/native/src/jrate/sys/SignalManager.h:
+	* src/native/src/jrate/sys/ISignalHandler.h:
+	* src/native/src/jrate/sys/Command.h:
+	* src/native/src/jrate/sys/Runtime.h:
+
+	  Finalized support for POSIX signals handling.
+
+
+
+	* src/native/src/jrate/synch/Synchronizer.h:
+	* src/native/src/jrate/synch/Semaphore.h:
+	* src/native/src/jrate/synch/Mutex.h:
+	* src/native/src/jrate/synch/Mutex.cc:
+	* src/native/src/jrate/synch/Guard.h:
+	* src/native/src/jrate/synch/EventVariable.h:
+	* src/native/src/jrate/synch/AtomicCounter.h:
+
+	  Refactoring of synchronizers.
+
+	* src/native/src/jrate/sched/Types.h:
+	* src/native/src/jrate/sched/Thread.h:
+	* src/native/src/jrate/sched/TSSScope.h:
+	* src/native/src/jrate/sched/TSS.h:
+	* src/native/src/jrate/sched/ScopeStack.h:
+	* src/native/src/jrate/sched/Schedulable.h:
+	* src/native/src/jrate/sched/Runnable.h:
+	* src/native/src/jrate/sched/PriorityScheduler.h:
+	* src/native/src/jrate/sched/PriorityParameters.h:
+
+	  Refactoring and improvement of threading subsystem.
+
+	* src/native/src/jrate/sched/SingleThreadedExecutor.h:
+	* src/native/src/jrate/sched/PooledExecutor.h:
+	* src/native/src/jrate/sched/IExecutor.h:
+	* src/native/src/jrate/sched/IChannel.h:
+	* src/native/src/jrate/sched/Config.h:
+	* src/native/src/jrate/sched/Channel.h:
+
+	  Thread pools implementation.
+
+	* src/native/src/jrate/meta/IF.h:
+
+	  Conditional construct needed for template meta-programming.
+
+
+	* src/native/src/jrate/mem/StaticTypeSizeAligner.h:
+	* src/native/src/jrate/mem/StackAllocator.h:
+	* src/native/src/jrate/mem/SegregatedBufferProvider.h:
+	* src/native/src/jrate/mem/ObjectInitializer.h:
+	* src/native/src/jrate/mem/MemoryArea.h:
+	* src/native/src/jrate/mem/MemLockingPolicy.h:
+	* src/native/src/jrate/mem/MallocBufferProvider.h:
+	* src/native/src/jrate/mem/MallocAllocator.h:
+	* src/native/src/jrate/mem/MMapBufferProvider.h:
+	* src/native/src/jrate/mem/IMemoryArea.h:
+	* src/native/src/jrate/mem/Finalizer.h:
+	* src/native/src/jrate/mem/DisplayRefChecker.h:
+	* src/native/src/jrate/mem/Buffer.h:
+	* src/native/src/jrate/mem/Allocator.h:
+
+	  Performance improvements.
+
+	* src/native/src/jrate/binding/java/OutOfMemoryHandler.h:
+	* src/native/src/jrate/binding/java/ObjectInitializer.h:
+	* src/native/src/jrate/binding/java/MemoryArea.h:
+	* src/native/src/jrate/binding/java/LTAllocator.h:
+	* src/native/src/jrate/binding/java/IMemoryArea.cc:
+	* src/native/src/jrate/binding/java/Finalizer.h:
+
+	  Refactored binding layer.
+
+	* src/native/src/Makefile.jrate:
+	* src/native/src/Makefile.javax:
+	* src/javax/Makefile:
+
+	  Added support for latest version of libtool.
+
+	* src/javax/realtime/AsyncEventHandler.java:
+	* src/javax/realtime/AsyncEvent.java:
+
+	  Added support for caching of subsequent events.
+
+	* script/getgcc.sh:
+
+	  Updated cvs root for downloading gcc from the GNU site.
+
+	* docs/model/jrate.cpp.xmi:
+
+	  Updated UML model.
+
+	* config/jRate/gcc.mandrake.GNU:
+	* config/jRate/gcc.fedora.GNU:
+	* config/jRate/gcc.GNU:
+	* config/jRate/Compiler.GNU:
+	* config/jRate/Common.Mandrake.GNU:
+	* config/jRate/gcc.mandrake.GNU:
+	* config/jRate/gcc.fedora.GNU:
+
+	  Updated configuration file for supporting Mandrake and Fedora.
+
+	* VERSION:
+	* INSTALL:
+
+	  Updated documentation for current version.
+
+
+Wed Sep 15 02:02:57 2004  Angelo Corsaro  <corsaro@cse.wustl.edu>
+
+	* src/native/src/jrate/synch/Mutex.h:
+	* src/native/src/jrate/sched/Types.h:
+	* src/native/src/jrate/sched/Types.cc:
+	* src/native/src/jrate/sched/Thread.h:
+	* src/native/src/jrate/sched/Thread.cc:
+	* src/native/src/jrate/sched/SingleThreadedExecutor.h:
+	* src/native/src/jrate/sched/PriorityScheduler.h:
+	* src/native/src/jrate/sched/PriorityScheduler.cc:
+	* src/native/src/jrate/sched/PooledExecutor.h:
+	* src/native/src/jrate/mem/SegregatedBufferProvider.h:
+	* src/native/src/jrate/mem/MallocBufferProvider.h:
+	* src/native/src/jrate/mem/MMapBufferProvider.h: m
+	* src/native/src/jrate/binding/java/MemoryAreaBufferProvider.h:
+	* src/native/src/jrate/binding/java/IMemoryArea.h:
+
+	  Made some improvements, and change to have the code compile fine
+	  with gcc 3.4.x series.
+
+	* src/native/src/Makefile.jrate: Updated to reflect latest libtool
+	  version needs (e.g. use of --mode option).
+
+	* config/jRate/Compiler.GNU: Updated path to use JRATE_HOME
+	  environment variable.
+
+Thu Mar 25 04:42:00 2004  Angelo Corsaro  <corsaro@cse.wustl.edu>
+
+	* src/native/src/jrate/sys/TimerManager.h:
+	* src/native/src/jrate/sys/TimeValue.h:
+	* src/native/src/jrate/sys/TimeValue.cc:
+
+	  Fixed condition in the operator<.
+
+	* docs/model/jrate.java.xmi:
+	* docs/model/jrate.cpp.xmi:
+
+	  jRate's Umbrello Modes.
+
+	* config/jRate/Common.GNU: Added -I/usr/include/gcc-3.3.2 option
+	  for fixing compilation errors on Mandrake.
+
+Fri Mar 19 02:03:20 2004  Angelo Corsaro  <corsaro@cse.wustl.edu>
+
+	* src/native/src/jrate/synch/Mutex.h: Defined typedefs for
+	  RECURSIVE and FAST mutexes.
+
+	* src/native/src/jrate/synch/EventVariable.h:
+	* src/native/src/jrate/synch/EventVariable.cc:
+
+	  Made event variable resiliant toward multiple signals. On some
+	  NTPL implementatnions it seems that severa notify of an event
+	  variable cause weird behaviour of the variable its self.
+	  The new implementation prevents that the event condition
+	  variable is ever notified more than once,
+
+	* src/native/src/jrate/sched/Types.h:
+	* src/native/src/jrate/sched/Thread.h:
+	* src/native/src/jrate/sched/Runnable.h:
+	* src/native/src/jrate/sched/Runnable.cc:
+	* src/native/src/jrate/sched/PriorityScheduler.h:
+
+	  Misc changes.
+
+
+	* demos/Makefile: Added directive for compiling new tests.
+
+Fri Mar 19 01:55:05 2004  Angelo Corsaro  <corsaro@cse.wustl.edu>
+
+	* src/native/src/jrate/sys/TimerManager.h:
+	* src/native/src/jrate/sys/TimerManager.cc:
+	* src/native/src/jrate/sys/Timer.h:
+	* src/native/src/jrate/sys/Timer.cc:
+	* src/native/src/jrate/sys/TimeValue.h:
+	* src/native/src/jrate/sys/TimeValue.cc:
+
+	  Classes that provide a scalable timers implementation to jRate.
+
+	* src/native/src/jrate/sys/Config.h:
+	* src/native/src/jrate/sys/Config.cc:
+
+	  jRate SyS Configuration file.
+
+	* src/native/src/jrate/sys/Command.h:
+
+	  Command Pattern Implementation.
+
+	* src/native/src/jrate/synch/Semaphore.h:
+	* src/native/src/jrate/synch/Semaphore.cc:
+
+	  POSIX Semaphore Wrapper.
+
+	* src/native/src/jrate/sched/IExecutor.h:
+	* src/native/src/jrate/sched/SingleThreadedExecutor.h:
+	* src/native/src/jrate/sched/PooledExecutor.h:
+
+	  Executors implementation.
+
+	* src/native/src/jrate/sched/Schedulable.h:
+
+	  RTSJ-like Schedulable interface.
+
+	* src/native/src/jrate/sched/IChannel.h:
+	* src/native/src/jrate/sched/Channel.h:
+
+	  Channel abstraction implementation. Channels are a mean for
+	  thread to exchange data.
+
+	* src/native/src/jrate/meta/IF.h:
+
+	  Removed unnecessary namespace specification.
+
+	* src/native/src/Makefile.jratecpp:
+	* src/native/src/Makefile:
+
+	  Added support for a pure C++ version of the jRate Core.
+
+Fri Mar 19 01:51:24 2004  Angelo Corsaro  <corsaro@cse.wustl.edu>
+
+	* src/javax/realtime/RealtimeThread.java: Added flags that are
+	  needed in order to implement the overrun handlers.
+
+	* src/native/gcj-patches/diff/jRate-patch.diff: Regenerated
+	  patches for GCC 3.3.3
+
+	* script/getgcc.sh: Updated GCC  URL.
+
+Tue Mar  2 00:48:05 2004  Angelo Corsaro  <corsaro@cse.wustl.edu>
+
+	* src/native/src/javax/realtime/POSIXSignalHandler.cc:
+	* src/javax/realtime/POSIXSignalHandler.java:
+
+	  Finished the implementation of RTSJ POSIX signal handlers.
+	  The implementation has been done in such a way to avoid having
+	  to limit the kind of code that RTSJ developer can execute while
+	  handling a signal.
+
+	* src/javax/realtime/src.lst: Added new source file
+	  POSIXSignalHandler.java.
+
+	* src/javax/realtime/AsyncEvent.java:
+	* src/native/src/jrate/sys/SignalManager.h:
+	* src/javax/realtime/AsyncEvent.java:
+
+	  Indentation.
+
+
+Sat Feb 28 17:23:42 2004  Angelo Corsaro  <corsaro@cse.wustl.edu>
+
+	* VERSION: Updated Version
+
+	* Released beta version 0.3.4-3.3.2
+
+Sat Feb 28 17:13:03 2004  Angelo Corsaro  <corsaro@cse.wustl.edu>
+
+	* src/native/gcj-patches/diff/jRate-patch.diff: Updated gcc patches.
+
+Sat Feb 28 16:26:02 2004  Angelo Corsaro  <corsaro@cse.wustl.edu>
+
+	* script/python/memoryArea.py:
+	* script/python/jRateTest.py:
+	* demos/MemoryArea/run.py:
+
+	  Update scripts so to have the test specific class residing in
+	  the run.py class.
+
+	  Added #!/usr/bin/python to the run.py so that it can be run as a
+	  shell script.
+
+Sun Feb 22 19:31:21 2004  Angelo Corsaro  <corsaro@cse.wustl.edu>
+
+	* script/python/memoryArea.py:
+	* script/python/jRateTest.py:
+	* demos/MemoryArea/run.py:
+
+	  Started developement of scripts that will eventually automate
+	  the execution of both demos and unit tests.
+
+	* Updated header
+
+Mon Jan 19 17:34:58 2004  Angelo Corsaro  <corsaro@cse.wustl.edu>
+
+	* src/native/src/jrate/mem/ScopeStack.h:
+	* src/native/src/jrate/mem/ScopeStack.cc:
+
+	  Removed.
+
+Thu Nov 27 15:52:55 2003  Angelo Corsaro  <corsaro@cse.wustl.edu>
+
+	* src/native/src/jrate/binding/java/LTAllocator.h: Removed some
+	  old macros which were not used any more.
+
+	* demos/MemoryArea/MemoryAreaDemo.java: Added demo case for [CT|LT]PrivateMemory.
+
+Fri Nov 21 17:00:42 2003  Angelo Corsaro  <corsaro@doc.ece.uci.edu>
+
+	* src/native/src/javax/realtime/VTMemory.cc:
+	* src/native/src/javax/realtime/ScopedMemory.cc:
+	* src/native/src/javax/realtime/MemoryArea.cc:
+	* src/native/src/javax/realtime/LTMemory.cc:
+	* src/native/src/javax/realtime/Arena.cc:
+
+	  Changed some jmv.h include to cni.h.
+
+	* config/jRate/Common.RedHat.GNU:
+	* config/jRate/Common.Mandrake.GNU:
+	* config/jRate/Common.GNU:
+
+	  Added level of indirection in choosing the appropriate platform
+	  configuration.
+
+Sun Nov 16 14:43:59 2003  Angelo Corsaro  <corsaro@cse.wustl.edu>
+
+	* src/native/src/jrate/binding/java/LTPrivateMemory.h:
+	* src/native/src/jrate/binding/java/LTPrivateAllocator.h:
+	* src/native/src/jrate/binding/java/CTPrivateMemory.h:
+	* src/native/src/jrate/binding/java/CTPrivateAllocator.h:
+	* src/native/src/javax/realtime/ScopedMemory.cc:
+	* src/native/src/javax/realtime/LTPrivateMemory.cc:
+	* src/native/src/javax/realtime/CTPrivateMemory.cc:
+	* src/native/src/javax/realtime/Arena.cc:
+	* src/javax/realtime/src.lst:
+	* src/javax/realtime/ScopedMemory.java:
+	* src/javax/realtime/PrivateScopedMemory.java:
+	* src/javax/realtime/LTPrivateMemory.java:
+	* src/javax/realtime/LTMemory.java:
+	* src/javax/realtime/CTPrivateMemory.java:
+	* src/javax/realtime/CTMemory.java:
+	* src/javax/realtime/Arena.java:
+	* src/javax/realtime/AccessViolationError.java:
+
+	  Added support for private scoped memory. This new type of scoped
+	  memories can be accessed by one thread at the time. The
+	  assumption that only one thread is ever active within the memory
+	  allows more efficient implementation by for instance avoiding
+	  some locking.
+
+Sat Nov 15 13:17:11 2003  Angelo Corsaro  <corsaro@cse.wustl.edu>
+
+	* src/native/src/jrate/sched/PriorityScheduler.h:
+
+	  Added include to avoid compilation errors with gcc 2.96
+
+	* src/native/src/jrate/mem/StackAllocator.h:
+
+	  Improved memory efficiency by reducing the amount of control
+	  data to be used in order to perform finalization. This change
+	  should improve both the time and the space efficiency of the
+	  allocator.
+
+	* src/native/src/jrate/mem/MMapBufferProvider.h:
+	* src/native/src/jrate/mem/Buffer.inl:
+	* src/native/src/jrate/mem/Allocator.h:
+
+	  Formatting updates.
+
+	* src/native/src/jrate/binding/java/VTAllocator.h:
+	* src/native/src/jrate/binding/java/OutOfMemoryHandler.cc:
+	* src/native/src/jrate/binding/java/MAAllocator.h:
+	* src/native/src/jrate/binding/java/LTAllocator.h:
+	* src/native/src/jrate/binding/java/IMAllocator.h:
+	* src/native/src/jrate/binding/java/HAllocator.h:
+	* src/native/src/jrate/binding/java/CTAllocator.h:
+
+	  Updated template instantiation with proper types (initializer,
+	  recycler, etc.) so to take more advantages of the allocator
+	  semantics.
+
+	* src/native/src/Makefile.jrate:
+	* src/native/src/Makefile.javax:
+	* config/jRate/Compiler.GNU:
+	* config/jRate/Common.GNU:
+
+	  Added macros for supporting gprof enabled jRate build.
+
+Tue Oct 28 20:20:10 2003  Angelo Corsaro  <corsaro@cse.wustl.edu>
+
+	* jRate 0.3.4-3.3.1 alpha
+
+-------------------------------------------------------------------------------
+
+Local Variables:
+mode: change-log
+add-log-keep-changes-together: t
+add-log-time-format: current-time-string
+End:
+	* VERSION-beta.ac
+	* VERSION-snapshot.ac
+	* VERSION-unstable.ac
+	* VERSION.ac
+
+	  Minor fixes to support the new SVN repo.
+
+	* INSTALL:
+
+	  Documentation fix.
+
+Sat Aug  6 14:53:54 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* NEWS:
+
+	  Spacing fix.
+
+Sat Aug  6 06:31:09 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* src/javax/realtime/RealtimeThread.java:
+	
+	  Revert original eligibilityParam fix.
+
+Sat Aug  6 04:53:12 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* src/native/gcj-patches/diff/jRate-patch.diff:
+	* src/native/gcj-patches/diff/jRate-patch.allocation_instrumentation.diff:
+
+	  Fix compile error.
+
+Fri Aug  5 22:46:30 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* configure.ac:
+
+	  Change stable release date.
+
+Fri Aug  5 22:37:40 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* src/native/gcj-patches/diff/jRate-patch.diff:
+	* src/native/gcj-patches/diff/jRate-patch.allocation_instrumentation.diff:
+
+	  Support for broken NPTL which doesn't honor attr argument to
+	  pthread_create().
+
+	* NEWS:
+
+	  Update for NPTL fix.
+
+Thu Aug  4 19:24:44 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* src/javax/realtime/RealtimeThread.java:
+
+	  Fix for priority problem.
+
+	* configure.ac:
+	* NEWS:
+	* INSTALL:
+	* script/crosstool-0.28-rc37.patch:
+	* script/crosstool-0.35.patch:
+
+	  Prepare for 0.3.7.1 release.
+
+==============================================================================
+Above this line is 0.3.7 branch development.
+Below is 0.3.7 release.
+==============================================================================
+
+Fri Jul  8 16:17:02 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* NEWS:
+
+	  Cut new release 0.3.7-3.3.3.
+
+	* configure.ac:
+
+	  Cut new release 0.3.7-3.3.3.
+
+	  Static libs on my default.  Also, remove gcc-static and
+	  gcc-shared stuff (now tied to toplevel enable-static and
+	  enable-shared settings).
+
+	  Also remove JRATE* ARG_VARs that used to be used for stage 3.
+
+	* INSTALL:
+
+	  Perl is no longer required (I think).
+
+	  Also some wording fixes.
+
+	  Also remove bits about gcc-static (now just use toplevel
+	  --enable-static setting since all jRate lib stuff is built in
+	  gcc tree anyway).
+
+	* AUTHORS:
+	* LICENSING:
+	* README:
+	* TODO:
+
+	  Minor updates.
+
+	* demos/Makefile.am:
+	* demos/DeadlineMissHandler/Makefile.am:
+	* demos/PeriodicTimer/Makefile.am:
+
+	  Add to EXTRA_DIST so that the stuff is actually distributed
+	  despite not being built.
+
+	* docs/Makefile.am:
+
+	  Make sure to install docs without eXecute bit.
+
+Fri Jul  8 13:58:57 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* demos/Makefile.am:
+	* demos/DeadlineMissHandler/Makefile.am:
+	* demos/PeriodicTimer/Makefile.am:
+
+	  Comment out noinst_PROGRAMS so they aren't built.
+
+Fri Jul  8 03:38:55 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* demos/Makefile.am:
+	* demos/DeadlineMissHandler/Makefile.am:
+	* demos/PeriodicTimer/Makefile.am:
+
+	  Turn *_JAVA automake bits into *_DATA so that they aren't built
+	  into classfiles.
+
+Fri Jul  8 03:26:48 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* INSTALL:
+
+	  Fix formatting.
+
+Fri Jul  8 03:20:23 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* INSTALL:
+
+	  Fix description of how to build and run demos.
+
+	* docs/index.html:
+	* docs/api/index.html:
+
+	  Fix a few things in installed documentation.
+
+Fri Jul  8 03:11:32 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* demos/DeadlineMissHandler/Makefile.am:
+	* demos/PeriodicTimer/Makefile.am:
+
+	  Fix silly automake Java target issue.
+
+Fri Jul  8 02:28:34 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* script/Makefile.am:
+
+	  Do not distribute fix-libtool script (no longer needed).
+
+	* configure.ac:
+
+	  Remove libtool hackery and "mkdir classes".
+
+	* TODO:
+
+	  Adjust todo list.
+
+Fri Jul  8 02:11:39 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* Makefile.am:
+
+	  Descend into demos dir when installing.
+
+Fri Jul  8 02:09:39 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* demos/Makefile.am:
+	* demos/DeadlineMissHandler/Makefile.am:
+	* demos/PeriodicTimer/Makefile.am:
+
+	  Install demo sources and docs into DATADIR/doc/jrate/demos.
+
+Fri Jul  8 02:05:14 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* docs/Makefile.am:
+
+	  Support for installing local API docs (if "make api" is done in
+	  top-level).
+
+Thu Jul  7 21:52:48 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* NEWS:
+
+	  Duh, *fix* the cvs-pre versioning number.
+
+Thu Jul  7 21:31:18 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* NEWS:
+
+	  Add cvs-pre versioning so we can make dist in the meantime.
+
+	* INSTALL:
+
+	  Add a Gotcha about building local API docs.
+
+Thu Jul  7 21:25:43 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* docs/index.html:
+
+	  Fixed (local) api link.
+
+Thu Jul  7 21:23:43 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* docs/Template.html:
+	* docs/design.html:
+	* docs/docs.html:
+	* docs/extension.html:
+	* docs/history.html:
+	* docs/jrate.webprj:
+	* docs/memoryAreaFramework.html:
+	* docs/notes.html:
+	* docs/performances.html:
+	* docs/policydesign.html:
+	* docs/status.html:
+	* docs/todo.html:
+	* docs/Performance/jRate-RI-AAT.png:
+	* docs/Performance/jRate-RI-AEH-DD.png:
+	* docs/Performance/jRate-RI-DDPD.png:
+	* docs/Performance/jRate-RI-PTStats.png:
+	* docs/model/jrate.cpp.xmi:
+	* docs/model/jrate.java.xmi:
+
+	  Wholesale reworking of the docs/ directory.  Remove most of
+	  the documentation that came with the distribution, and instead
+	  point users to the online stuff.
+
+	* docs/Makefile.am:
+	* docs/index.html:
+
+	  Adjusted for the new way of things.
+
+	* docs/jrate.css:
+	* docs/print.css:
+	* docs/images/clocks.png:
+	* docs/api/index.html:
+
+	  Added for the new way of things.
+
+Thu Jul  7 01:18:44 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* configure.ac:
+
+	  No longer hack libtool.
+
+Wed Jul  6 07:53:38 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* INSTALL:
+	* Makefile.am:
+
+	  Don't build demos automatically.
+
+	* configure.ac:
+
+	  Update version.
+
+Tue Jul  5 11:01:34 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* configure.ac:
+
+	  Make this tree into jRate stable release 0.3.7-3.3.3.
+
+	  No longer require that source and build directories be
+	  different.
+
+	* config/libjrate-version:
+	* config/libjratert-version:
+
+	  No longer used; removed from tree.
+
+	* BUGS:
+	* TODO:
+
+	  Update BUGS and TODO lists.  Also split BUGS and TODO.
+
+	* INSTALL:
+
+	  Documentation updates.
+
+	* demos/Makefile.am:
+	* demos/DeadlineMissHandler/Makefile.am:
+	* demos/PeriodicTimer/Makefile.am:
+
+	  Remove linking against (now) non-existent libs libjRate.la and
+	  libjRateRT.la.
+
+	* README.cvs:
+
+	  automake 1.9 across the board now.
+
+	* NEWS:
+
+	  Updates for 0.3.7-3.3.3.
+
+	* Makefile.am:
+
+	  Updates to comments in Makefile.
+
+	* Makefile.cvs:
+
+	  Use automake 1.9 to match src/native/src/jrate/Makefile.cvs.
+
+	* src/native/src/Makefile.am:
+
+	  Fix to dist-hook target.
+
+Tue Jul  5 00:35:19 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* script/Makefile.am:
+
+	  Add crosstoool-0.35.patch to EXTRA_DIST.
+
+Tue Jul  5 00:35:19 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* script/crosstool-0.35.patch:
+	* INSTALL:
+
+	  Add a crosstool patch for the latest crosstool version.  Update
+	  INSTALL documentation to reflect new version.
+
+Tue Jul  5 00:22:20 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* script/crosstool-0.28-rc37.patch:
+
+	  Some fixes for the new build stuff.
+
+Fri Jul  1 14:39:30 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* configure.ac:
+	* Makefile.am:
+	* src/native/src/jrate/configure.ac:
+	* src/native/src/jrate/Makefile.am:
+	* src/javax/Makefile.am:
+	* script/crosstool-0.28-rc37.patch:
+	* src/native/gcj-patches/diff/jRate-patch.diff:
+	* src/native/gcj-patches/diff/jRate-patch.allocation_instrumentation.diff:
+
+	  Remove stage 3 of build process; instead put javax/realtime stuff
+	  under $(gcc_srcdir)/libjava/javax/realtime and patch libjava's
+	  Makefile.am to include these files in libgcj library.
+
+	  Also change natObject.cc in patches to make _Jv_ScopeAware*
+	  functions non-pointers (since those functions are now part of
+	  libgcj).
+
+	  Also set up JRATE_LIBGCJ_LDFLAGS to pass through to libgcj
+	  linking.
+
+	* src/native/src/javax/realtime/jRateSystem.cc:
+
+	  _Jv_ScopeAware* functions are now functions, not pointers
+	  (since the functions are now part of libgcj).
+
+Fri Jul  1 01:29:26 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* script/crosstool-0.28-rc37.patch:
+
+	  Remove DESTDIR from jRate stage3 make install.
+
+	  Also look for libjRate.so in ${TARGET}/lib/ rather than lib/.
+
+	* configure.ac:
+	* src/javax/Makefile.am:
+	* src/native/src/Makefile.am:
+	* src/native/src/jrate/Makefile.am:
+
+	  Install libraries in toolexeclib dir rather than lib dir.
+	  This should place libjRate*.so* in the same dir as libgcj*.so*,
+	  regardless of platform/sysroot/cross-building/building a cross,
+	  etc.
+
+Thu Jun 30 23:09:55 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* src/native/src/jrate/Makefile.am:
+
+	  Obscure multilib bugs arose due to various problems.  Fixed.
+
+	  Also change all-recursive etc. rules to all-am etc.  This
+	  will hopefully fix a problem where multilib versions of
+	  jRateCore aren't built.
+
+	  Also make sure to build javax/realtime classfiles only once,
+	  before recursing into libjRateCore multilib dirs (otherwise
+	  parallel builds can get really confused).
+
+	* BUGS:
+
+	  Update comments regarding support for multilibs, hash
+	  synchronization, and building jRate as a cross compiler.
+
+	* src/native/src/jrate/configure.ac:
+
+	  Ensure libjava/javax dir exists before creating symlink when
+	  configuring in multilibs.  Also fix multilib path issue.
+
+	* script/crosstool-0.28-rc37.patch:
+
+	  Change quoting of JRATE_MAKE_GCC_FLAGS.  Now things should work,
+	  but paths with embedded spaces in them might not work.  :-(
+
+	  Also change location where libjRate.so is looked for (as an abort
+	  condition in script).
+
+	* src/native/src/jrate/Makefile.cvs:
+
+	  Use automake-1.9 instead of automake-1.7.  Necessary because
+	  of nasty bugs and shortcomings in 1.7.
+
+	* README.cvs:
+
+	  Document new requirement on automake 1.9.
+
+	* src/native/gcj-patches/diff/jRate-patch.diff:
+	* src/native/gcj-patches/diff/jRate-patch.allocation_instrumentation.diff:
+
+	  Added -ldl to libgcj link.  Rebuild patches.
+
+	* configure.ac:
+
+	  Remove JRATE_NO_CROSS_COMPILING_ALLOWED macro call.
+	  (For the new build system, we now want to permit it.)
+
+	* INSTALL:
+
+	  Update comments on building jRate as a cross compiler.
+
+	* VERSION.ac:
+	* VERSION-unstable.ac:
+
+	  Wording changes.
+
+	* VERSION-snapshot.ac:
+	* VERSION-beta.ac:
+
+	  New VERSION file versions for snapshot and beta releases.
+
+	* Makefile.cvs:
+
+	  Now reports version number and status (stable, snapshot, beta,
+	  development) when you make -f Makefile.cvs.
+
+	* configure.ac:
+
+	  Support for beta/snapshot releases, also now auto-adorns the base
+	  version number with beta tag or snapshot date (or "cvs" for
+	  development versions).
+
+	* README.cvs:
+	
+	  Some updates to documentation.
+
+Sun Apr 24 12:21:39 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* Makefile.am:
+
+	  Fix "api" target.
+
+Fri Apr  1 15:24:43 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	ALL MERGED FROM AUTOMAKE_EXPERIMENTAL BRANCH:
+
+	* Wholesale restructuring of jRate build process.  All Makefiles
+	  removed, replaced with Makefile.am's and configure.ac.  Other
+	  files deemed no longer relevant.
+
+	* src/native/gcj-patches/diff/jRate-patch.allocation_instrumentation.diff:
+	* src/native/gcj-patches/diff/jRate-patch.diff:
+
+	  Tell libjava/Makefiles where libjRateCore is nowadays.
+
+	  Adjustments to libjava's Makefile to pull in correct includes.
+
+	  Fixes to make libtool happy.
+
+	  Fixes to libgcj linking that succeeded normally but failed on
+	  relink(?!), causing libgcj.so to be absent from installation.
+
+	  Fixes to GCC's top-level config-ml.in.  This fixes GCC bug#11526
+	  and gets multilib support working with target libs using
+	  autoconf 2.5.x (...like libjRateCore!).
+
+	  Build process fixes (build libjRateCore as a subdir, more
+	  -I include flags, etc.).
+
+	  Re-enable HASH_SYNCHRONIZATION code.  All of it is #ifdefed, so
+	  should be no different from before if you
+	  --disable-hash-synchronization.
+
+	  Also, allocation_instrumentation patch was missing the config-ml
+	  patch for multilib support for autoconf-2.5 target lib dirs.
+	  Fixed.
+
+	  Re-enabled JVMPI and HASH_SYNCHRONIZATION stuff, among other
+	  things.  Guard a few things with HAVE_JRATE_GC.  Add
+	  --enable-pthread-self-cache option to libgcj's configure so that
+	  we can turn it off along with hash synchronization.
+
+	* BUGS:
+
+	  Add other notes.
+
+	* src/javax/realtime/PriorityParameters.java:
+
+	  Spacing fixes in javadoc comments.
+
+	* src/native/src/jrate/mem/Finalizer.h:
+	* src/native/src/jrate/mem/IMemoryArea.h:
+	* src/native/src/jrate/mem/MallocAllocator.h:
+
+	  Spacing and typo fixes.
+
+	* src/native/gcj-patches/jRate-gc.cc
+
+	  Add a few methods so that libgcj links when building with hash
+	  synchronization; also fix spacing.
+
+	* src/native/gcj-patches/jRate-gc.h:
+
+	  Add a (silly) definition of GC_finalization_proc.
+	  Should consider #ifdef-guarding uses of this type instead.
+
+	* src/native/gcj-patches/diff/jRate-patch.allocation_instrumentation.desc
+
+	  Description of allocation_instrumentation patch.
+
+	* src/native/gcj-patches/diff/README.allocation_instrumentation:
+
+	  Updated notes for allocation instrumentation patch.
+
+	* INSTALL:
+
+	  Futher clarification:  You must use GNU Make!  There is no 0ther!
+
+	  Description of how to build jRate as a cross-compiler, and
+	  why you *can't* build jRate *with* a cross-compiler.
+
+	* src/native/src/jrate/mem/Finalizer.h:
+
+	  Fix printf format warning.
+
+	* src/native/src/javax/realtime/HighResolutionTime.cc:
+
+	  Make hashCodeImpl() respect the authoritah of 64-bit!
+
+	* NEWS:
+
+	  Add a few lines to make automake's "check-news" happy.
+
+	* src/native/src/javax/realtime/HighResolutionClock.cc:
+
+	  Make hashCodeImpl() respect the authoritah of 64-bit!
+
+	  Clean up arch-alternate preprocessor conditionals, also make
+	  alpha, sparc, and x86_64 complain about being unimplemented.
+
+	* src/native/src/jrate/synch/Atomic.h:
+
+	  First crack at alpha, sparc, and x86_64 support.
+
+	* script/crosstool-0.28-rc37.patch:
+
+	  Distribute a patch to Dan Kegel's crosstool (kegel.com/crosstool/)
+	  to make it support jRate.
+
+	* demos/DeadlineMissHandler/DeadlineMissHandlerDemo.java:
+	* demos/PeriodicParameters/PeriodicParametersDemo.java:
+	* demos/PeriodicThread/PeriodicThreadDemo.java:
+	* demos/OutOfMemory/OutOfMemoryDemo.java:
+
+	  Missing imports.
+
+	* src/native/src/javax/realtime/RealtimeThread.cc:
+
+	  Needed an #include.
+
+Wed Mar 30 13:29:55 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* src/native/gcj-patches/diff/jRate-patch.allocation_instrumentation.diff:
+	* src/native/gcj-patches/diff/jRate-patch.diff:
+
+	  Support for meaningful Thread.setPriority() on RealtimeThreads.
+	  Ugly.  Real ugly.  See:
+	      http://www.rtsj.org/specjavadoc/AlteredStdJava.html
+
+	* BUGS:
+
+	  Add a note about the fact that thread parameters can't be
+	  shared presently.
+
+Sun Jan 30 20:33:15 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* BUGS:
+
+	  Refactor BUGS items (separate BUGS and TODO) and add a bunch.
+
+Tue Jan 25 18:02:49 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* README:
+	* NEWS:
+
+	  Add NEWS file of user-visible changes between versions.
+
+	* BUGS:
+
+	  Add a few TODO items.
+
+	* ChangeLog:
+
+	  One more spacing fix.
+
+Tue Jan 25 17:58:26 2005  Morgan Deters  <mdeters@morgandeters.com>
+
+	* ChangeLog:
+
+	  Fix spacing and other ChangeLog formatting for previous
+	  entries.  Add 'Local Variables:' for emacs's benefit.
+
+Mon Jan 24 05:48:32 2005  Morgan Deters  <mdeters@cse.wustl.edu>
+
+	* src/native/include/mmake.py:
+
+	  Fix stupid typo that REALLY broke things.
+
+Mon Jan 24 05:42:57 2005  Morgan Deters  <mdeters@cse.wustl.edu>
+
+	* src/native/include/mmake.py:
+
+	  Fix Makefile-making script so that it doesn't include
+	  hidden files (dot files), like those that CVS sometimes
+	  leaves laying around, or ~-backup files, like those that
+	  emacs sometimes leaves laying around.
+
+Mon Jan 24 05:22:03 2005  Morgan Deters  <mdeters@cse.wustl.edu>
+
+	* BUGS:
+
+	  Remove erroneous "pcesdemo" tag from BUGS list.
+
+Mon Jan 24 05:16:34 2005  Morgan Deters  <mdeters@cse.wustl.edu>
+
+	* INSTALL:
+
+	  Spelling fix; add note about common libtool build problems.
+
+	* script/libtool-hack/libtool:
+
+	  Wrapper script for libtool to remove --tag arguments.
+	  Necessary for building jRate with older libtools.
+
+Mon Jan 24 03:41:15 2005  Morgan Deters  <mdeters@cse.wustl.edu>
+
+	ALL MERGED FROM PCESDEMO BRANCH:
+
+	* src/native/gcj-patches/diff/README.allocation_instrumentation:
+	* src/native/gcj-patches/diff/jRate-patch.allocation_instrumentation.diff:
+
+	  Add allocation_instrumentation alternative patch to get
+	  an allocation log out.
+
+	* BUGS:
+
+	  Added file to list known bugs in jRate.
+
+	* demos/ScopedPortal/ScopedPortal.java:
+
+	  Re-added previous functionality (had been commented out).
+	  This test hangs, due to a finalization bug (documented in
+	  BUGS).
+
+	* script/jRate-env.sh:
+	* src/native/gcj-patches/make-jRateGCC.sh:
+
+	  Add (commented) config option for SMP targets.
+
+	  Make build process cleaner for building with/without debugging
+	  symbols/optimization/etc.
+
+	  Build process fixes for building jRate on Linux/PowerPC.
+
+	  Added JRATE_BOOTSTRAP_LEAN envariable for build process.
+	  Especially useful for situations like the SourceForge compile
+	  farm where we should limit disk usage to a few hundred
+	  megabytes.
+
+	  Added JRATE_DONT_BOOTSTRAP envariable for build process.
+
+	  Make build process cleaner for building with/without debugging
+	  symbols/optimization/etc.
+
+	* Makefile:
+
+	  Make build process cleaner for building with/without debugging
+	  symbols/optimization/etc.
+
+	* Makefile:
+	* script/checkgcc.sh:
+
+	  Added support for checking gcc source version.
+
+	* src/native/src/Makefile.javax:
+	* src/native/src/Makefile.jrate:
+	* src/native/src/Makefile.jratecpp:
+	* src/native/gcj-patches/make-jRateGCC.sh:
+
+	  Propagate -DJRATE_HAS_SMP=1 where necessary.
+
+	* Makefile:
+	* src/native/src/jrate/sys/genSysInfo.py:
+
+	  Build process fixes for building jRate on Linux/PowerPC.
+
+	* src/native/src/Makefile.jrate:
+
+	  Added a missing --tag=CXX, necessary for the libtool on
+	  Debian/unstable.
+
+	  Documentation/clarification/spelling fixes.
+
+	* src/native/gcj-patches/jRate-gc.cc:
+
+	  Allow environment variable JRATE_METHOD_MEMORY_SIZE to
+	  determine method area size.
+
+	  16MB default on MethodAreaMemory rather than 2MB.
+
+	* src/native/src/jrate/binding/java/MemoryAreaBufferProvider.cc:
+
+	  Allow environment variable JRATE_SCOPES_ARENA_SIZE to
+	  determine scopes arena size.
+
+	  Now #include <jrate/Config.h>
+
+	* src/native/src/jrate/jRate.h:
+
+	  Add missing JRATE_SCOPES_ARENA_SIZE_ENV_VAR #define (oops)
+
+	* src/native/src/jrate/binding/java/OutOfMemoryHandler.cc:
+
+	  Better reporting when an OutOfMemoryError occurs in a
+	  primordial region.
+
+	* src/native/src/javax/realtime/HighResolutionClock.cc:
+
+	  PowerPC builds should now compile + link OK.
+
+	* src/native/gcj-patches/diff/jRate-patch.diff:
+
+	  Regenerated patch.
+
+	  Added general support for Java class library allocating
+	  memory in a scope-aware fashion through _Jv_ScopeAwareNew(),
+	  _Jv_ScopeAwareNewArray(), _Jv_ScopeAwareRealloc(), and
+	  Java-visible calls in java.lang.Object.
+
+	  Scope-aware fixes included for java.lang.ThreadLocal,
+	  java.lang.InheritableThreadLocal, java.lang.Runtime,
+	  java.lang.String, java.lang.StringBuffer, and (partially)
+	  java.util.WeakHashMap.
+
+	  Fixed gcj bug where it didn't deal properly with looking up
+	  superclass methods marked synthetic in bytecode.  The fix
+	  already appears in gcc's CVS HEAD.
+
+	  Removed _Jv_Throw()'s check for exceptions escaping their
+	  scopes (now handled by ThrowBoundaryError).
+
+	  Added StringBuffer.append(StringBuffer).  Doesn't
+	  functionally add anything beyond StringBuffer.append(Object),
+	  but useful to have when compiling .class files compiled
+	  against 1.4 Java libs.
+
+	* src/javax/realtime/Timer.java:
+	* src/javax/realtime/Clock.java:
+	* src/javax/realtime/HighResolutionClock.java:
+	* src/javax/realtime/PeriodicTimer.java:
+	* src/javax/realtime/RealtimeClock.java:
+	* src/javax/realtime/RealtimeClockPeriodicTimerImpl.java:
+
+	  Spec compliance fixes to Timer and Clock APIs.  Some
+	  functionality may yet be missing (e.g. creating timers with
+	  an AbsoluteTime start time argument), but the APIs match what
+	  the spec says.
+
+	* demos/Makefile:
+
+	  Take account of new JRATE_MAKE_FLAGS setting from script/jRate-env.sh
+
+	* src/native/src/jrate/binding/java/LTAllocator.h:
+	* src/native/src/jrate/binding/java/VTAllocator.h:
+
+	  Fix incorrect #includes.
+
+	* src/javax/realtime/RealtimeThread.java:
+
+	  Add scope cycle check when creating a new RealtimeThread
+	  with an explicit MemoryArea to run in.
+
+	  Documentation/clarification/spelling fixes.
+
+	* src/native/src/jrate/mem/IMemoryArea.h:
+
+	  Documentation/clarification/spelling fixes.
+
+	* src/native/src/javax/realtime/RealtimeThread.cc:
+
+	  Add InaccessibleAreaException check.  Thrown if you try to
+	  call executeInArea() for a MemoryArea not on your scope stack.
+
+	* src/native/src/javax/realtime/ScopedMemory.cc:
+
+	  Add check on getPortal() to ensure you're in the area whose
+	  portal you are trying to get.
+
+	* src/native/src/jrate/sched/ScopeStack.h:
+
+	  Fix two ref counting bugs: one where a memory area didn't
+	  get its reference count incremented (and thus could be
+	  collected while still active), and another where primordial
+	  areas were getting reference counted unnecessarily.
+
+	* src/javax/realtime/MemoryAccessError.java:
+	* src/javax/realtime/src.lst:
+
+	  Added MemoryAccessError class; spec says this is thrown
+	  if a no heap thread touches a heap, etc.  Right now, jRate
+	  just throws it if you call ->newInstance() or ->newArray()
+	  on a scope you haven't entered.
+
+	* src/javax/realtime/MemoryArea.java:
+
+	  Added new unchecked versions of newInstance() and newArray().
+
+	* src/native/src/javax/realtime/MemoryArea.cc
+
+	  Implement the checks and throw MemoryAccessError as
+	  necessary.
+
+	* src/native/src/javax/realtime/jRateSystem.cc:
+
+	  Added _Jv_ScopeAwareNew, _Jv_ScopeAwareNewArray,
+	  _Jv_ScopeAwareRealloc implementations.
+
+Wed Dec 22 16:43:13 2004  Morgan Deters  <mdeters@cse.wustl.edu>
+
+	* script/Makefile.api
+
+	  Links at bottom now open up in _top (rather than javadoc frame).
+
+Wed Dec 22 16:16:03 2004  Morgan Deters  <mdeters@cse.wustl.edu>
+
+	* script/Makefile.api
+
+	  Remove extra quotes.
+
+Wed Dec 22 16:09:12 2004  Morgan Deters  <mdeters@cse.wustl.edu>
+
+	* script/Makefile.api
+	* src/javax/realtime/SporadicParameters.java
+	* src/javax/realtime/Timer.java
+
+	  More javadoc fix-ups.
+
+	* ChangeLog:
+
+	  Fixed old ChangeLog entries that were incorrectly-formatted
+	  (missing year, etc.).
+
+Wed Dec 22 15:53:33 2004  Morgan Deters  <mdeters@cse.wustl.edu>
+
+	* src/javax/realtime/AperiodicParameters.java:
+	* src/javax/realtime/AsynchronouslyInterruptedException.java:
+	* src/javax/realtime/BoundAsyncEventHandler.java:
+	* src/javax/realtime/MemoryArea.java:
+	* src/javax/realtime/POSIXSignalHandler.java:
+	* src/javax/realtime/PeriodicParameters.java:
+	* src/javax/realtime/PooledAsyncEventHandler.java:
+	* src/javax/realtime/PriorityScheduler.java:
+	* src/javax/realtime/ProcessingGroupParameters.java:
+	* src/javax/realtime/RealtimeThread.java:
+	* src/javax/realtime/Scheduler.java:
+	* src/javax/realtime/ThreadedAsyncEventHandler.java:
+	* src/javax/realtime/ThrowBoundaryError.java:
+	* src/javax/realtime/Timer.java:
+	* src/javax/realtime/util/PooledExecutor.java:
+	* src/javax/realtime/util/ThreadBoundExecutor.java:
+	* src/javax/realtime/util/ThreadedExecutor.java:
+	* script/Makefile.api
+
+	  Fix javadoc errors and warnings.
+
+Wed Dec 22 05:17:47 2004  Morgan Deters  <mdeters@cse.wustl.edu>
+
+	* docs/docs.html:
+
+	  Fix jRate home page URL.
+
+	* script/Makefile.api:
+
+	  Add a -link option to javadoc and clean-up some stuff in
+	  the script.
+
+Mon Dec 20 15:47:08 2004  Morgan Deters  <mdeters@cse.wustl.edu>
+
+	* AUTHORS:
+
+	  Credit recent contributors.
+
+Sun Oct 31 14:57:30 2004  Morgan Deters  <mdeters@cse.wustl.edu>
+
+	* src/native/src/jrate/synch/Atomic.h:
+	* src/javax/realtime/HighResolutionClock.java:
+
+	  First crack at PowerPC port.  Guarded x86 code with
+	  __i386__ and added __powerpc__ sections with appropriate
+	  code for PowerPC.  HighResolutionClock not yet implemented
+	  for ppc.
+
+	* src/native/gcj-patches/diff/jRate-patch.diff:
+
+	  Regenerated patch.  Fixed weird, sporadic dual-call problem
+	  with write barriers by wrapping RHS of write-barriered exprs
+	  with SAFE_EXPR to ensure side-effects are only executed
+	  once.  TODO: Convince self that this doesn't also need to
+	  be done for .class->.o translation in gcc/java/expr.c.
+
+	* src/native/src/jrate/jRate.h:
+
+	  More (safety parens) in #define macros
+
+	* src/native/src/javax/realtime/PriorityScheduler.cc:
+
+	  Removed unused 'myFreakingInt' global.
+
+Wed Oct 27 15:57:15 2004  Morgan Deters  <mdeters@cse.wustl.edu>
+
+	* src/native/gcj-patches/diff/jRate-patch.diff:
+
+	  Regenerated patch.  Added -fno-scope-check option
+	  (and associated flags, etc.) to jRate-gcj to
+	  omit the scope write barriers on user request.
+	  Also fixed build_static_field_write_barrier() in
+	  expr.c to stop jc1 segfaulting on some .class files.
+
+	* src/native/src/javax/realtime/ScopedMemory.cc:
+
+	  Added notes about RTSJ spec and jRate compliance.
+
+Tue Oct 26 16:25:03 2004  Morgan Deters  <mdeters@cse.wustl.edu>
+
+	* demos/Makefile:
+
+	  Added link to new OutOfScopeException demo so it gets built.
+
+Tue Oct 26 11:57:17 2004  Morgan Deters  <mdeters@cse.wustl.edu>
+
+	* src/javax/realtime/ThrowBoundaryError.java:
+	* src/javax/realtime/src.lst:
+
+	  New javax.realtime class, as per the online RTSJ API pages, to
+	  handle out-of-scope exception propagation.
+
+	* src/native/src/javax/realtime/MemoryArea.cc:
+
+	  Added MemoryArea::guardedRun() to check for exception objects
+	  that attempt to propagate beyond their allocating scope.  Throws
+	  a ThrowBoundaryError in such cases.
+
+	* src/javax/realtime/PrivateScopedMemory.java:
+	* src/javax/realtime/ScopedMemory.java:
+	* src/javax/realtime/MemoryArea.java:
+
+	  Added calls to the the new guardedRun() methods (instead
+	  of logic.run()).
+
+	* demos/OutOfScopeException/OutOfScopeException.java:
+	* demos/OutOfScopeException/Makefile:
+
+	  New demo to test jRate behavior when exceptions are propagated
+	  beyond their own scope (verify that a ThrowBoundaryError is
+	  thrown).
+
+	* src/native/src/jrate/mem/IMemoryArea.h:
+
+	  Fixed IMemoryArea<>::checkReferenceFrom() documentation,
+	  which was backwards.
+
+Mon Oct 25 18:16:16 2004  Morgan Deters  <mdeters@cse.wustl.edu>
+
+	* src/native/src/jrate/jRate.h:
+
+	  Added safety parentheses for macro arguments.
+
+	* src/native/gcj-patches/diff/jRate-patch.diff:
+
+	  Another patch regeneration.  Fixed expand_java_field_op()
+	  to handle static as well as non-static fields (in compiling
+	  from Java bytecode).
+
+Sun Oct 24 16:32:02 2004  James Brodman  <jcb1@cse.wustl.edu>
+
+	* src/native/gcj-patches/diff/jRate-patch.diff:
+	* script/getgcc.sh
+
+	  Regenerated patch.  Axed decoder cache for BytesToUnicode.
+	  Fixed getgcc.sh to get the 3.3.3 sources.
+
+Sat Oct 23 19:05:35 2004  Morgan Deters  <mdeters@cse.wustl.edu>
+
+	* src/native/gcj-patches/diff/jRate-patch.diff:
+
+	  Regenerated patch.  Fixed compilation from Java bytecode.
+	  Specifically, disable injection of _Jv_OnMethodEnter and
+	  _Jv_OnMethodExit calls around methods compiled from bytecode
+	  in decl.c (they don't appear to do anything at present anyway).
+
+Sat Oct 23 17:58:31 2004  Morgan Deters  <mdeters@cse.wustl.edu>
+
+	* src/native/gcj-patches/copy-sources.sh
+	* script/compile.sh
+	* script/compile-no-patch.sh
+
+	  Build process fixes: spelling fixes, and made build process
+	  bomb out early if something fails (e.g. if the patch fails
+	  it won't go on and try to build---makes it easier to find
+	  build problems).
+
+Thu Oct 21 12:43:31 2004  Morgan Deters  <mdeters@cse.wustl.edu>
+
+	* src/native/src/javax/realtime/RealtimeThread.cc
+
+	  General clean up from yesterday's commit.
+
+Wed Oct 20 21:15:38 2004  Morgan Deters  <mdeters@cse.wustl.edu>
+
+	* src/native/src/javax/realtime/RealtimeThread.cc
+
+	  Fixed a problem where (client) exceptions would propagate
+	  through RealtimeThread::executeInMemoryArea() and cause
+	  the ScopeStack for the thread not to be properly
+	  re-established.  Added ScopeStackGuard guard class.
+	  Clean up forthcoming.
+
+Mon Oct 18 10:11:11 2004  James Brodman  <jcb1@cse.wustl.edu>
+
+	* src/native/src/javax/realtime/MemoryArea.cc
+
+	  Added support for prims for newArray
+
+Thu Sep 16 22:43:27 2004  Angelo Corsaro  <corsaro@cse.wustl.edu>
+
+	* demos/HelloWorld/Makefile:
+	* demos/HelloWorld/HelloWorld.java:
+
+	  Hello World Demo.
+
+Wed Sep 15 22:20:21 2004  Angelo Corsaro  <corsaro@cse.wustl.edu>
+
+	* src/native/src/jrate/utils/Units.h:
+
+	  Added more units fomr the International System.
+
+	* src/native/src/jrate/utils/TypeWrapper.h:
+
+	  A type wrapper.
+
+	* src/native/src/jrate/utils/Assertions.h:
+	* src/native/src/jrate/utils/Assertions.h:
+
+	  Added support for compile time assertions.
+
+	* src/native/src/jrate/sys/TimerManager.h:
+	* src/native/src/jrate/sys/Timer.h:
+	* src/native/src/jrate/sys/TimeValue.h:
+
+	  Timer management improvements.
+
+	* src/native/src/jrate/sys/SignalSet.h:
+	* src/native/src/jrate/sys/SignalManager.h:
+	* src/native/src/jrate/sys/ISignalHandler.h:
+	* src/native/src/jrate/sys/Command.h:
+	* src/native/src/jrate/sys/Runtime.h:
+
+	  Finalized support for POSIX signals handling.
+
+
+
+	* src/native/src/jrate/synch/Synchronizer.h:
+	* src/native/src/jrate/synch/Semaphore.h:
+	* src/native/src/jrate/synch/Mutex.h:
+	* src/native/src/jrate/synch/Mutex.cc:
+	* src/native/src/jrate/synch/Guard.h:
+	* src/native/src/jrate/synch/EventVariable.h:
+	* src/native/src/jrate/synch/AtomicCounter.h:
+
+	  Refactoring of synchronizers.
+
+	* src/native/src/jrate/sched/Types.h:
+	* src/native/src/jrate/sched/Thread.h:
+	* src/native/src/jrate/sched/TSSScope.h:
+	* src/native/src/jrate/sched/TSS.h:
+	* src/native/src/jrate/sched/ScopeStack.h:
+	* src/native/src/jrate/sched/Schedulable.h:
+	* src/native/src/jrate/sched/Runnable.h:
+	* src/native/src/jrate/sched/PriorityScheduler.h:
+	* src/native/src/jrate/sched/PriorityParameters.h:
+
+	  Refactoring and improvement of threading subsystem.
+
+	* src/native/src/jrate/sched/SingleThreadedExecutor.h:
+	* src/native/src/jrate/sched/PooledExecutor.h:
+	* src/native/src/jrate/sched/IExecutor.h:
+	* src/native/src/jrate/sched/IChannel.h:
+	* src/native/src/jrate/sched/Config.h:
+	* src/native/src/jrate/sched/Channel.h:
+
+	  Thread pools implementation.
+
+	* src/native/src/jrate/meta/IF.h:
+
+	  Conditional construct needed for template meta-programming.
+
+
+	* src/native/src/jrate/mem/StaticTypeSizeAligner.h:
+	* src/native/src/jrate/mem/StackAllocator.h:
+	* src/native/src/jrate/mem/SegregatedBufferProvider.h:
+	* src/native/src/jrate/mem/ObjectInitializer.h:
+	* src/native/src/jrate/mem/MemoryArea.h:
+	* src/native/src/jrate/mem/MemLockingPolicy.h:
+	* src/native/src/jrate/mem/MallocBufferProvider.h:
+	* src/native/src/jrate/mem/MallocAllocator.h:
+	* src/native/src/jrate/mem/MMapBufferProvider.h:
+	* src/native/src/jrate/mem/IMemoryArea.h:
+	* src/native/src/jrate/mem/Finalizer.h:
+	* src/native/src/jrate/mem/DisplayRefChecker.h:
+	* src/native/src/jrate/mem/Buffer.h:
+	* src/native/src/jrate/mem/Allocator.h:
+
+	  Performance improvements.
+
+	* src/native/src/jrate/binding/java/OutOfMemoryHandler.h:
+	* src/native/src/jrate/binding/java/ObjectInitializer.h:
+	* src/native/src/jrate/binding/java/MemoryArea.h:
+	* src/native/src/jrate/binding/java/LTAllocator.h:
+	* src/native/src/jrate/binding/java/IMemoryArea.cc:
+	* src/native/src/jrate/binding/java/Finalizer.h:
+
+	  Refactored binding layer.
+
+	* src/native/src/Makefile.jrate:
+	* src/native/src/Makefile.javax:
+	* src/javax/Makefile:
+
+	  Added support for latest version of libtool.
+
+	* src/javax/realtime/AsyncEventHandler.java:
+	* src/javax/realtime/AsyncEvent.java:
+
+	  Added support for caching of subsequent events.
+
+	* script/getgcc.sh:
+
+	  Updated cvs root for downloading gcc from the GNU site.
+
+	* docs/model/jrate.cpp.xmi:
+
+	  Updated UML model.
+
+	* config/jRate/gcc.mandrake.GNU:
+	* config/jRate/gcc.fedora.GNU:
+	* config/jRate/gcc.GNU:
+	* config/jRate/Compiler.GNU:
+	* config/jRate/Common.Mandrake.GNU:
+	* config/jRate/gcc.mandrake.GNU:
+	* config/jRate/gcc.fedora.GNU:
+
+	  Updated configuration file for supporting Mandrake and Fedora.
+
+	* VERSION:
+	* INSTALL:
+
+	  Updated documentation for current version.
+
+
+Wed Sep 15 02:02:57 2004  Angelo Corsaro  <corsaro@cse.wustl.edu>
+
+	* src/native/src/jrate/synch/Mutex.h:
+	* src/native/src/jrate/sched/Types.h:
+	* src/native/src/jrate/sched/Types.cc:
+	* src/native/src/jrate/sched/Thread.h:
+	* src/native/src/jrate/sched/Thread.cc:
+	* src/native/src/jrate/sched/SingleThreadedExecutor.h:
+	* src/native/src/jrate/sched/PriorityScheduler.h:
+	* src/native/src/jrate/sched/PriorityScheduler.cc:
+	* src/native/src/jrate/sched/PooledExecutor.h:
+	* src/native/src/jrate/mem/SegregatedBufferProvider.h:
+	* src/native/src/jrate/mem/MallocBufferProvider.h:
+	* src/native/src/jrate/mem/MMapBufferProvider.h: m
+	* src/native/src/jrate/binding/java/MemoryAreaBufferProvider.h:
+	* src/native/src/jrate/binding/java/IMemoryArea.h:
+
+	  Made some improvements, and change to have the code compile fine
+	  with gcc 3.4.x series.
+
+	* src/native/src/Makefile.jrate: Updated to reflect latest libtool
+	  version needs (e.g. use of --mode option).
+
+	* config/jRate/Compiler.GNU: Updated path to use JRATE_HOME
+	  environment variable.
+
+Thu Mar 25 04:42:00 2004  Angelo Corsaro  <corsaro@cse.wustl.edu>
+
+	* src/native/src/jrate/sys/TimerManager.h:
+	* src/native/src/jrate/sys/TimeValue.h:
+	* src/native/src/jrate/sys/TimeValue.cc:
+
+	  Fixed condition in the operator<.
+
+	* docs/model/jrate.java.xmi:
+	* docs/model/jrate.cpp.xmi:
+
+	  jRate's Umbrello Modes.
+
+	* config/jRate/Common.GNU: Added -I/usr/include/gcc-3.3.2 option
+	  for fixing compilation errors on Mandrake.
+
+Fri Mar 19 02:03:20 2004  Angelo Corsaro  <corsaro@cse.wustl.edu>
+
+	* src/native/src/jrate/synch/Mutex.h: Defined typedefs for
+	  RECURSIVE and FAST mutexes.
+
+	* src/native/src/jrate/synch/EventVariable.h:
+	* src/native/src/jrate/synch/EventVariable.cc:
+
+	  Made event variable resiliant toward multiple signals. On some
+	  NTPL implementatnions it seems that severa notify of an event
+	  variable cause weird behaviour of the variable its self.
+	  The new implementation prevents that the event condition
+	  variable is ever notified more than once,
+
+	* src/native/src/jrate/sched/Types.h:
+	* src/native/src/jrate/sched/Thread.h:
+	* src/native/src/jrate/sched/Runnable.h:
+	* src/native/src/jrate/sched/Runnable.cc:
+	* src/native/src/jrate/sched/PriorityScheduler.h:
+
+	  Misc changes.
+
+
+	* demos/Makefile: Added directive for compiling new tests.
+
+Fri Mar 19 01:55:05 2004  Angelo Corsaro  <corsaro@cse.wustl.edu>
+
+	* src/native/src/jrate/sys/TimerManager.h:
+	* src/native/src/jrate/sys/TimerManager.cc:
+	* src/native/src/jrate/sys/Timer.h:
+	* src/native/src/jrate/sys/Timer.cc:
+	* src/native/src/jrate/sys/TimeValue.h:
+	* src/native/src/jrate/sys/TimeValue.cc:
+
+	  Classes that provide a scalable timers implementation to jRate.
+
+	* src/native/src/jrate/sys/Config.h:
+	* src/native/src/jrate/sys/Config.cc:
+
+	  jRate SyS Configuration file.
+
+	* src/native/src/jrate/sys/Command.h:
+
+	  Command Pattern Implementation.
+
+	* src/native/src/jrate/synch/Semaphore.h:
+	* src/native/src/jrate/synch/Semaphore.cc:
+
+	  POSIX Semaphore Wrapper.
+
+	* src/native/src/jrate/sched/IExecutor.h:
+	* src/native/src/jrate/sched/SingleThreadedExecutor.h:
+	* src/native/src/jrate/sched/PooledExecutor.h:
+
+	  Executors implementation.
+
+	* src/native/src/jrate/sched/Schedulable.h:
+
+	  RTSJ-like Schedulable interface.
+
+	* src/native/src/jrate/sched/IChannel.h:
+	* src/native/src/jrate/sched/Channel.h:
+
+	  Channel abstraction implementation. Channels are a mean for
+	  thread to exchange data.
+
+	* src/native/src/jrate/meta/IF.h:
+
+	  Removed unnecessary namespace specification.
+
+	* src/native/src/Makefile.jratecpp:
+	* src/native/src/Makefile:
+
+	  Added support for a pure C++ version of the jRate Core.
+
+Fri Mar 19 01:51:24 2004  Angelo Corsaro  <corsaro@cse.wustl.edu>
+
+	* src/javax/realtime/RealtimeThread.java: Added flags that are
+	  needed in order to implement the overrun handlers.
+
+	* src/native/gcj-patches/diff/jRate-patch.diff: Regenerated
+	  patches for GCC 3.3.3
+
+	* script/getgcc.sh: Updated GCC  URL.
+
+Tue Mar  2 00:48:05 2004  Angelo Corsaro  <corsaro@cse.wustl.edu>
+
+	* src/native/src/javax/realtime/POSIXSignalHandler.cc:
+	* src/javax/realtime/POSIXSignalHandler.java:
+
+	  Finished the implementation of RTSJ POSIX signal handlers.
+	  The implementation has been done in such a way to avoid having
+	  to limit the kind of code that RTSJ developer can execute while
+	  handling a signal.
+
+	* src/javax/realtime/src.lst: Added new source file
+	  POSIXSignalHandler.java.
+
+	* src/javax/realtime/AsyncEvent.java:
+	* src/native/src/jrate/sys/SignalManager.h:
+	* src/javax/realtime/AsyncEvent.java:
+
+	  Indentation.
+
+
+Sat Feb 28 17:23:42 2004  Angelo Corsaro  <corsaro@cse.wustl.edu>
+
+	* VERSION: Updated Version
+
+	* Released beta version 0.3.4-3.3.2
+
+Sat Feb 28 17:13:03 2004  Angelo Corsaro  <corsaro@cse.wustl.edu>
+
+	* src/native/gcj-patches/diff/jRate-patch.diff: Updated gcc patches.
+
+Sat Feb 28 16:26:02 2004  Angelo Corsaro  <corsaro@cse.wustl.edu>
+
+	* script/python/memoryArea.py:
+	* script/python/jRateTest.py:
+	* demos/MemoryArea/run.py:
+
+	  Update scripts so to have the test specific class residing in
+	  the run.py class.
+
+	  Added #!/usr/bin/python to the run.py so that it can be run as a
+	  shell script.
+
+Sun Feb 22 19:31:21 2004  Angelo Corsaro  <corsaro@cse.wustl.edu>
+
+	* script/python/memoryArea.py:
+	* script/python/jRateTest.py:
+	* demos/MemoryArea/run.py:
+
+	  Started developement of scripts that will eventually automate
+	  the execution of both demos and unit tests.
+
+	* Updated header
+
+Mon Jan 19 17:34:58 2004  Angelo Corsaro  <corsaro@cse.wustl.edu>
+
+	* src/native/src/jrate/mem/ScopeStack.h:
+	* src/native/src/jrate/mem/ScopeStack.cc:
+
+	  Removed.
+
+Thu Nov 27 15:52:55 2003  Angelo Corsaro  <corsaro@cse.wustl.edu>
+
+	* src/native/src/jrate/binding/java/LTAllocator.h: Removed some
+	  old macros which were not used any more.
+
+	* demos/MemoryArea/MemoryAreaDemo.java: Added demo case for [CT|LT]PrivateMemory.
+
+Fri Nov 21 17:00:42 2003  Angelo Corsaro  <corsaro@doc.ece.uci.edu>
+
+	* src/native/src/javax/realtime/VTMemory.cc:
+	* src/native/src/javax/realtime/ScopedMemory.cc:
+	* src/native/src/javax/realtime/MemoryArea.cc:
+	* src/native/src/javax/realtime/LTMemory.cc:
+	* src/native/src/javax/realtime/Arena.cc:
+
+	  Changed some jmv.h include to cni.h.
+
+	* config/jRate/Common.RedHat.GNU:
+	* config/jRate/Common.Mandrake.GNU:
+	* config/jRate/Common.GNU:
+
+	  Added level of indirection in choosing the appropriate platform
+	  configuration.
+
+Sun Nov 16 14:43:59 2003  Angelo Corsaro  <corsaro@cse.wustl.edu>
+
+	* src/native/src/jrate/binding/java/LTPrivateMemory.h:
+	* src/native/src/jrate/binding/java/LTPrivateAllocator.h:
+	* src/native/src/jrate/binding/java/CTPrivateMemory.h:
+	* src/native/src/jrate/binding/java/CTPrivateAllocator.h:
+	* src/native/src/javax/realtime/ScopedMemory.cc:
+	* src/native/src/javax/realtime/LTPrivateMemory.cc:
+	* src/native/src/javax/realtime/CTPrivateMemory.cc:
+	* src/native/src/javax/realtime/Arena.cc:
+	* src/javax/realtime/src.lst:
+	* src/javax/realtime/ScopedMemory.java:
+	* src/javax/realtime/PrivateScopedMemory.java:
+	* src/javax/realtime/LTPrivateMemory.java:
+	* src/javax/realtime/LTMemory.java:
+	* src/javax/realtime/CTPrivateMemory.java:
+	* src/javax/realtime/CTMemory.java:
+	* src/javax/realtime/Arena.java:
+	* src/javax/realtime/AccessViolationError.java:
+
+	  Added support for private scoped memory. This new type of scoped
+	  memories can be accessed by one thread at the time. The
+	  assumption that only one thread is ever active within the memory
+	  allows more efficient implementation by for instance avoiding
+	  some locking.
+
+Sat Nov 15 13:17:11 2003  Angelo Corsaro  <corsaro@cse.wustl.edu>
+
+	* src/native/src/jrate/sched/PriorityScheduler.h:
+
+	  Added include to avoid compilation errors with gcc 2.96
+
+	* src/native/src/jrate/mem/StackAllocator.h:
+
+	  Improved memory efficiency by reducing the amount of control
+	  data to be used in order to perform finalization. This change
+	  should improve both the time and the space efficiency of the
+	  allocator.
+
+	* src/native/src/jrate/mem/MMapBufferProvider.h:
+	* src/native/src/jrate/mem/Buffer.inl:
+	* src/native/src/jrate/mem/Allocator.h:
+
+	  Formatting updates.
+
+	* src/native/src/jrate/binding/java/VTAllocator.h:
+	* src/native/src/jrate/binding/java/OutOfMemoryHandler.cc:
+	* src/native/src/jrate/binding/java/MAAllocator.h:
+	* src/native/src/jrate/binding/java/LTAllocator.h:
+	* src/native/src/jrate/binding/java/IMAllocator.h:
+	* src/native/src/jrate/binding/java/HAllocator.h:
+	* src/native/src/jrate/binding/java/CTAllocator.h:
+
+	  Updated template instantiation with proper types (initializer,
+	  recycler, etc.) so to take more advantages of the allocator
+	  semantics.
+
+	* src/native/src/Makefile.jrate:
+	* src/native/src/Makefile.javax:
+	* config/jRate/Compiler.GNU:
+	* config/jRate/Common.GNU:
+
+	  Added macros for supporting gprof enabled jRate build.
+
+Tue Oct 28 20:20:10 2003  Angelo Corsaro  <corsaro@cse.wustl.edu>
+
+	* jRate 0.3.4-3.3.1 alpha
+
+-------------------------------------------------------------------------------
+
+Local Variables:
+mode: change-log
+add-log-keep-changes-together: t
+add-log-time-format: current-time-string
+End:

@@ -1,0 +1,32 @@
+Known Bugs in jRate
+===================
+
+* Memory corruption detected in memory allocator upon finalization.
+  (witness: demos/ScopedPortal freezes)
+
+* Some class files may not give proper warnings/errors.  This is a
+  bug in GCJ 3.3.3.  (The gcc CVS HEAD version of gcc/java/class.c's
+  layout_class_method() should be merged into the jRate patch.  Some
+  parts of it already have been.)
+
+* All ports except i386 are missing HighResolutionClock implementation.
+  This is a non-RTSJ-standard class, but would be nice to have high-res
+  platform-specific implementations getting the best clock each hardware
+  can provide.
+
+* jRate's handleAsyncEvent() method infrastructure is non-standard.
+  RTSJ-compliant code will compile but misbehave at runtime.
+
+* libjava/java/lang/String.java: fix "TODO" thing -- add a new
+  __jRateRealloc2() to java.lang.Object or something?
+
+* Should test atomic counters on SMP platforms (other than i386 which is
+  well-tested).
+
+* Non-standard handleAsyncEvent()
+
+* Presently has NO SUPPORT for shared SchedulingParameters etc.
+  Further, setting a new priority parameters after thread start may
+  not really change thread's priority.  This area needs work.
+
+-- Morgan Deters <mdeters@morgandeters.com>  Tue Jul  5 09:06:15 CST 2005

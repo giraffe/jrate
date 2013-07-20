@@ -1,0 +1,16 @@
+--------------------------------------------------
+Main design, development, original concept, etc...
+
+Angelo Corsaro <corsaro@cse.wustl.edu>
+
+http://www.cs.wustl.edu/~corsaro
+--------------------------------------------------
+
+Other credits:
+
+Morgan Deters <mdeters@morgandeters.com>
+  bugfixes, ppc port, cross compilation, spec compliance, testing,
+  automake/autoconf build process, etc.
+
+James Brodman <jcb1@cs.wustl.edu>
+  bugfixes, testing

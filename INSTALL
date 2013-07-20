@@ -1,0 +1,586 @@
+                ===============================================
+                           jRate Installation HowTo
+                ===============================================
+
+
+     1. Supported Platforms
+     2. Software Requirements
+     3. How To Build jRate
+     4. Running the Demos
+
+                                    ***
+
+[1. Supported Platforms]
+
+Right now the only intentionally working jRate platforms are:
+
+      - Linux (x86 and PowerPC)
+      - TimeSys RTLinux (http://www.timesys.com)
+
+jRate has been tested on Fedora Core 2 with kernel 2.6.8-1.521, on the
+TimeSys RT/Linux GPL and TimeSys RT/Linux based on the 2.4.x Linux
+kernel, on Debian/unstable (various 2.6 kernels), on Gentoo (various
+2.6 kernels), and on a few TimeSys x86 and PowerPC BSPs (2.4 and 2.6
+kernels).
+
+jRate-compiled programs run on desktop and embedded platforms.  Recently
+we had a real-time Java UAV route-navigation application running
+beautifully on a 64MB Embedded Planet 8260---actual flight hardware.
+
+Additional GCC-supported targets might also be supported by jRate but
+haven't been tested.
+
+jRate can be built as a cross compiler to support embedded development.
+See section 3.3, below.
+
+                                    ***
+
+[2. Software Requirements]
+
+In order to build and install jRate you will need the following
+software:
+
+   - GCC sources (core, g++, and java components).
+     jRate can also check these out automatically if you have a
+     network connection.
+
+   - You should also have an installed version of GCC (or other compiler)
+     that can kick off a bootstrap of GCC 3.3.3---most modern compilers
+     should be fine.  (However, if you're building jRate as a cross
+     compiler, you may need a recent, native GCC installation since
+     a cross compiler can't bootstrap itself.)
+
+     It used to be required that 'gcj' and 'gcjh' were available before
+     building jRate for bytecode compilation and CNI-header generation.
+     This is no longer the case; the newly-bootstrapped versions will be
+     used.  If you want to override this behavior, you can set the JAVAC
+     and/or GCJH environment variables when you run configure.
+
+   - GNU Make.
+
+                                    ***
+
+[3. How To Build jRate]
+
+For the most part, jRate is built simply with the usual
+"./configure ; make" mechanism; HOWEVER, there are a few gotchas.
+(Also, see the file BUGS if you have a problem building.)
+
+Gotcha #1: You must use GNU Make to compile jRate.
+
+Gotcha #2: It is recommended that you configure with a different --prefix
+than /usr or /usr/local.  Some of the jRate installation will replace
+files in an existing GCC 3.3.3 installation.  This may break an installed
+(non-jRate) GCC installation.
+
+Gotcha #3: If you want to build API documentation (with javadoc or a
+compatible tool), you should "make api" before you "make install".  The
+API documentation tree will be installed in $datadir/doc/jrate/docs/api.
+
+Gotcha #4: The jRate build process requires GCC sources, and these are
+not distributed with the jRate sources.
+
+For obtaining GCC sources there are two options:
+
+    1. You have a network connection and can afford downloading the
+       entire GCC source tree via anonymous CVS.
+
+    2. You have the GCC 3.3.3 sources somewhere, or prefer to obtain
+       the tarballs yourself rather than use CVS.  (This option is
+       recommended to reduce load on the GCC CVS server, which is
+       intended for development.)
+
+If you fall into case (1), then you can simply do the following
+(starting in the jRate source directory):
+
+  $ mkdir build
+  $ cd build
+  $ ../configure
+  $ make
+
+If you fall into case (2), then make sure that your GCC sources are
+unpacked in a directory called "gcc" under your intended build
+directory (that means you have to change the name after extracting the
+tarballs).  Then configure and build as normal.  For example, starting
+in the jRate source directory:
+
+  $ tar xfj gcc-core-3.3.3.tar.bz2
+  $ tar xfj gcc-g++-3.3.3.tar.bz2
+  $ tar xfj gcc-java-3.3.3.tar.bz2
+  $ ls
+  gcc-3.3.3
+  $ mv gcc-3.3.3 gcc
+  $ ../configure
+  $ make
+
+A number of sanity checks will be performed to verify that the gcc
+tree is well-formed.
+
+Because of the GCC bootstrap that is performed, building jRate might
+take up to a couple of hours depending on your machine.  Expect to use
+around half a gig of disk when you bootstrap GCC (the default), a bit
+less when you leanly-bootstrap or don't bootstrap GCC (see the options
+--disable-bootstrap and --enable-leanstrap in section 3.2).
+
+
+[3.1 Parallel Builds]
+
+The jRate and GCC source trees are designed to allow parallel builds.
+So if you have a multiprocessor build machine, please, by all means,
+specify a suitable -j parameter to make!
+
+Note that there may be some bugs in the parallel build process.  If
+you run into problems, you might want to try a non-parallel build to
+see if that fixes the problem.  Either way, please let us know any
+problems you find.  (And including the full output from a failed make
+invocation will help us track these problems down.)
+
+
+[3.2 Configuration Options]
+
+There are a variety of options available to you when running the
+configure script.  Run configure with --help for a list; beware that
+some options may not yet be fully tested.
+
+A few important configuration options are discussed here:
+
+--enable-leanstrap
+
+    This will reduce the amount of disk space required for the GCC
+    bootstrap by removing unnecessary files between bootstrap stages.
+    Some rough estimates of build-time disk space requirements
+    (temporary space required for building, not space required for
+    installation) may be acquired in the following document:
+
+    http://sourceforge.net/docman/display_doc.php?docid=26313&group_id=126338
+
+--disable-bootstrap
+
+    You can also disable the bootstrap entirely.  Generally to do this
+    successfully you will need to use a recent version of GCC as your
+    host compiler.  For certain types of configurations (like when
+    building jRate as a cross compiler, or when building it *with* a
+    cross compiler as the host compiler), bootstrap is automatically
+    disabled.
+
+--with-immortal-size=MB   (default 64)
+--with-heap-size=MB       (default 32)
+--with-method-size=MB     (default 32)
+--with-scopes-size=MB     (default 64)
+
+    These options control the default amount of memory (in megabytes)
+    allocated for each of the four main regions of jRate memory: the
+    "immortal" memory region; the heap; the "method area" memory region
+    where code is loaded; and the "scopes arena" memory region where
+    scoped memory regions are housed.  Each of these settings may be
+    overridden at runtime with the corresponding environment variable:
+
+        JRATE_IMMORTAL_MEMORY_SIZE
+        JRATE_HEAP_MEMORY_SIZE
+        JRATE_METHOD_MEMORY_SIZE
+        JRATE_SCOPES_ARENA_SIZE
+
+    (NOTE: These environment variables have no significance at *build*
+    time, only at runtime.)
+
+--disable-smp
+
+    By default, jRate is built to be multiprocessor-safe.  Certain
+    low-level locking (especially in the atomic counters) can be
+    removed if the resulting jRate libraries will only ever be used
+    on uniprocessor hosts.  This option will build a uniprocessor
+    version of jRate that will crash spectacularly on multiprocessors.
+
+There are also a number of environment variables that you can set when
+running the configure script that will affect the build.  (NOTE: If they
+are set at configure time, they will affect the build even if you unset
+them before building!  Beware.)  These are the usual standard ones:
+
+    CC, CXX, GCJ, JAVAC, CPP, CXXCPP
+    CFLAGS, CXXFLAGS, GCJFLAGS, JAVACFLAGS, CPPFLAGS, LDFLAGS
+
+Other environment variables can control the build process as well.
+For example, the variables PATCH, CVS, and JAVADOC can be set to control
+which binaries the build process uses when it requires these common
+utilities.
+
+For information about the actual build process (of interest mainly to
+jRate developers), please refer to "A Guide to the jRate Build Process,
+Past & Present":
+
+    http://sourceforge.net/docman/display_doc.php?docid=26710&group_id=126338
+
+(NOTE: This details the build process when jRate is built as a native
+compiler, not when it is built as a cross compiler.)
+
+
+[3.3 Building jRate as a cross compiler]
+
+jRate can be built as a cross-compiler (for example, you can set it up
+so that it compiles ppc/linux programs on x86/linux).  However, this
+support is under development and you may have luck only with some
+host/target platforms (and no luck with others).  We recommend you
+check out Dan Kegel's crosstool, which automatically builds cross
+compilers for you, knows all of the trickery necessary for certain
+targets, etc.  Our work on providing cross-compilation support in
+jRate is based on crosstool.
+
+    http://kegel.com/crosstool/
+
+First, download crosstool version 0.35 (or similar):
+
+    http://kegel.com/crosstool/crosstool-0.35.tar.gz
+
+Unpack it, cd into it, and patch it:
+
+    patch -p1 < /path/to/jrate/script/crosstool-0.35.patch
+
+Then look at the documentation for crosstool and figure out what you
+want to do.  When you find a demo-* script close to what you want,
+pattern a new script similar to it for use with jRate.  Make sure to
+that "c++" and "java" are included in GCC_LANGUAGES, like this:
+
+    GCC_LANGUAGES="c,c++,java"
+    export GCC_LANGUAGES
+
+And you'll need a line something like the following:
+
+    eval `cat i686.dat jrate-0.3.7.2-3.3.3-glibc-2.3.3.dat` sh all.sh --notest
+
+The patch maintains backwards-compatibility; that is, the patched crosstool
+is just as happy to build a vanilla crossed-gcc as it is a crossed-jrate.
+Make sure you include a jrate-*.dat file, or something else that defines
+JRATE_DIR.
+
+Make sure that the jrate-*.dat file exists---if it doesn't for your glibc
+version, you might want to make a new, similar one that refers to the right
+glibc version (and perhaps kernel version too).  Of course, the version
+implicit in your GCC_DIR will need to match the GCC version that your jRate
+version expects; so e.g. for jRate 0.3.7.2-3.3.3, you'd better make sure
+GCC_DIR=gcc-3.3.3.  (The second bit of every jRate version number is the
+best-supported GCC version that that jRate version can handle.)
+
+If you don't already have a jRate tarball in your TARBALLS_DIR (as defined
+by the demo-* scripts), crosstool will attempt to download one.  If it
+encounters problems, place a correctly-versioned (and correctly-named)
+jRate tarball in your TARBALLS_DIR.
+
+When using crosstool, you can pass extra configuration options to
+jRate with the JRATE_EXTRA_CONFIG environment variable.  Please note
+that crosstool will build GCC (when building a native compiler, the
+jRate build process builds GCC).  So certain options to jRate's
+configure script (like --with-extra-gcc-configuration,
+--with-gcc-sources, --enable-leanstrap, etc.) will either have no
+effect or will break the build process.  Extra GCC configuration
+options can be passed to crosstool with the GCC_EXTRA_CONFIG
+environment variable; some additional options will be added when using
+crosstool to build jRate---see the jrate-*.dat files in the patched
+crosstool tree for details.
+
+PLEASE NOTE that you *must* provide some information in
+JRATE_EXTRA_CONFIG on some platforms!  Generally, you'll want to
+specify the clock speed (--with-target-cpufreq), page size
+(--with-target-pagesize), number of CPUs (--with-target-ncpus), and
+thread limit (--with-target-threadmax) of your target platform in
+JRATE_EXTRA_CONFIG---otherwise they'll be auto-detected on the host,
+which is probably not what you want.
+
+
+[3.4 Building jRate with a cross compiler]
+
+Building jRate *with* a cross-compiler is currently unsupported.  It
+may work with some platform combinations.
+
+                                    ***
+
+[4. Running the Demos]
+
+In order to run jRate applications you need to be super-user. In fact
+regular user cannot use SCHED_FIFO and other things that jRate relies
+on.
+
+Note that the demos are not built, but the sources are installed (along
+with documentation) in /usr/local/share/doc/jrate/demos (or in
+whatever --datadir you provide to the configure script).
+
+To build a demo, copy the relevant source files into your workspace and
+compile them with jRate-gcj.  You'll need to specify a --main argument
+to the compiler (to indicate which class contains the first line of
+code executed).  You'll also need to make sure that your LD_LIBRARY_PATH
+includes any required shared libraries (both to link and to run), like
+libgcj and libjRateCore.
+
+We intend to provide configure and makefile support for demos in a
+future release of jRate to ease building the demos (and to provide
+a demonstration automake/autoconf setup for jRate applications).
+
+The remainder of this section describes some of the demos distributed
+with jRate.
+
+
+[4.1 SCOPED MEMORY DEMO]
+
+This is a basic demo that shows how Scoped Memory can be used.
+
+$ cd demos/MemoryArea
+$ ./memoryDemo
+You must be Root in order to run jRate: Operation not permitted
+
+Ops...Did you forget about the note above? Become supersuer or use sudo ;-)
+
+
+# cd demos/MemoryArea
+# ./memoryDemo
+Usage: memoryDemo <memory-type [0:CTMemory, 1:LTMemory, 2:VTMemory, 3:HeapMemory, 4:ImmortalMemory]>
+
+# ./memoryDemo 0
+[Main]
+[Starting Thread]
+        [New Thread]
+        [Entering Memory Area]
+                        0123456789
+                        0123456789
+                        0123456789
+                        0123456789
+                        0123456789
+                        0123456789
+                        0123456789
+                        0123456789
+                        0123456789
+                        0123456789
+
+                [Obj Mem Area]: javax.realtime.CTMemory@47710050
+                [Class Mem Area]: javax.realtime.MethodAreaMemory@421c0940
+                [Used Memory]: 7134
+                [Remaining Memory]: 750
+        [Exiting Memory Area]
+                        0123456789
+                        0123456789
+                        0123456789
+                        0123456789
+                        0123456789
+                        0123456789
+                        0123456789
+                        0123456789
+                        0123456789
+                        0123456789
+
+                [Obj Mem Area]: javax.realtime.HeapMemory@421c0988
+                [Class Mem Area]: javax.realtime.MethodAreaMemory@421c0940
+                [Used Memory]: 2
+                [Remaining Memory]: 8190
+        [Exiting Memory Area]
+        [End New Thread]
+[End Main]
+
+
+[4.2 SCOPE CYCLE EXCEPTION TEST]
+
+This test shows how the violation of the single parent rule is cached
+by a runtime exception.
+
+
+$ cd demos/ScopedMemoryCycle
+$ ./scopedMemoryCycle 0
+[Main]
+[Starting Thread]
+        [New Thread]
+        [Entering Memory Area]
+                        0123456789
+                        0123456789
+                        0123456789
+                        0123456789
+                        0123456789
+                        0123456789
+                        0123456789
+                        0123456789
+                        0123456789
+                        0123456789
+
+                [Obj Mem Area]: javax.realtime.CTMemory@47710050
+                [Class Mem Area]: javax.realtime.MethodAreaMemory@40da5818
+                [Used Memory]: 7210
+                [Remaining Memory]: 1041058
+        [Exiting Memory Area]
+        [Entering Bad Memory Area]
+Exception in thread "Thread-1" javax.realtime.ScopedCycleException: Entering this memory area would create a cycle!
+   at java.lang.Exception.Exception(java.lang.String) (/home/angelo/Tools/jRate-gcc/lib/libgcj.so.4.0.0)
+   at java.lang.RuntimeException.RuntimeException(java.lang.String) (/home/angelo/Tools/jRate-gcc/lib/libgcj.so.4.0.0)
+   at javax.realtime.MemoryArea.enter(java.lang.Runnable) (/home/angelo/Devel/jRate/lib/libjRateRT.so.0.0.0)
+   at ScopedMemoryCycle$1$3.run() (Unknown Source)
+   at javax.realtime.MemoryArea.enter(java.lang.Runnable) (/home/angelo/Devel/jRate/lib/libjRateRT.so.0.0.0)
+   at ScopedMemoryCycle$1.run() (Unknown Source)
+   at java.lang.Thread.run() (/home/angelo/Tools/jRate-gcc/lib/libgcj.so.4.0.0)
+   at javax.realtime.RealtimeThread.run() (/home/angelo/Devel/jRate/lib/libjRateRT.so.0.0.0)
+   at _Jv_ThreadRun(java.lang.Thread) (/home/angelo/Tools/jRate-gcc/lib/libgcj.so.4.0.0)
+   at __clone (/lib/i686/libc-2.3.2.so)
+[End Main]
+
+
+[4.3 INVALID REFERENCE]
+
+This is set of simple demos that show how jRate intercepts the
+violation of memory reference rules.
+
+# cd demos/InvalidReference
+# ./heapToScope
+Exception in thread "Thread-1" java.lang.ArrayStoreException: Illegal Memory Reference!
+   at _Jv_CheckMemRef (/home/angelo/Tools/jRate-gcc/lib/libgcj.so.4.0.0)
+   at _Jv_CheckArrayStore (/home/angelo/Tools/jRate-gcc/lib/libgcj.so.4.0.0)
+   at java.util.Vector.addElement(java.lang.Object) (/home/angelo/Tools/jRate-gcc/lib/libgcj.so.4.0.0)
+   at java.util.Vector.add(java.lang.Object) (/home/angelo/Tools/jRate-gcc/lib/libgcj.so.4.0.0)
+   at HeapToScope$1.run() (Unknown Source)
+   at javax.realtime.MemoryArea.enter(java.lang.Runnable) (/home/angelo/Devel/jRate/lib/libjRateRT.so.0.0.0)
+   at HeapToScope$2.run() (Unknown Source)
+   at java.lang.Thread.run() (/home/angelo/Tools/jRate-gcc/lib/libgcj.so.4.0.0)
+   at javax.realtime.RealtimeThread.run() (/home/angelo/Devel/jRate/lib/libjRateRT.so.0.0.0)
+   at _Jv_ThreadRun(java.lang.Thread) (/home/angelo/Tools/jRate-gcc/lib/libgcj.so.4.0.0)
+   at __clone (/lib/i686/libc-2.3.2.so)
+
+
+# ./heapToScope
+Exception in thread "Thread-1" java.lang.ArrayStoreException: Illegal Memory Reference!
+   at _Jv_CheckMemRef (/home/angelo/Tools/jRate-gcc/lib/libgcj.so.4.0.0)
+   at _Jv_CheckArrayStore (/home/angelo/Tools/jRate-gcc/lib/libgcj.so.4.0.0)
+   at java.util.Vector.addElement(java.lang.Object) (/home/angelo/Tools/jRate-gcc/lib/libgcj.so.4.0.0)
+   at java.util.Vector.add(java.lang.Object) (/home/angelo/Tools/jRate-gcc/lib/libgcj.so.4.0.0)
+   at HeapToScope$1.run() (Unknown Source)
+   at javax.realtime.MemoryArea.enter(java.lang.Runnable) (/home/angelo/Devel/jRate/lib/libjRateRT.so.0.0.0)
+   at HeapToScope$2.run() (Unknown Source)
+   at java.lang.Thread.run() (/home/angelo/Tools/jRate-gcc/lib/libgcj.so.4.0.0)
+   at javax.realtime.RealtimeThread.run() (/home/angelo/Devel/jRate/lib/libjRateRT.so.0.0.0)
+   at _Jv_ThreadRun(java.lang.Thread) (/home/angelo/Tools/jRate-gcc/lib/libgcj.so.4.0.0)
+   at __clone (/lib/i686/libc-2.3.2.so)
+
+
+[4.4 ASYNC EVENT HANDLER DEMO]
+
+This is a basic demo that shows how to use asynchronous event handlers.
+
+# cd demos/EventHandling
+# ./eventHandler 4096 11 bound 0
+0.044725
+0.013224
+0.011633
+0.011965
+0.011827
+0.011962
+0.011503
+0.011416
+0.011395
+0.011957
+
+Where the first argument is the size of the scoped memory in bytes the
+second the number of firing, the third the type of the handler, and
+the last the memory type.
+
+
+[4.5 REAL-TIME THREAD DEMO]
+
+This demos shows the priority preemtpive scheduling of threads in jRate.
+
+# cd demos/Threads
+# ./rtrunner
+
+[10]
+[11]
+[12]
+[13]
+[14]
+[15][15][15][15][15][15][15][15][15][15]
+[14][14][14][14][14][14][14][14][14]
+[13][13][13][13][13][13][13][13][13]
+[12][12][12][12][12][12][12][12][12]
+[11][11][11][11][11][11][11][11][11]
+[10][10][10][10][10][10][10][10][10]
+
+
+[4.6 SCOPED PORTAL DEMO]
+
+This demo shows how to use portals and offers a limited stress-test of
+their features.  In particular, it tests:
+
+[NOTE: This list and "expected output" reflects my implementation of
+portals for jRate.  jRate semantics may ultimately be different, and then
+these docs should be changed. --Morgan Deters <mdeters@morgandeters.com>]
+
+  * whether getPortal() can be done outside as well as inside a memory area
+    -- the RTSJ makes no restriction on where getPortal() can be called
+    -- the TimeSys reference implementation likewise makes no restriction
+    -- jRate requires that a thread is within a scoped memory area to
+       get its portal
+  * where a portal object can be located: in primordial memory, an inner
+    memory area, or only the memory area itself
+    -- the RTSJ requires that portals point into their areas and
+       nowhere else
+    -- the TimeSys reference implementation enforces this
+    -- jRate enforces this
+  * whether the portal reference is cleared when the scoped memory
+    area is exited
+    -- the RTSJ does not specify that the portal reference is cleared
+       upon scope exit
+    -- the TimeSys reference implementation does not clear it
+    -- jRate does clear portals upon scope exit
+  * whether setPortal(null) leaves a portal unchanged
+    -- the RTSJ requires that setPortal(null) has no effect on the
+       object the portal refers to (ie., it *doesn't* clear it as
+       might be expected)
+    -- the TimeSys reference implementation leaves them unchanged
+    -- jRate leaves them unchanged
+
+See demos/ScopedPortal/ScopedPortal.java for full documentation on the
+demo.  The expected output from the demo run follows.  Note that some
+of the exceptions are actually expected.  Of course, the hexidecimal
+pointer values given here will likely differ for other runs.
+
+# cd demos/ScopedPortal
+# ./scopedPortal
+created scoped memory area: javax.realtime.LTMemory@462d9000
+>>  entering memory area
+    allocated string 'foo'
+    foo is 0x40085000
+    attempting setPortal(foo)...
+    attempting getPortal()...
+    getPortal() == 0x40085000
+    portal interpreted as 'foo'
+<<  left memory area
+attempting to get portal from outside memory area...
+################################################################
+##  got an exception during getPortal():
+java.lang.IllegalStateException: Must have entered a memory area to get its portal!
+################################################################
+>>  re-entering memory area
+    attempting getPortal()...
+    getPortal() == 0x0
+    portal interpreted as 'null'
+    attempting to set the portal to an interned string...
+################################################################
+##  got an exception during setPortal():
+java.lang.IllegalArgumentException: Scoped memory portals cannot point to objects in other memory areas
+################################################################
+    attempting to set the portal to a properly-allocated string 'x' (0x40085610)...
+    attempting getPortal()...
+    getPortal() == 0x40085610
+    portal interpreted as 'x'
+    attempting to set the portal to null (it should remain unchanged)...
+    attempting getPortal()...
+    getPortal() == 0x40085610
+    portal interpreted as 'x'
+    created another scoped memory area: javax.realtime.LTMemory@40085bc8
+    >>  entering memory area
+        allocated string 'bar' in inner memory area -- 0x40088000
+        attempting to set outer portal to inner 'bar' object...
+################################################################
+##  got an exception during setPortal():
+java.lang.IllegalArgumentException: Scoped memory portals cannot point to objects in other memory areas
+################################################################
+        attempting to get outer portal...
+        getPortal() == 0x40085610
+        portal interpreted as 'x'
+    <<  left memory area
+<<  left memory area
+#
+
+You can use "scopedPortal -t" to get exception stack traces.  This may
+be helpful to determine where in jRate (or another RTSJ platform)
+specific portal tests are implemented.

@@ -1,0 +1,56 @@
+History of user-visible changes to jRate
+========================================
+
+Changes from 0.3.7.1-3.3.3 to 0.3.7.2-3.3.3:
+
+* Fix configure script for what looks like a bug in bash 3.1.x.  Also
+  some minor documentation and build/dist process fixes.  There are no
+  behavioral changes to jRate in this release.
+
+
+
+Changes from 0.3.7-3.3.3 to 0.3.7.1-3.3.3:
+
+* Add support for broken NPTL, which doesn't honor the attr argument to
+  pthread_create().
+
+
+
+Changes from 0.3.6-3.3.3 to 0.3.7-3.3.3:
+
+* First cut at ports: ppc/linux, x86_64/linux
+
+* Increased debugging capabilities for out-of-memory conditions, others
+
+* Additional memory-reference safety checks for scopes
+
+* Improved scope-awareness of some standard Java library classes
+
+* Can now (again) compile from .class to object
+
+* Bugfixes in the compiler
+
+* Increased RTSJ spec compliance
+
+* Build process renovation.  Now uses automake/autoconf/libtool.  libjRate
+  and libjRateRT are no longer built (instead javax/realtime Java and
+  native stuff are built into libgcj).  libjRateCore is still built.
+
+* Can now be built as a cross compiler to support embedded development
+
+* javadoc now builds cleanly
+
+* Some new demos (in demos/ directory) to test new features
+
+
+
+Changes from 0.3.4-3.3.2 to 0.3.6-3.3.3:
+
+* Now built on top of gcc 3.3.3.
+
+* Cost overrun handler implementation
+
+* Added POSIX signal handler support
+
+* Some build process improvements
+
